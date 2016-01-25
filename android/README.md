@@ -1,2 +1,3 @@
-# keepAppy
-Group Programming Project
+# keepAppy - Android App
+
+
