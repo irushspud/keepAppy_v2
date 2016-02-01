@@ -1,7 +1,11 @@
 # keepAppy - API
-Resources Needed ->
+###### Resources Needed
 
-Type | Path | Function
+Type | Path | Parameters
 --- | --- | ---
-`GET` | `articles/` | ..
-`Post` | `articles/` | ..
+`GET` | `articles/` | :id
+`POST` | `articles/` | :id
+`DELETE` | `articles/` | ..
+`GET` | `quotes/` | ..
+`POST` | `quotes/` | ..
+`DELETE` | `quotes/` | ..
