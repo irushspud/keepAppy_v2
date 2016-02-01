@@ -1,2 +1,7 @@
 # keepAppy - API
-Feeds the app with data
+Resources Needed ->
+
+Type | Path | Function
+--- | --- | ---
+`GET` | `articles/` | ..
+`Post` | `articles/` | ..
