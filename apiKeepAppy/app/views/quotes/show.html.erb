@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cite:</strong>
+  <%= @quote.cite %>
+</p>
+
+<p>
+  <strong>Progenitor:</strong>
+  <%= @quote.progenitor %>
+</p>
+
+<p>
+  <strong>Classification:</strong>
+  <%= @quote.classification %>
+</p>
+
+<%= link_to 'Edit', edit_quote_path(@quote) %> |
+<%= link_to 'Back', quotes_path %>

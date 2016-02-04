@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cite: MyText
+  progenitor: MyString
+  classification: 1
+
+two:
+  cite: MyText
+  progenitor: MyString
+  classification: 1
