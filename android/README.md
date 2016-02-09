@@ -1,3 +1,0 @@
-# keepAppy - Android App
-
-
