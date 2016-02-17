@@ -1,9 +1,16 @@
 <ion-view view-title="Public Feed">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="fed in Feed" type="item-text-wrap" href="#/tab/feds/{{fed.id}}">
+        <img ng-src="{{fed.face}}">
+        <h2>{{fed.name}}</h2>
+        <p>{{fed.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(fed)">
+          Delete
+        </ion-option-button>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
