@@ -1,15 +1,27 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  
+  
+  match "/signup", :to => "users#new" ,via: :get
+  match "/login", :to => "sessions#login", via: :get
+  match "/logout", :to => "sessions#logout", via: :get
+  match "/home", :to => "sessions#home", via: :get
+  match "/setting", :to => "sessions#setting", via: :get
+  
+  root :to => 'sessions#login'
 
+  
   resources :quotes
 
   resources :articles
 
   #map.connect '/users/new', :controller => 'users' , :action => 'create'
-  resources :user do
+  resources :users do
   #route GET /user/new
   	get 'create', :on => :collection
   end
+
+  resources :public_posts 
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
