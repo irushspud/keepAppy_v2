@@ -2,7 +2,10 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope) {})
 
-.controller('moodCtrl', function($scope) {})
+.controller('moodCtrl', function($scope, ArticlesService) {
+  $scope.articles = ArticlesService.query()
+  console.log($scope.articles)
+})
 
 .controller('diaryCtrl', function($scope, $stateParams) {
   // With the new view caching in Ionic, Controllers are only called
