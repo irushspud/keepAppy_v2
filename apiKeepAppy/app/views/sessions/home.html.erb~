@@ -1,4 +1,3 @@
-<% @page_title = "Moderator | Home" -%>
 <h1>Quotes and Articles Managment tool</h1>
 <p>Select new action</p>
 <%= link_to "Articles Manager", controller: "articles" %>

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	validates_length_of :password, :in => 6..20, :on=>:create
 
 
-	attr_accessible :username, :email, :password, :password_confirmation
+	#attr_accessible :username, :email, :password, :password_confirmation
 	
 	def encrypt_password
 		if password.present?
@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     			user = User.find_by_username(username_or_email)
   		end
   		if user && user.match_password(login_password)
-    			return user
+    			return true
   		else
     			return false
   		end
