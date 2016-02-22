@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-  before_filter :save_loging_state, :only => [:new, :create]
+  before_filter :save_login_state, :only => [:new, :create]
   def new
 	@user = User.new
+  end
+  
+  def user_params
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
   def create
@@ -9,10 +13,12 @@ class UsersController < ApplicationController
 	if @user.save
 		flash[:notice] = "Sign up succesful"
 		flash[:color] = "valid"
+                redirect_to(:action => 'home')
 	else
 		flash[:notice] = "Form is invalid"
 		flash[:color] = "invalid"
 	end
-	render "new"
+	redirect_to(:controller => :sessions,:action => 'home')
+        
   end
 end

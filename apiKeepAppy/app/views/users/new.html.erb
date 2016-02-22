@@ -1,6 +1,7 @@
-<% @page_title = "Users | Signup" %>
+<% @page_title = "Moderator| Signup" %>
 <div class="Sign_Form">
-	<h1>Sign Up</h1>
+	<h1>Aritcles and Quotes Moderating Tool</h1>
+	<h2>Sign Up</h2>
 	<%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
 		<p>Username: </br> <%= f.text_field :username %> </p>
 		<p>Email: </br><%= f.text_field :email%></p>
