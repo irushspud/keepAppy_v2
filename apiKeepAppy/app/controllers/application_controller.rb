@@ -9,7 +9,7 @@ protected
       @current_user = User.find session[:user_id] 
       return true	
     else
-      redirect_to(:controller => 'sessions', :action => 'login_attempt')
+      #redirect_to(:controller => 'sessions', :action => 'login_attempt')
       return false
     end
   end

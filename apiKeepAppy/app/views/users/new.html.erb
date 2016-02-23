@@ -10,6 +10,9 @@
 		<p>Confirm Password: </br><%= f.password_field_tag :password_confirmation%></p>
 		<%= f.submit :Signup %>
 	<% end %>
+	<p> Already have an account then login</p>
+	<%= link_to "Login", controller: "sessions", action: "login_attempt"  %>
+    <a href="/login"></a>
 	<% if @user.errors.any? %>
 		<ul class="Signup_Errors">
 		<% for message_error in @user.errors.full_messages %>

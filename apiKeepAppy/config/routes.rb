@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   #root :to => 'sessions#login'
 
   #resources :sessions do
-#	get 'login_attempt', :on => :collection
+  #	get 'login_attempt', :on => :collection
   #end
   
   resources :quotes
