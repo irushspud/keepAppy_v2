@@ -33,8 +33,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 	.state('settings', {
 		url: '/settings',
-		templateUrl: 'settings.html'
-})
+		templateUrl: 'templates/settings.html'
+  })
 
   // setup an abstract state for the tabs directive
     .state('tabs', {

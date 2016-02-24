@@ -7,6 +7,14 @@ angular.module('starter.services', ['ngResource'])
   });
 }])
 
+.factory('PublicFeed', ['$resource', function($resource){
+  return $resource('https://stormy-retreat-84839.herokuapp.com/api/v1/articles', {}, {
+    query: { method: 'GET', isArray: false },
+    create: { method: 'POST' }
+  });
+}])
+
+
 .factory('Feed', function() {
   // Might use a resource here that returns a JSON array
 

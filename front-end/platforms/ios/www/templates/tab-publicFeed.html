@@ -1,9 +1,21 @@
 <ion-view view-title="Public Feed">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <ion-refresher on-refresh="doRefresh()">               
+    </ion-refresher>
+    <div ng-repeat="n in articles.articles">
+      <div class="card">
+      <div class="item">
+      
+    <h2><b>{{n.name}}</b></h2>
+  </div>
+
+  <div class="item item-body">
+    <p>
+      {{n.article}}
+    </p>
+  </div>
+
+        
+  </div>
   </ion-content>
 </ion-view>

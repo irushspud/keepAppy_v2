@@ -22,13 +22,8 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('publicFeedCtrl', function($scope, Feed) {
-	  $scope.feed = Feed.all();
-  $scope.remove = function(fed) {
-    Feed.remove(fed);
-  };  
-
-
+.controller('publicFeedCtrl', function($scope, PublicFeed) {
+	  $scope.articles = PublicFeed.query()
 })
 
 .controller('pubFeedDeetsCtrl', function($scope, $stateParams, Feed) {
