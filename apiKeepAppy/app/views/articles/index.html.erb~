@@ -29,3 +29,5 @@
 <br>
 
 <%= link_to 'New Article', new_article_path %>
+<%= link_to "Back to Home", controller: "sessions", action: "home"  %>
+    <a href="/home"></a>
