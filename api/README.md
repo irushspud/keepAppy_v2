@@ -1,11 +1,8 @@
-# keepAppy - API
-###### Resources Needed
+###Dummy API
+#####For Frontent Dvevlopment
 
-HTTP | Path | Action | Use
---- | --- | --- | ---
-`GET` | `/articles` | index |
-`GET` | `/articles/new/` | new |
-`POST` | `/articles` | create |
-`GET` | `/articles/:id` | Show |
-`GET` | `/articles/:id/edit` | Edit |
-`DELETE` | `articles` | |
+`GET Articles` ~> https://stormy-retreat-84839.herokuapp.com/api/v1/articles
+
+`GET Quotes` ~> https://stormy-retreat-84839.herokuapp.com/api/v1/quotes
+
+#####Setup this little api to serve the front-end

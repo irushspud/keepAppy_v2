@@ -8,6 +8,12 @@ Bundler.require(*Rails.groups)
 
 module ApiKeepAppy
   class Application < Rails::Application
+    if defined?(Bundler)
+        # If you precompile assets before deploying to production, use this line
+        # Bundler.require *Rails.groups(:assets => %w(development test))
+        # If you want your assets lazily compiled in production, use this line
+        Bundler.require(:default, :assets, Rails.env)
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

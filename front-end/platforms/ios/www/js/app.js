@@ -31,55 +31,61 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+	.state('settings', {
+		url: '/settings',
+		templateUrl: 'templates/settings.html'
+  })
+
   // setup an abstract state for the tabs directive
-    .state('tab', {
+    .state('tabs', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
 
+
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tabs.mood', {
+    url: '/mood',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-mood': {
+        templateUrl: 'templates/tab-mood.html',
+        controller: 'moodCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tabs.diary', {
+      url: '/diary',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-diary': {
+          templateUrl: 'templates/tab-diary.html',
+          controller: 'diaryCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tabs.fed-detail', {
+      url: '/feed/:fedId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-publicFeed': {
+          templateUrl: 'templates/feed-detail.html',
+          controller: 'fedDetailCtrl'
         }
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tabs.publicFeed', {
+    url: '/publicFeed',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-publicFeed': {
+        templateUrl: 'templates/tab-publicFeed.html',
+        controller: 'publicFeedCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/mood');
 
 });

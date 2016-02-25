@@ -1,0 +1,15 @@
+{
+  "name": "keep-appy-api",
+  "version": "1.0.0",
+  "description": "A dummy api to feed the frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.7.1",
+    "express": "^4.13.4"
+  }
+}

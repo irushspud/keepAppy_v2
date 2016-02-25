@@ -1,0 +1,7 @@
+<% @page_title = "Moderator | Home" -%>
+<h1>Quotes and Articles Managment tool</h1>
+<p>Select new action</p>
+<%= link_to "Articles Manager", controller: "articles" %>
+    <a href="/articles"></a>
+<%= link_to "Quote Manager", controller: "quotes"  %>
+    <a href="/quotes"></a>
