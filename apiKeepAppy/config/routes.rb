@@ -12,7 +12,13 @@ Rails.application.routes.draw do
   #resources :sessions do
   #	get 'login_attempt', :on => :collection
   #end
-  
+
+  namespace :api, defaults: {format:'json'} do
+  # /api/...  Api::
+    namespace :v1 do
+      resources :articles
+    end
+  end
   resources :quotes
 
   resources :articles
@@ -21,8 +27,6 @@ Rails.application.routes.draw do
   resources :users do
   #route GET /user/new
   	get 'create', :on => :collection
-	
-
   end
 
   resources :public_posts 
