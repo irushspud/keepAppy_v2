@@ -50,7 +50,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/mood',
     views: {
       'tab-mood': {
-        templateUrl: 'templates/tab-mood.html',
+        templateUrl: 'templates/tab-chats.html',
         controller: 'moodCtrl'
       }
     }
