@@ -31,49 +31,55 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+	.state('settings', {
+		url: '/settings',
+		templateUrl: 'templates/settings.html'
+  })
+
   // setup an abstract state for the tabs directive
-    .state('tab', {
+    .state('tabs', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
 
+
   // Each tab has its own nav history stack:
 
-  .state('tab.mood', {
+  .state('tabs.mood', {
     url: '/mood',
     views: {
       'tab-mood': {
-        templateUrl: 'templates/tab-dash.html',
+        templateUrl: 'templates/tab-chats.html',
         controller: 'moodCtrl'
       }
     }
   })
 
-  .state('tab.diary', {
+  .state('tabs.diary', {
       url: '/diary',
       views: {
         'tab-diary': {
-          templateUrl: 'templates/tab-chats.html',
+          templateUrl: 'templates/tab-diary.html',
           controller: 'diaryCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tabs.fed-detail', {
+      url: '/feed/:fedId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-publicFeed': {
+          templateUrl: 'templates/feed-detail.html',
+          controller: 'fedDetailCtrl'
         }
       }
     })
 
-  .state('tab.publicFeed', {
+  .state('tabs.publicFeed', {
     url: '/publicFeed',
     views: {
       'tab-publicFeed': {
-        templateUrl: 'templates/tab-account.html',
+        templateUrl: 'templates/tab-publicFeed.html',
         controller: 'publicFeedCtrl'
       }
     }

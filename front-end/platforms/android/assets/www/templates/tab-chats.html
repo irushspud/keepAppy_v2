@@ -1,16 +1,45 @@
-<ion-view view-title="Articles">
+<ion-view view-title="Mood  ">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+    <div class="list card">
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+<ion-slide-box ng-init="lockSlide()">
+  <ion-slide ng-repeat="n in quotes.quotes" name="slideBox">
+
+
+    <h4>{{n.quote}}</h4>
+    <p>{{$index}}</p>
+    
+    <div class="item range" name="slideInput">
+      <i class="icon ion-sad-outline"></i>
+
+
+      <input type="range" id="range{{$index}}">
+
+
+      <i class="icon ion-happy-outline"></i>
+    </div>
+
+    
+    <button class="button icon-right ion-chevron-right button-calm" ng-click="nextSlide()">Next</button>
+    <button ng-if="!$first" class="button icon-right ion-chevron-left button-calm" ng-click="previousSlide()">Previous</button>
+
+
+  </ion-slide>
+
+  <ion-slide>
+      <h2> RESULTS:</h2> <br/>
+        <p> Display the results here </p>
+  
+      <button class="button icon-right ion-chevron-left button-calm" ng-click="previousSlide()">Previous slide</button>
+  </ion-slide>
+    
+
+
+</ion-slide-box>
+
+</div>
   </ion-content>
 </ion-view>
+
+
+
