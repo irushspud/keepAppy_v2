@@ -13,7 +13,7 @@
       <i class="icon ion-sad-outline"></i>
 
 
-      <input type="range" id="range{{$index}}">
+      <input type="range" id="range{{$index}}" min="0" max="100" ng-model="mood[$index]" ng-model-options="{ getterSetter: true }">
 
 
       <i class="icon ion-happy-outline"></i>
@@ -28,8 +28,12 @@
 
   <ion-slide>
       <h2> RESULTS:</h2> <br/>
-        <p> Display the results here </p>
-  
+
+        <span ng-repeat="n in quotes.quotes">{{mood[$index]}} </span>
+
+        <br>
+
+
       <button class="button icon-right ion-chevron-left button-calm" ng-click="previousSlide()">Previous slide</button>
   </ion-slide>
     

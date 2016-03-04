@@ -32,6 +32,8 @@ angular.module('starter.controllers', [])
 .controller('moodCtrl', function($scope, $timeout, $ionicSlideBoxDelegate, Mood) {
     $scope.quotes = Mood.query()
 
+    $scope.mood = [];
+
     $ionicSlideBoxDelegate.enableSlide(false);
     $timeout(function () {
       $ionicSlideBoxDelegate.update();
