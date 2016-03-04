@@ -3,11 +3,10 @@
     <div class="list card">
 
 <ion-slide-box ng-init="lockSlide()">
-  <ion-slide ng-repeat="n in quotes.quotes" name="slideBox">
+  <ion-slide ng-repeat="n in quotes.quotes" ng-init="init()" name="slideBox">
 
 
     <h4>{{n.quote}}</h4>
-    <p>{{$index}}</p>
     
     <div class="item range" name="slideInput">
       <i class="icon ion-sad-outline"></i>
@@ -32,7 +31,6 @@
         <span ng-repeat="n in quotes.quotes">{{mood[$index]}} </span>
 
         <br>
-
 
       <button class="button icon-right ion-chevron-left button-calm" ng-click="previousSlide()">Previous slide</button>
   </ion-slide>

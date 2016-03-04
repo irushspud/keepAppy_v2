@@ -35,12 +35,13 @@ angular.module('starter.controllers', [])
     $scope.mood = [];
 
     $ionicSlideBoxDelegate.enableSlide(false);
-    $timeout(function () {
-      $ionicSlideBoxDelegate.update();
-    }, 300);
 
+
+    $scope.init = function () {
+      $ionicSlideBoxDelegate.update();
+    }
     $scope.lockSlide = function () {
-        $ionicSlideBoxDelegate.enableSlide( false );
+      $ionicSlideBoxDelegate.enableSlide( false );
     }
 
     $scope.nextSlide = function() {
