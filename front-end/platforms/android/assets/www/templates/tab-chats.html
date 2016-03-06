@@ -3,36 +3,39 @@
     <div class="list card">
 
 <ion-slide-box ng-init="lockSlide()">
-  <ion-slide ng-repeat="n in quotes.quotes" name="slideBox">
+  <ion-slide ng-repeat="n in quotes.quotes" ng-init="init()" name="slideBox">
 
-
-    <h4>{{n.quote}}</h4>
-    <p>{{$index}}</p>
-    
-    <div class="item range" name="slideInput">
-      <i class="icon ion-sad-outline"></i>
-
-
-      <input type="range" id="range{{$index}}">
-
-
-      <i class="icon ion-happy-outline"></i>
+    <div class="item item-text-wrap">
+      <p><strong>{{n.quote}}</strong></p>
     </div>
 
-    
-    <button class="button icon-right ion-chevron-right button-calm" ng-click="nextSlide()">Next</button>
-    <button ng-if="!$first" class="button icon-right ion-chevron-left button-calm" ng-click="previousSlide()">Previous</button>
-
+    <div class="item range" name="slideInput">
+      <i style="color:#ff6666" class="icon ion-sad-outline"></i>
+      <input type="range" id="range{{$index}}" min="0" max="100" ng-model="mood[$index]" ng-model-options="{ getterSetter: true }">
+      <i style="color:#66b266" class="icon ion-happy-outline"></i>
+    </div>
+    <div class="item">
+      <center>
+        <button ng-if="!$first" class="button button-outline button-calm" ng-click="previousSlide()">Previous</button>
+        <button class="button button-outline button-positive" ng-click="nextSlide()">Next</button>
+      </center>
+    </div>
+    <div class="item">
+      <br>
+    </div>
 
   </ion-slide>
 
   <ion-slide>
       <h2> RESULTS:</h2> <br/>
-        <p> Display the results here </p>
-  
+
+        <span ng-repeat="n in quotes.quotes">{{mood[$index]}} </span>
+
+        <br>
+
       <button class="button icon-right ion-chevron-left button-calm" ng-click="previousSlide()">Previous slide</button>
   </ion-slide>
-    
+
 
 
 </ion-slide-box>
@@ -40,6 +43,3 @@
 </div>
   </ion-content>
 </ion-view>
-
-
-

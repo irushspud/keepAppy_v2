@@ -1,11 +1,11 @@
-<ion-view view-title="Public Feed" style="background-color: #ffa31a">
+<ion-view view-title="Public Feed" style="background-color: #61636b">
   <ion-content>
-    <ion-refresher on-refresh="doRefresh()">               
+    <ion-refresher on-refresh="doRefresh()">
     </ion-refresher>
     <div ng-repeat="n in articles.articles">
       <div class="card">
       <div class="item">
-      
+
     <h2><b>{{n.name}}</b></h2>
   </div>
 
@@ -15,7 +15,7 @@
     </p>
   </div>
 
-        
+
   </div>
   </ion-content>
 </ion-view>

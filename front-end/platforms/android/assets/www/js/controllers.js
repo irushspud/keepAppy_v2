@@ -7,14 +7,14 @@ angular.module('starter.controllers', [])
   //console.log($scope.articles)
 //})
 
-.controller('diaryCtrl', function($scope, $stateParams) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('diaryCtrl', function($scope, $stateParams, DiaryStore) {
+	DiaryStore.initDB();
+
+  $scope.addEntry = function () {
+        DiaryStore.insertEntry("diary entry");
+        alert("Diary Entry Should be entered on this call");
+  };
+
 	$scope.settings = {
     enableFriends: true
   };
@@ -32,13 +32,16 @@ angular.module('starter.controllers', [])
 .controller('moodCtrl', function($scope, $timeout, $ionicSlideBoxDelegate, Mood) {
     $scope.quotes = Mood.query()
 
-    $ionicSlideBoxDelegate.enableSlide(false);
-    $timeout(function () {
-      $ionicSlideBoxDelegate.update();
-    }, 300);
+    $scope.mood = [];
 
+    $ionicSlideBoxDelegate.enableSlide(false);
+
+
+    $scope.init = function () {
+      $ionicSlideBoxDelegate.update();
+    }
     $scope.lockSlide = function () {
-        $ionicSlideBoxDelegate.enableSlide( false );
+      $ionicSlideBoxDelegate.enableSlide( false );
     }
 
     $scope.nextSlide = function() {
