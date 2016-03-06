@@ -38,4 +38,8 @@ angular.module('starter.services', ['ngResource'])
         return $q.when(db.post(entry));
     };
 
+    db.changes().on('change', function() {
+      console.log('Ch-Ch-Changes');
+    });
+
 }]);

@@ -7,14 +7,14 @@ angular.module('starter.controllers', [])
   //console.log($scope.articles)
 //})
 
-.controller('diaryCtrl', function($scope, $stateParams) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('diaryCtrl', function($scope, $stateParams, DiaryStore) {
+	DiaryStore.initDB();
+
+  $scope.addEntry = function () {
+        DiaryStore.insertEntry("diary entry");
+        alert("Diary Entry Should be entered on this call");
+  };
+
 	$scope.settings = {
     enableFriends: true
   };

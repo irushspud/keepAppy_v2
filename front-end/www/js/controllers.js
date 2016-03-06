@@ -9,7 +9,12 @@ angular.module('starter.controllers', [])
 
 .controller('diaryCtrl', function($scope, $stateParams, DiaryStore) {
 	DiaryStore.initDB();
-	DiaryStore.insertEntry("diary entry");
+
+  $scope.addEntry = function () {
+        DiaryStore.insertEntry("diary entry");
+        alert("Diary Entry Should be entered on this call");
+  };
+
 	$scope.settings = {
     enableFriends: true
   };
