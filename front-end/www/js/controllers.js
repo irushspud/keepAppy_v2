@@ -32,13 +32,16 @@ angular.module('starter.controllers', [])
 .controller('moodCtrl', function($scope, $timeout, $ionicSlideBoxDelegate, Mood) {
     $scope.quotes = Mood.query()
 
-    $ionicSlideBoxDelegate.enableSlide(false);
-    $timeout(function () {
-      $ionicSlideBoxDelegate.update();
-    }, 300);
+    $scope.mood = [];
 
+    $ionicSlideBoxDelegate.enableSlide(false);
+
+
+    $scope.init = function () {
+      $ionicSlideBoxDelegate.update();
+    }
     $scope.lockSlide = function () {
-        $ionicSlideBoxDelegate.enableSlide( false );
+      $ionicSlideBoxDelegate.enableSlide( false );
     }
 
     $scope.nextSlide = function() {

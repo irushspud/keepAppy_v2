@@ -1,0 +1,24 @@
+<h1> Listing Posts </h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Post</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @post.each do |public_post| %>
+      <tr>
+        <td><%= public_post.post %></td>
+        <td><%= public_post.rate %></td>
+      </tr>
+   <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Post', new_public_post_path %>
+<%= link_to "Back to Home", controller: "sessions", action: "home"  %>
+    <a href="/home"></a>
