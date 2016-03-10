@@ -1,7 +1,33 @@
 <% @page_title = "Moderator | Home" -%>
-<h1>Quotes and Articles Managment tool</h1>
-<p>Select new action</p>
-<%= link_to "Articles Manager", controller: "articles" %>
-    <a href="/articles"></a>
-<%= link_to "Quote Manager", controller: "quotes"  %>
-    <a href="/quotes"></a>
+<div class="jumbotron">
+	<center>
+		<h2>Management Console</h2>
+		<p>What would you like to manage?</p>
+	</center>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <img src="/printingpress.png" alt="...">
+      <div class="caption">
+        <p><center><a class="btn btn-primary" href="/articles">Manage Articles</a></center></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <img src="/trump.jpg" alt="...">
+      <div class="caption">
+        <p><center><a class="btn btn-primary" href="/quotes">Manage Quotes</a></center></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+   <div class="thumbnail">
+     <img src"/robespierre-arrested.jpg" alt="...">
+     <div class="caption">
+       <p><center><a class="btn btn-primary" href="/publicfeeds">Manage  Public Feed</a></center></p>
+     </div>
+   </div>
+  </div>
+</div>
