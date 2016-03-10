@@ -1,0 +1,28 @@
+<%= form_for(@publicfeed) do |f| %>
+  <% if @publicfeed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@publicfeed.errors.count, "error") %> prohibited this publicfeed from being saved:</h2>
+
+      <ul>
+      <% @publicfeed.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  <div class="field">
+    <%= f.label :rate %><br>
+    <%= f.number_field :rate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

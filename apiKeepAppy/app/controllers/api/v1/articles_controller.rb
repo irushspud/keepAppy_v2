@@ -20,7 +20,7 @@ module Api
       end
 
       def create
-        respond_with Article.create(params[:product])
+        respond_with Article.create(params[:article])
       end
 
       def update

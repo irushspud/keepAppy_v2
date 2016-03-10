@@ -1,0 +1,29 @@
+<h1>Listing publicfeeds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Rate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @publicfeeds.each do |publicfeed| %>
+      <tr>
+        <td><%= publicfeed.title %></td>
+	<td><%= publicfeed.content %></td>
+        <td><%= publicfeed.rate %></td>
+        <td><%= link_to 'Show', publicfeed %></td>
+        <td><%= link_to 'Edit', edit_publicfeed_path(publicfeed) %></td>
+        <td><%= link_to 'Destroy', publicfeed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Public Post', new_publicfeed_path %>

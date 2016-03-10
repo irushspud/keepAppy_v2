@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @publicfeed.title %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%= @publicfeed.content%>
+</p>
+<p>
+  <strong>Rate:</strong>
+  <%= @publicfeed.rate %>
+</p>
+
+<%= link_to 'Edit', edit_publicfeed_path(@publicfeed) %> |
+<%= link_to 'Back', publicfeeds_path %>

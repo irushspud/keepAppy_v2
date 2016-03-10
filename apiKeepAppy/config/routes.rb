@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   
   
+  
+
   match "/signup", :to => "users#create" ,via: [:get,:post]
   match "/login", :to => "sessions#login_attempt", via: [:get,:post]
   match "/logout", :to => "sessions#logout", via: [:get,:post]
-  match "/home", :to => "sessions#home", via: [:get,:post]
+  match "/", :to => "sessions#home", via: [:get,:post]
   match "/setting", :to => "sessions#setting", via: [:get,:post]
   
   #root :to => 'sessions#login'
@@ -17,8 +19,11 @@ Rails.application.routes.draw do
   # /api/...  Api::
     namespace :v1 do
       resources :articles
+
+      resources :publicfeeds
     end
   end
+
   resources :quotes
 
   resources :articles
@@ -29,7 +34,7 @@ Rails.application.routes.draw do
   	get 'create', :on => :collection
   end
 
-  resources :public_posts 
+  resources :publicfeeds
   
 
   # The priority is based upon order of creation: first created -> highest priority.
