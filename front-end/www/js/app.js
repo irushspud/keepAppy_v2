@@ -11,6 +11,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    database = new PouchDB('entries', {adapter : 'websql'});
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -33,7 +34,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 	.state('settings', {
 		url: '/settings',
-		templateUrl: 'templates/settings.html'
+		templateUrl: 'templates/settings.html',
+    controller: 'settingsCtrl'
   })
 
   // setup an abstract state for the tabs directive
