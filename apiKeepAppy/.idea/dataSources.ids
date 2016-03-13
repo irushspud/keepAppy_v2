@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Rails apiKeepAppy: production" uuid="dac4d886-caa1-44bd-9598-f29f7132a660">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails apiKeepAppy: development" uuid="3ab23bc8-b77f-4d16-8ae6-eac9258fa27b">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="Rails apiKeepAppy: test" uuid="e0fb5b54-d09f-4c14-884f-da558829cecb">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

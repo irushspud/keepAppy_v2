@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails apiKeepAppy: production" uuid="dac4d886-caa1-44bd-9598-f29f7132a660">
+      <user-name>apiKeepAppy</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfebdffadfe3dfe1dfefdfefdffadfebdffadffadff3dff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+    </data-source>
+    <data-source name="Rails apiKeepAppy: development" uuid="3ab23bc8-b77f-4d16-8ae6-eac9258fa27b">
+      <first-sync>true</first-sync>
+      <user-name>postgres</user-name>
+      <user-password>dfc1dfcfdfcfdfdadfcbdfdadfdadfd3</user-password>
+    </data-source>
+    <data-source name="Rails apiKeepAppy: test" uuid="e0fb5b54-d09f-4c14-884f-da558829cecb">
+      <user-name>postgres</user-name>
+      <user-password>dfc1dfcfdfcfdfdadfcbdfdadfdadfd3</user-password>
+    </data-source>
+  </component>
+</project>

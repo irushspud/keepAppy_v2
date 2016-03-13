@@ -21,9 +21,8 @@
 </p>
 <p>
   <strong>Image:</strong>
-  <%= image_tag @article.image.url %>
-  <%= image_tag @article.image.url(:medium) %>
-  <%= image_tag @article.image.url(:thumb) %>
+
+ <%= image_tag @article.image.url(:medium) %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
