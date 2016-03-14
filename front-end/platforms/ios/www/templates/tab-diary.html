@@ -4,15 +4,56 @@
 </ion-nav-buttons>
 <ion-content>
     <ion-list>
-			<div class="card">
-  <center><div class="item item-text-wrap">
-  <h3>No Diary Entries Created</h3>
-    <button class="button button-clear button-balanced">
-  Create An Entry
-</button>
-  </div></center>
-</div>
+      <ion-item ng-repeat="entry in entires" ng-click="editEntry(entry)">
+        <div style="float: left">{{ entry.title }}</div>
+        <!-- <div style="float: right">{{ b.Date | date:"dd MMMM yyyy" }}</div> -->
+        <div style="float: right"><span ng-class="{'badge badge-assertive': (entry.positivity < 25),
+                                                    'badge badge-energized': (entry.positivity >= 25 && entry.positivity < 50),
+                                                    'badge badge-calm': (entry.positivity >= 50 && entry.positivity < 75),
+                                                    'badge badge-balanced': (entry.positivity > 75)}">
+                                                    <i class="icon ion-ios-pricetags"></i>
+                                                    </span></div>
+    <ion-option-button class="button-assertive" ng-click="removeItem(entry)">Delete</ion-option-button>
+      </ion-item>
+			<div ng-hide="entires.length" class="card">
+        <center>
+          <div class="item item-text-wrap">
+            <h3>No Diary Entries</h3>
+            <button class="button button-clear button-balanced" ng-click="addEntry()" >Create A Diary Entry</button>
+          </div>
+        </center>
+      </div>
     </ion-list>
   </ion-content>
-</ion-view>
 
+    </ion-list>
+  </ion-content>
+
+
+  <!-- ----------------------------- -->
+
+  <script id="modal.html" type="text/ng-template">
+     <div class="modal">
+       <header class="bar bar-header bar-positive">
+         <h1 class="title">{{title}}</h1>
+         <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+       </header>
+       <br>
+       <br>
+       <div class="list list-inset">
+          <label class="item item-input">
+          <input type="text" placeholder="Title" ng-model="entry.title">
+          </label>
+          <div class="item range" name="slideInput">
+            <i style="color:#ff6666" class="icon ion-sad-outline"></i>
+            <input type="range" min="0" max="100" ng-model="entry.positivity">
+            <i style="color:#66b266" class="icon ion-happy-outline"></i>
+          </div>
+        </div>
+        <div class="padding">
+          <button ng-click="saveEntry()" class="button button-block button-positive activated">Save</button>
+        </div>
+     </div>
+   </script>
+
+</ion-view>

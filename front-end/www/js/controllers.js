@@ -7,18 +7,51 @@ angular.module('starter.controllers', [])
   //console.log($scope.articles)
 //})
 
-.controller('diaryCtrl', function($scope, $stateParams, DiaryStore) {
-	DiaryStore.initDB();
+.controller('diaryCtrl', function($scope, $stateParams, $ionicModal, dataStore) {
+	dataStore.initDB();
+	$scope.entires;
+
+	dataStore.getEverything().then(function(entries) {
+				$scope.entires = entries;
+	});
+
+	$scope.removeItem = function (entry) {
+		dataStore.removeEntry(entry);
+  };
+
 
   $scope.addEntry = function () {
-        DiaryStore.insertEntry("diary entry");
-        alert("Diary Entry Should be entered on this call");
+		$scope.entry = {'positivity': "50"};
+		$scope.title = 'Create A Diary Entry';
+		$scope.create = true;
+		$scope.modal.show();
   };
 
-	$scope.settings = {
-    enableFriends: true
+	$scope.editEntry = function (entry) {
+		$scope.entry = entry
+		$scope.title = 'Edit A Diary Entry';
+		$scope.create = false;
+		$scope.modal.show();
   };
 
+	$scope.saveEntry = function (){
+		if($scope.create){
+			dataStore.insertEntry($scope.entry);
+		}
+		else{
+			dataStore.updateEntry($scope.entry);
+		}
+		$scope.modal.hide();
+	}
+
+	$ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
+      $scope.modal = $ionicModal;
+	    },
+			{
+        scope: $scope,
+        animation: 'slide-in-up'
+			}
+	);
 })
 
 
@@ -26,6 +59,12 @@ angular.module('starter.controllers', [])
 	  $scope.articles = PublicFeed.query()
 })
 
+.controller('settingsCtrl', function($scope, $stateParams, dataStore) {
+  $scope.removeData = function () {
+		alert("hello");
+		dataStore.dumpAll();
+	}
+})
 
 
 
