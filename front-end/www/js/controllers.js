@@ -68,10 +68,22 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('moodCtrl', function($scope, $timeout, $ionicSlideBoxDelegate, Mood) {
-    $scope.quotes = Mood.query()
+.controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, GetQustions) {
 
-    $scope.mood = [];
+    var date = new Date();
+    hours = date.getHours()
+    $scope.data = null;
+
+    //question popup times are fixed. 
+    if( hours >= 9 && hours <15){
+      $scope.data= GetQustions.morning.get();
+    }
+    else if ( hours >= 21 && hours < 23){
+      $scope.data = GetQustions.evening.get();
+    }
+    
+    console.log($scope.data)
+
 
     $ionicSlideBoxDelegate.enableSlide(false);
 
@@ -89,7 +101,51 @@ angular.module('starter.controllers', [])
     $scope.previousSlide = function() {
       $ionicSlideBoxDelegate.previous();
     }
+
 })
+
+
+
+
+.controller('NotificationController', function($scope, $cordovaLocalNotification, $ionicPlatform) {
+     
+    $ionicPlatform.ready(function () {
+         
+        
+         
+        $scope.scheduleDelayedNotification = function () {
+          var now = new Date().getTime();
+          var _10SecondsFromNow = new Date(now + 10 * 1000);
+ 
+          $cordovaLocalNotification.schedule({
+            id: 2,
+            title: 'Warning',
+            text: 'Im so late',
+            at: _10SecondsFromNow
+          }).then(function (result) {
+            console.log('Notification 2 triggered');
+          });
+        };
+   
+         
+        $scope.updateSingleNotification = function () {
+          $cordovaLocalNotification.update({
+            id: 2,
+            title: 'Warning Update',
+            text: 'This is updated text!'
+          }).then(function (result) {
+            console.log('Notification 1 Updated');
+          });
+        };  
+ 
+        $scope.cancelSingleNotification = function () {
+          $cordovaLocalNotification.cancel(3).then(function (result) {
+            console.log('Notification 3 Canceled');
+          });
+        };      
+         
+    })})
+
 
 
 /*
@@ -124,4 +180,6 @@ angular.module('starter.controllers', [])
   $scope.showMenu = function () {
     $ionicSideMenuDelegate.toggleLeft();
   };
-})
+});
+
+
