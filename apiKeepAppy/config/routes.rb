@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
       resources :publicfeeds
     end
+    
   end
 
   resources :quotes
