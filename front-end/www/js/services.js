@@ -14,12 +14,14 @@ angular.module('starter.services', ['ngResource'])
   });
 }])
 
-.factory('Mood', ['$resource', function($resource){
-  return $resource('https://stormy-retreat-84839.herokuapp.com/api/v1/quotes', {}, {
-    query: { method: 'GET', isArray: false },
-    create: { method: 'POST' }
-  });
+
+.factory('GetQustions', ['$resource', function($resource){
+  return {
+    morning: $resource('data/morning.json', {}, { get: { method: 'GET', isArray: false }}),
+    evening: $resource('data/evening.json', {}, { get: { method: 'GET', isArray: false }})
+  };
 }])
+
 
 .factory('dataStore', ['$q', function($q) {
 
