@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag @article.image.url(:medium) %>
+</p>
+<p>
   <strong>Title:</strong>
   <%= @article.title %>
 </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
 
 <p>
   <strong>Author:</strong>
@@ -19,10 +18,10 @@
   <strong>Clssificaton:</strong>
   <%= @article.clssificaton %>
 </p>
-<p>
-  <strong>Image:</strong>
 
- <%= image_tag @article.image.url(:medium) %>
+<p>
+  <strong>Content:</strong>
+  <%= @article.content %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
