@@ -1,5 +1,6 @@
+== README
 ## Deploying to Heroku (No Need For Everyone to do this!!)
-$ heroku create
-$ git push heroku master
-$ heroku run rake db:migrate
-$ heroku open
+* heroku create
+* git push heroku master
+* heroku run rake db:migrate
+* heroku open
