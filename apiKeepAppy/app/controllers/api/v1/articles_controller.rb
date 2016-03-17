@@ -1,11 +1,7 @@
 module Api
   module V1
     class ArticlesController < ApplicationController
-      class Article < :: Article
-      def as_json(options={})
-        super.merge(image: image.url)
-      end
-      end
+     
       respond_to :json
       #articles.json should be returned, but is returning old json object
       def index
