@@ -41,7 +41,9 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'puma'
 # Use unicorn as the app server
 # gem 'unicorn'
-
+#User authentication
+gem 'devise'
+gem 'cancan'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
