@@ -14,7 +14,9 @@
   <strong>Author:</strong>
   <%= @article.author %>
 </p>
-
+<p>
+  <strong>Tags:</strong>
+  <%= raw @article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 <p>
   <strong>Clssificaton:</strong>
   <%= @article.clssificaton %>
