@@ -1,0 +1,52 @@
+{  
+   "questions":[  
+      {  
+         "id":1,
+         "question":"Are you depressed ?",
+         "tags":[  
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j"
+         ]
+      },
+      {  
+         "id":2,
+         "question":"Are you stressed ?",
+         "tags":[  
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j"
+         ]
+      },
+      {  
+         "id":3,
+         "question":"Are you Happy ?",
+         "tags":[  
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j"
+         ]
+      }
+   ]
+}

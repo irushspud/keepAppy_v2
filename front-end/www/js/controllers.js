@@ -7,7 +7,14 @@ angular.module('starter.controllers', [])
   //console.log($scope.articles)
 //})
 
+//This controller is responsible for looking after the diary tab within the application
 .controller('diaryCtrl', function($scope, $stateParams, $ionicModal, dataStore) {
+
+	$scope.updateEditor = function() {
+    var element = document.getElementById("page_content");
+    element.style.height = element.scrollHeight + "px";
+	};
+
 	dataStore.initDB();
 	$scope.entires;
 
@@ -74,14 +81,14 @@ angular.module('starter.controllers', [])
     hours = date.getHours()
     $scope.data = null;
 
-    //question popup times are fixed. 
+    //question popup times are fixed.
     if( hours >= 9 && hours <15){
       $scope.data= GetQustions.morning.get();
     }
     else if ( hours >= 21 && hours < 23){
       $scope.data = GetQustions.evening.get();
     }
-    
+
     console.log($scope.data)
 
 
@@ -108,15 +115,15 @@ angular.module('starter.controllers', [])
 
 
 .controller('NotificationController', function($scope, $cordovaLocalNotification, $ionicPlatform) {
-     
+
     $ionicPlatform.ready(function () {
-         
-        
-         
+
+
+
         $scope.scheduleDelayedNotification = function () {
           var now = new Date().getTime();
           var _10SecondsFromNow = new Date(now + 10 * 1000);
- 
+
           $cordovaLocalNotification.schedule({
             id: 2,
             title: 'Warning',
@@ -126,8 +133,8 @@ angular.module('starter.controllers', [])
             console.log('Notification 2 triggered');
           });
         };
-   
-         
+
+
         $scope.updateSingleNotification = function () {
           $cordovaLocalNotification.update({
             id: 2,
@@ -136,14 +143,14 @@ angular.module('starter.controllers', [])
           }).then(function (result) {
             console.log('Notification 1 Updated');
           });
-        };  
- 
+        };
+
         $scope.cancelSingleNotification = function () {
           $cordovaLocalNotification.cancel(3).then(function (result) {
             console.log('Notification 3 Canceled');
           });
-        };      
-         
+        };
+
     })})
 
 
@@ -181,5 +188,3 @@ angular.module('starter.controllers', [])
     $ionicSideMenuDelegate.toggleLeft();
   };
 });
-
-
