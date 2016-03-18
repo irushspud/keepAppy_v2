@@ -35,6 +35,8 @@ gem 'bcrypt', :require => 'bcrypt'
 # gem 'bcrypt', '~> 3.1.7'
 #paperclip for adding images
 gem "paperclip", "~> 4.3"
+#article tagging
+gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'puma'
 # Use unicorn as the app server

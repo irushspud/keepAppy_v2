@@ -15,6 +15,7 @@
                 <img src="<%= article.image.url(:medium)%>" ></a>
               <a href="#"><h3><%= article.title %></h3></a>
               <p>by: <%= article.author %></p>
+              <p>tags: <%= raw article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
               <p>Class: <%= article.clssificaton %></p>
               <p><%= article.content %></p>
                 <p><%= link_to 'Show', article %>
