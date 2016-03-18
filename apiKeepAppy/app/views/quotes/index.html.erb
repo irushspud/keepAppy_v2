@@ -1,10 +1,13 @@
+<head><link rel="stylesheet" type="text/scss" href="quote_index.scss"></head>
 <h1>Listing quotes</h1>
-
+<div class="row"><button class="button button1"><%= link_to 'New Quote', new_quote_path %></button>
+<button class="button button1"><%= link_to "Back to Home", controller: "sessions", action: "home"  %></button>
+<a href="/home"></a></div>
 
 
 
     <% @quotes.each do |quote| %>
-      <blockquote class="quote-card blue-card" data-toggle="collapse" data-target="#<%= quote.id%>">
+      <blockquote class="quote-card yellow-card" data-toggle="collapse" data-target="#<%= quote.id%>">
         <p>
           <%= quote.cite %>
         </p>
@@ -28,6 +31,4 @@
 
 <br>
 
-<%= link_to 'New Quote', new_quote_path %>
-<%= link_to "Back to Home", controller: "sessions", action: "home"  %>
-    <a href="/home"></a>
+
