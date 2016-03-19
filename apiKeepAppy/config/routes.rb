@@ -14,19 +14,37 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format:'json'} do
   # /api/...  Api::
     namespace :v1 do
-      get 'articles/:tag', to: 'articles#index', as: :tag      
-      resources :articles
+      resources :quotes do
+        collection do
+          get :tag
+        end
+      end
+      resources :articles do
+        collection do
+          get :tag
+        end
+      end
       resources :publicfeeds
     end
     
   end
   #route for tags 
-  get 'tags/:tag', to: 'articles#index', as: :tag
+  
+  
+  #get 'articles/:tag', to: 'articles#index', as: :tag
+  
+  
+  resources :quotes do
+    collection do
+     get :tag
+    end
+  end
 
-
-  resources :quotes
-
-  resources :articles
+  resources :articles do
+    collection do
+      get :tag
+    end
+  end
 
   #map.connect '/users/new', :controller => 'users' , :action => 'create'
   resources :users do

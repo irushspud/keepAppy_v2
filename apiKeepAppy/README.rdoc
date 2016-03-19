@@ -5,13 +5,22 @@ Deploying to Heroku (No Need For Everyone to do this!!):
 * heroku run rake db:migrate
 * heroku open
 
-                Prefix Verb     URI Pattern                            Controller#Action
+               Prefix Verb     URI Pattern                            Controller#Action
                 signup GET|POST /signup(.:format)                      users#create
                  login GET|POST /login(.:format)                       sessions#login_attempt
                 logout GET|POST /logout(.:format)                      sessions#logout
                        GET|POST /                                      sessions#home
                setting GET|POST /setting(.:format)                     sessions#setting
-            api_v1_tag GET      /api/v1/articles/:tag(.:format)        api/v1/articles#index {:format=>"json"}
+     tag_api_v1_quotes GET      /api/v1/quotes/tag(.:format)           api/v1/quotes#tag {:format=>"json"}
+         api_v1_quotes GET      /api/v1/quotes(.:format)               api/v1/quotes#index {:format=>"json"}
+                       POST     /api/v1/quotes(.:format)               api/v1/quotes#create {:format=>"json"}
+      new_api_v1_quote GET      /api/v1/quotes/new(.:format)           api/v1/quotes#new {:format=>"json"}
+     edit_api_v1_quote GET      /api/v1/quotes/:id/edit(.:format)      api/v1/quotes#edit {:format=>"json"}
+          api_v1_quote GET      /api/v1/quotes/:id(.:format)           api/v1/quotes#show {:format=>"json"}
+                       PATCH    /api/v1/quotes/:id(.:format)           api/v1/quotes#update {:format=>"json"}
+                       PUT      /api/v1/quotes/:id(.:format)           api/v1/quotes#update {:format=>"json"}
+                       DELETE   /api/v1/quotes/:id(.:format)           api/v1/quotes#destroy {:format=>"json"}
+   tag_api_v1_articles GET      /api/v1/articles/tag(.:format)         api/v1/articles#tag {:format=>"json"}
        api_v1_articles GET      /api/v1/articles(.:format)             api/v1/articles#index {:format=>"json"}
                        POST     /api/v1/articles(.:format)             api/v1/articles#create {:format=>"json"}
     new_api_v1_article GET      /api/v1/articles/new(.:format)         api/v1/articles#new {:format=>"json"}
@@ -28,7 +37,7 @@ edit_api_v1_publicfeed GET      /api/v1/publicfeeds/:id/edit(.:format) api/v1/pu
                        PATCH    /api/v1/publicfeeds/:id(.:format)      api/v1/publicfeeds#update {:format=>"json"}
                        PUT      /api/v1/publicfeeds/:id(.:format)      api/v1/publicfeeds#update {:format=>"json"}
                        DELETE   /api/v1/publicfeeds/:id(.:format)      api/v1/publicfeeds#destroy {:format=>"json"}
-                   tag GET      /tags/:tag(.:format)                   articles#index
+            tag_quotes GET      /quotes/tag(.:format)                  quotes#tag
                 quotes GET      /quotes(.:format)                      quotes#index
                        POST     /quotes(.:format)                      quotes#create
              new_quote GET      /quotes/new(.:format)                  quotes#new
@@ -37,6 +46,7 @@ edit_api_v1_publicfeed GET      /api/v1/publicfeeds/:id/edit(.:format) api/v1/pu
                        PATCH    /quotes/:id(.:format)                  quotes#update
                        PUT      /quotes/:id(.:format)                  quotes#update
                        DELETE   /quotes/:id(.:format)                  quotes#destroy
+          tag_articles GET      /articles/tag(.:format)                articles#tag
               articles GET      /articles(.:format)                    articles#index
                        POST     /articles(.:format)                    articles#create
            new_article GET      /articles/new(.:format)                articles#new
@@ -62,4 +72,5 @@ edit_api_v1_publicfeed GET      /api/v1/publicfeeds/:id/edit(.:format) api/v1/pu
                        PATCH    /publicfeeds/:id(.:format)             publicfeeds#update
                        PUT      /publicfeeds/:id(.:format)             publicfeeds#update
                        DELETE   /publicfeeds/:id(.:format)             publicfeeds#destroy
+
 

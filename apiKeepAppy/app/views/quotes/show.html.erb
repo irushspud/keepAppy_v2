@@ -14,6 +14,10 @@
   <strong>Classification:</strong>
   <%= @quote.classification %>
 </p>
+<p>
+  <strong>Tags:</strong>
+  <%= raw @quote.tag_list.map{ |t| link_to t, :controller=>"quotes", :action=>"tag", :tag => t }.join(', ') %>
+</p>
 
 <%= link_to 'Edit', edit_quote_path(@quote) %> |
 <%= link_to 'Back', quotes_path %>
