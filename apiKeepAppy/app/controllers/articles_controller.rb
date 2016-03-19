@@ -15,7 +15,10 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
   end
-
+  def tag
+    @articles = Article.tagged_with(params[:tag])
+    render :action => 'index'
+  end
   # GET /articles/new
   def new
     @article = Article.new

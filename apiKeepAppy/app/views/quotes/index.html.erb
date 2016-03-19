@@ -15,6 +15,7 @@
       <tr>
         <td><%= quote.cite %></td>
         <td><%= quote.progenitor %></td>
+        <td><%= raw quote.tag_list.map{ |t| link_to t, :controller=>"quotes", :action=>"tag", :tag => t }.join(', ') %></td>
         <td><%= quote.classification %></td>
         <td><%= link_to 'Show', quote %></td>
         <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
