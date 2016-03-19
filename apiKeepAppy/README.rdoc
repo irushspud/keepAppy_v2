@@ -1,28 +1,65 @@
-== README
+== Keep Appy Backend Service
+Deploying to Heroku (No Need For Everyone to do this!!):
+* heroku create
+* git push heroku master
+* heroku run rake db:migrate
+* heroku open
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+                Prefix Verb     URI Pattern                            Controller#Action
+                signup GET|POST /signup(.:format)                      users#create
+                 login GET|POST /login(.:format)                       sessions#login_attempt
+                logout GET|POST /logout(.:format)                      sessions#logout
+                       GET|POST /                                      sessions#home
+               setting GET|POST /setting(.:format)                     sessions#setting
+            api_v1_tag GET      /api/v1/articles/:tag(.:format)        api/v1/articles#index {:format=>"json"}
+       api_v1_articles GET      /api/v1/articles(.:format)             api/v1/articles#index {:format=>"json"}
+                       POST     /api/v1/articles(.:format)             api/v1/articles#create {:format=>"json"}
+    new_api_v1_article GET      /api/v1/articles/new(.:format)         api/v1/articles#new {:format=>"json"}
+   edit_api_v1_article GET      /api/v1/articles/:id/edit(.:format)    api/v1/articles#edit {:format=>"json"}
+        api_v1_article GET      /api/v1/articles/:id(.:format)         api/v1/articles#show {:format=>"json"}
+                       PATCH    /api/v1/articles/:id(.:format)         api/v1/articles#update {:format=>"json"}
+                       PUT      /api/v1/articles/:id(.:format)         api/v1/articles#update {:format=>"json"}
+                       DELETE   /api/v1/articles/:id(.:format)         api/v1/articles#destroy {:format=>"json"}
+    api_v1_publicfeeds GET      /api/v1/publicfeeds(.:format)          api/v1/publicfeeds#index {:format=>"json"}
+                       POST     /api/v1/publicfeeds(.:format)          api/v1/publicfeeds#create {:format=>"json"}
+ new_api_v1_publicfeed GET      /api/v1/publicfeeds/new(.:format)      api/v1/publicfeeds#new {:format=>"json"}
+edit_api_v1_publicfeed GET      /api/v1/publicfeeds/:id/edit(.:format) api/v1/publicfeeds#edit {:format=>"json"}
+     api_v1_publicfeed GET      /api/v1/publicfeeds/:id(.:format)      api/v1/publicfeeds#show {:format=>"json"}
+                       PATCH    /api/v1/publicfeeds/:id(.:format)      api/v1/publicfeeds#update {:format=>"json"}
+                       PUT      /api/v1/publicfeeds/:id(.:format)      api/v1/publicfeeds#update {:format=>"json"}
+                       DELETE   /api/v1/publicfeeds/:id(.:format)      api/v1/publicfeeds#destroy {:format=>"json"}
+                   tag GET      /tags/:tag(.:format)                   articles#index
+                quotes GET      /quotes(.:format)                      quotes#index
+                       POST     /quotes(.:format)                      quotes#create
+             new_quote GET      /quotes/new(.:format)                  quotes#new
+            edit_quote GET      /quotes/:id/edit(.:format)             quotes#edit
+                 quote GET      /quotes/:id(.:format)                  quotes#show
+                       PATCH    /quotes/:id(.:format)                  quotes#update
+                       PUT      /quotes/:id(.:format)                  quotes#update
+                       DELETE   /quotes/:id(.:format)                  quotes#destroy
+              articles GET      /articles(.:format)                    articles#index
+                       POST     /articles(.:format)                    articles#create
+           new_article GET      /articles/new(.:format)                articles#new
+          edit_article GET      /articles/:id/edit(.:format)           articles#edit
+               article GET      /articles/:id(.:format)                articles#show
+                       PATCH    /articles/:id(.:format)                articles#update
+                       PUT      /articles/:id(.:format)                articles#update
+                       DELETE   /articles/:id(.:format)                articles#destroy
+                 users GET      /users/create(.:format)                users#create
+                       GET      /users(.:format)                       users#index
+                       POST     /users(.:format)                       users#create
+              new_user GET      /users/new(.:format)                   users#new
+             edit_user GET      /users/:id/edit(.:format)              users#edit
+                  user GET      /users/:id(.:format)                   users#show
+                       PATCH    /users/:id(.:format)                   users#update
+                       PUT      /users/:id(.:format)                   users#update
+                       DELETE   /users/:id(.:format)                   users#destroy
+           publicfeeds GET      /publicfeeds(.:format)                 publicfeeds#index
+                       POST     /publicfeeds(.:format)                 publicfeeds#create
+        new_publicfeed GET      /publicfeeds/new(.:format)             publicfeeds#new
+       edit_publicfeed GET      /publicfeeds/:id/edit(.:format)        publicfeeds#edit
+            publicfeed GET      /publicfeeds/:id(.:format)             publicfeeds#show
+                       PATCH    /publicfeeds/:id(.:format)             publicfeeds#update
+                       PUT      /publicfeeds/:id(.:format)             publicfeeds#update
+                       DELETE   /publicfeeds/:id(.:format)             publicfeeds#destroy
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

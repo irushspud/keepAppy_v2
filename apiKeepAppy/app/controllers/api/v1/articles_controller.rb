@@ -1,45 +1,31 @@
 module Api
   module V1
     class ArticlesController < ApplicationController
+
+      class Article < ::Article
+        # Note: this does not take into consideration the create/update actions for changing released_on
+        def as_json(options = {})
+          super.merge(tags: tag_list)
+        end
+      end
+
       respond_to :json
-
+      #articles.json should be returned, but is returning old json object
       def index
-        respond_with Article.all
-      end
-
-
-      def show
-      end
-
-      def new
-        resopnd_with  Article.new
-      end
-
-
-      def edit
-      end
-
-      def create
-        respond_with Article.create(params[:article])
-      end
-
-      def update
-        respond_with Article.udpate(params[:id], params[:article])
-      end
-
-      def destroy
-        respond_with Article.destroy(params[:id])
+        if params[:tag]
+          respond_with Article.tagged_with(params[:tag])
+        else
+          respond_with Article.all
+        end
       end
 
       private
-      # Use callbacks to share common setup or constraints between actions.
       def set_article
-         @article = Article.find(params[:id])
+        @article = Article.find(params[:id])
       end
 
-      # Never trust parameters from the scary internet, only allow the white list through.
       def article_params
-        params.require(:article).permit(:title, :content, :author, :clssificaton,:image)
+        params.require(:article).permit(:title,:content,:author,:classification,:image, :tag_list)
       end
     end
   end

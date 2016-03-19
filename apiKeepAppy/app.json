@@ -1,0 +1,8 @@
+{
+  "name": "KeepAppy backend app",
+  "description": "This is the backend service for the keepAppy platform",
+  "image": "heroku/ruby",
+  "repository": "https://git.heroku.com/aqueous-hamlet-97427.git",
+  "keywords": ["ruby", "rails" ],
+  "addons": [ "heroku-postgresql" ]
+}

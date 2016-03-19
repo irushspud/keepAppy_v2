@@ -9,20 +9,20 @@ Rails.application.routes.draw do
   match "/", :to => "sessions#home", via: [:get,:post]
   match "/setting", :to => "sessions#setting", via: [:get,:post]
   
-  #root :to => 'sessions#login'
 
-  #resources :sessions do
-  #	get 'login_attempt', :on => :collection
-  #end
 
   namespace :api, defaults: {format:'json'} do
   # /api/...  Api::
     namespace :v1 do
+      get 'articles/:tag', to: 'articles#index', as: :tag      
       resources :articles
-
       resources :publicfeeds
     end
+    
   end
+  #route for tags 
+  get 'tags/:tag', to: 'articles#index', as: :tag
+
 
   resources :quotes
 
