@@ -7,6 +7,13 @@ angular.module('starter.services', ['ngResource'])
   });
 }])
 
+.factory('Mood Evening', ['$resource', function($resource){
+ return $resource('http://localhost:8100/data/evening.json', {}, {
+   query: { method: 'GET', isArray: false },
+   create: { method: 'POST' }
+ });
+}])
+
 .factory('PublicFeed', ['$resource', function($resource){
   return $resource('https://stormy-retreat-84839.herokuapp.com/api/v1/articles', {}, {
     query: { method: 'GET', isArray: false },
