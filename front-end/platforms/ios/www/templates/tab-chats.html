@@ -2,11 +2,11 @@
   <ion-content>
     <div class="list card">
 
-<ion-slide-box ng-init="lockSlide()">
-  <ion-slide ng-repeat="n in quotes.quotes" ng-init="init()" name="slideBox">
+<ion-slide-box ng-init="lockSlide()" ng-hide="data==null">
+  <ion-slide ng-repeat="question in data.questions" ng-init="init()" name="slideBox">
 
     <div class="item item-text-wrap">
-      <p><strong>{{n.quote}}</strong></p>
+      <p><strong>{{question.question}}</strong></p>
     </div>
 
     <div class="item range" name="slideInput">
@@ -40,7 +40,7 @@
     <div class="item">
       <center>
         <button ng-if="!$first" class="button button-outline button-calm" ng-click="previousSlide()">Previous</button>
-        <button class="button button-outline button-balanced">Finish</button>
+        <button class="button button-outline button-balanced" ng-click="scheduleSingleNotification()">Finish</button>
       </center>
     </div>
   </ion-slide>

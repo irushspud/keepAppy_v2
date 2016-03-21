@@ -4,7 +4,15 @@ class QuotesController < ApplicationController
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = Quote.all
+    if params[:tag]
+      @quotes = Quote.tagged_with(params[:tag])
+    else
+      @quotes = Quote.all
+    end
+  end
+  def tag
+    @quotes = Quote.tagged_with(params[:tag])
+    render :action => 'index'
   end
 
   # GET /quotes/1
@@ -69,6 +77,6 @@ class QuotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_params
-      params.require(:quote).permit(:cite, :progenitor, :classification)
+      params.require(:quote).permit(:cite, :progenitor, :classification, :tag_list)
     end
 end

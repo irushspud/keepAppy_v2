@@ -18,8 +18,9 @@
 			<div ng-hide="entires.length" class="card">
         <center>
           <div class="item item-text-wrap">
-            <h3>No Diary Entries</h3>
-            <button class="button button-clear button-balanced" ng-click="addEntry()" >Create A Diary Entry</button>
+            <img width="40" src="/js/img/diary.svg">
+            <br></br>
+            <button class="button button-block button-balanced" ng-click="addEntry()">Create A Diary Entry</button>
           </div>
         </center>
       </div>
@@ -33,27 +34,30 @@
   <!-- ----------------------------- -->
 
   <script id="modal.html" type="text/ng-template">
-     <div class="modal">
-       <header class="bar bar-header bar-positive">
-         <h1 class="title">{{title}}</h1>
-         <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
-       </header>
-       <br>
-       <br>
-       <div class="list list-inset">
-          <label class="item item-input">
-          <input type="text" placeholder="Title" ng-model="entry.title">
-          </label>
-          <div class="item range" name="slideInput">
-            <i style="color:#ff6666" class="icon ion-sad-outline"></i>
-            <input type="range" min="0" max="100" ng-model="entry.positivity">
-            <i style="color:#66b266" class="icon ion-happy-outline"></i>
-          </div>
-        </div>
-        <div class="padding">
-          <button ng-click="saveEntry()" class="button button-block button-positive activated">Save</button>
-        </div>
-     </div>
-   </script>
+    <div class="modal">
+        <ion-header-bar class="bar bar-header bar-positive">
+            <h1 class="title">{{title}}</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content>
+            <div class="padding">
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Title" ng-model="entry.title">
+                    </label>
+                    <label class="item item-input range">
+                        <i style="color:#ff6666" class="icon ion-sad-outline"></i>
+                        <input type="range" min="0" max="100" ng-model="entry.positivity">
+                        <i style="color:#66b266" class="icon ion-happy-outline"></i>
+                    </label>
+                    <label class="item item-input">
+                      <textarea placeholder="Add a diary entry...." style="height: 40vh;" ng-keypress="updateEditor()" ng-model="entry.post" ng-model="bar"> </textarea>
+                    </label>
+                    <button ng-click="saveEntry()" class="button button-block button-positive activated">Save</button>
+                </div>
+            </div>
+        </ion-content>
+    </div>
+</script>
 
 </ion-view>

@@ -9,29 +9,42 @@ Rails.application.routes.draw do
   match "/", :to => "sessions#home", via: [:get,:post]
   match "/setting", :to => "sessions#setting", via: [:get,:post]
   
-  #root :to => 'sessions#login'
 
-  #resources :sessions do
-  #	get 'login_attempt', :on => :collection
-  #end
 
   namespace :api, defaults: {format:'json'} do
   # /api/...  Api::
     namespace :v1 do
-      resources :articles
-
+      resources :quotes do
+        collections do
+          get :tag
+        end
+      end
+      resources :articles do
+        collections do
+          get :tag
+        end
+      end
       resources :publicfeeds
     end
-    namespace :v2 do
-      resources :articles
-
-      resources :publicfeeds
+    
+  end
+  #route for tags 
+  
+  
+  #get 'articles/:tag', to: 'articles#index', as: :tag
+  
+  
+  resources :quotes do
+    collection do
+     get :tag
     end
   end
 
-  resources :quotes
-
-  resources :articles
+  resources :articles do
+    collection do
+      get :tag
+    end
+  end
 
   #map.connect '/users/new', :controller => 'users' , :action => 'create'
   resources :users do
