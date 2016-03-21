@@ -69,9 +69,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 .controller('publicFeedCtrl', function($scope, $stateParams, $ionicModal, PublicFeed) {
 
-  $scope.publicFeeds = PublicFeed.query();
+	$scope.publicFeeds = PublicFeed.query();
   console.log($scope.publicFeeds);
-
 
   $scope.updateEditor = function() {
     var element = document.getElementById("page_content");
@@ -195,12 +194,12 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 
 
+// Use the one above this!!!!
 
-.controller('pubFeedDeetsCtrl', function($scope, $stateParams, Feed) {
-	// Request data from the public feed factory
-  $scope.feed = Feed.get($stateParams.fedId);
-	console.log($scope.feed);
-})
+// .controller('pubFeedDeetsCtrl', function($scope, $stateParams, Feed) {
+// 	// Request data from the public feed factory
+//
+// })
 
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {

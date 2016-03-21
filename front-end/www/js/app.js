@@ -71,15 +71,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
-    .state('tabs.fed-detail', {
-      url: '/feed/:fedId',
-      views: {
-        'tab-publicFeed': {
-          templateUrl: 'templates/feed-detail.html',
-          controller: 'fedDetailCtrl'
-        }
-      }
-    })
+    // .state('tabs.fed-detail', {
+    //   url: '/feed/:fedId',
+    //   views: {
+    //     'tab-publicFeed': {
+    //       templateUrl: 'templates/feed-detail.html',
+    //       controller: 'fedDetailCtrl'
+    //     }
+    //   }
+    // })
 
   .state('tabs.publicFeed', {
     url: '/publicFeed',
