@@ -1,7 +1,10 @@
+<head><link rel="stylesheet" type="text/scss" href="quote_index.scss"></head>
+<body>
+
 <h1>Listing articles</h1>
 <h2 class="btn btn-primary"><%= link_to ' New Article', new_article_path %></h2>
 <h2 class="btn btn-info"><%= link_to "  Home", controller: "sessions", action: "home"  %></h2>
-<h4>click on an article to read preview</h4>
+<h4>Click on an article for options</h4>
 <table>
 
 
@@ -13,10 +16,10 @@
 
         <% @articles.each do |article| %>
 
-          <div class="panel-group">
-            <article class="col-sm-3">
+          <div class="wrap">
+            <article class="back">
               <div class="thumbnail" data-toggle="collapse" data-target="#<%= article.id%>">
-                  <a href="#"><img class="img-responsive" src="<%= article.image.url(:medium)%>" ></a>
+                  <a href="#"><img class="img-responsive" src="<%= article.image.url(:stretch)%>" ></a>
                 <a href="#"><h3><%= article.title %></h3></a>
                 <p>by: <%= article.author %>></p>
                 <p>Class: <%= article.clssificaton %></p>
@@ -35,8 +38,10 @@
           </div>
 
         <% end %>
+
       </tbody>
 </table>
 
 <br>
 
+</body>
