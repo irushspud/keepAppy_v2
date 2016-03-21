@@ -1,4 +1,4 @@
-<head><link rel="stylesheet" type="text/scss" href="quote_index.scss"></head>
+<head><link rel="stylesheet" type="text/scss" href="quotes/quote_index.scss"></head>
 <body>
 
 <h1>Listing articles</h1>
@@ -15,13 +15,12 @@
       <tbody>
 
         <% @articles.each do |article| %>
-<<<<<<< HEAD
 
           <div class="wrap">
             <article class="back">
               <div class="thumbnail" data-toggle="collapse" data-target="#<%= article.id%>">
-                  <a href="#"><img class="img-responsive" src="<%= article.image.url(:stretch)%>" ></a>
-                <a href="#"><h3><%= article.title %></h3></a>
+                  <a href="#/<%article%>"><img class="img-responsive" src="<%= article.image.url(:stretch)%>" ></a>
+                <a href="#/<%article%>"><h3><%= article.title %></h3></a>
                 <p>by: <%= article.author %>></p>
                 <p>Class: <%= article.clssificaton %></p>
                 <p><%= article.content %></p>

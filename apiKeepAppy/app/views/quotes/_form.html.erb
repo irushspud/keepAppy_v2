@@ -1,33 +1,39 @@
+<head xmlns="http://www.w3.org/1999/html"><link rel="stylesheet" type="text/scss" href="quotes/quote_form.scss"></head>
+<div class="frm">
 <%= form_for(@quote) do |f| %>
-  <% if @quote.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+    <% if @quote.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
 
-      <ul>
-      <% @quote.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @quote.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :cite %><br>
+      <%= f.text_area :cite %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :cite %><br>
-    <%= f.text_area :cite %>
-  </div>
-  <div class="field">
-    <%= f.label :progenitor %><br>
-    <%= f.text_field :progenitor %>
-  </div>
-  <div class="field">
-    <%= f.label :tag_list, "Tags (seperated by commas)" %><br />
-    <%= f.text_field :tag_list %>
-  </div>
-  <div class="field">
-    <%= f.label :classification %><br>
-    <%= f.number_field :classification %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field" >
+      <%= f.label :progenitor %><br>
+      <%= f.text_field :progenitor %>
+    </div>
+    <div class="field">
+      <%= f.label :tag_list, "Tags (seperated by commas)" %><br />
+      <%= f.text_field :tag_list %>
+    </div>
+    <div class="field">
+      <%= f.label :classification %><br>
+      <%= f.number_field :classification %>
+    </div>
+    <div class="actions butn">
+      <%= f.submit %>
+    </div>
 <% end %>
+</div>
+<div class="bck_btn">
+<p class="btn-orange-arrow"><%= link_to 'Back', quotes_path %></p>
+</div>

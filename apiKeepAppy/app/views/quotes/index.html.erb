@@ -1,4 +1,4 @@
-<head><link rel="stylesheet" type="text/scss" href="quote_index.scss"></head>
+<head><link rel="stylesheet" type="text/scss" href="quotes/quote_index.scss"></head>
 <h1>Listing quotes</h1>
 <div class="row"><button class="button button1"><%= link_to 'New Quote', new_quote_path %></button>
 <button class="button button1"><%= link_to "Back to Home", controller: "sessions", action: "home"  %></button>
@@ -7,7 +7,6 @@
 
 
     <% @quotes.each do |quote| %>
-<<<<<<< HEAD
       <blockquote class="quote-card yellow-card" data-toggle="collapse" data-target="#<%= quote.id%>">
         <p>
           <%= quote.cite %>
@@ -27,17 +26,6 @@
         </div>
       </div>
 
-=======
-      <tr>
-        <td><%= quote.cite %></td>
-        <td><%= quote.progenitor %></td>
-        <td><%= raw quote.tag_list.map{ |t| link_to t, :controller=>"quotes", :action=>"tag", :tag => t }.join(', ') %></td>
-        <td><%= quote.classification %></td>
-        <td><%= link_to 'Show', quote %></td>
-        <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
-        <td><%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
->>>>>>> 8ac05bea336ed1889571e95bd47ea3fe0c4b5743
     <% end %>
 
 
