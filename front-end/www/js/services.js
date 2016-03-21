@@ -1,7 +1,7 @@
 angular.module('starter.services', ['ngResource'])
 
 .factory('ArticlesService', ['$resource', function($resource){
-  return $resource('https://stormy-retreat-84839.herokuapp.com/api/v1/articles', {}, {
+  return $resource('https://aqueous-hamlet-97427.herokuapp.com/articles', {}, {
     query: { method: 'GET', isArray: false },
     create: { method: 'POST' }
   });
@@ -22,7 +22,7 @@ angular.module('starter.services', ['ngResource'])
 }])
 
 .factory('PublicFeed', ['$resource', function($resource){
-  return $resource('https://stormy-retreat-84839.herokuapp.com/api/v1/articles', {}, {
+  return $resource('https://aqueous-hamlet-97427.herokuapp.com/publicfeeds', {}, {
     query: { method: 'GET', isArray: false },
     create: { method: 'POST' }
   });
