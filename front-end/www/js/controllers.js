@@ -2,10 +2,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 .controller('AppCtrl', function($scope) {})
 
-//.controller('moodCtrl', function($scope, ArticlesService) {
-  //$scope.articles = ArticlesService.query()
-  //console.log($scope.articles)
-//})
 
 //This controller is responsible for looking after the diary tab within the application
 .controller('diaryCtrl', function($scope, $stateParams, $ionicModal, dataStore) {
@@ -61,18 +57,38 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 	);
 })
 
-
-.controller('publicFeedCtrl', function($scope, PublicFeed) {
-	  $scope.articles = PublicFeed.query()
-})
-
 .controller('settingsCtrl', function($scope, $stateParams, dataStore) {
   $scope.removeData = function () {
-		alert("hello");
-		dataStore.dumpAll();
-	}
+    alert("hello");
+    dataStore.dumpAll();
+  }
 })
 
+
+.controller('publicFeedCtrl', function($scope, $stateParams, $ionicModal, PublicFeed) {
+
+  $scope.updateEditor = function() {
+    var element = document.getElementById("page_content");
+    element.style.height = element.scrollHeight + "px";
+  };
+
+  $scope.addEntry = function () {
+    $scope.entry = {'positivity': "50"};
+    $scope.title = 'Create A Diary Entry';
+    $scope.create = true;
+    $scope.modal.show();
+  };
+
+
+  $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
+      $scope.modal = $ionicModal;
+      },
+      {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }
+  );
+})
 
 
 .controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, GetQustions) {
@@ -110,6 +126,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     }
 
 })
+
 
 .controller('loginCtrl', function($scope, $state) {
 
@@ -161,47 +178,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
         window.plugin.notification.local.promptForPermission();
     }
 });
-/*
-
-
-/*
-.controller('NotificationController', function($scope, $cordovaLocalNotification, $ionicPlatform) {
-
-    $ionicPlatform.ready(function () {
-
-        $scope.scheduleDelayedNotification = function () {
-          var now = new Date().getTime();
-          var _10SecondsFromNow = new Date(now + 10 * 1000);
-
-          $cordovaLocalNotification.schedule({
-            id: 2,
-            title: 'Warning',
-            text: 'Im so late',
-            at: _10SecondsFromNow
-          }).then(function (result) {
-            console.log('Notification 2 triggered');
-          });
-        };
-
-
-        $scope.updateSingleNotification = function () {
-          $cordovaLocalNotification.update({
-            id: 2,
-            title: 'Warning Update',
-            text: 'This is updated text!'
-          }).then(function (result) {
-            console.log('Notification 1 Updated');
-          });
-        };
-
-        $scope.cancelSingleNotification = function () {
-          $cordovaLocalNotification.cancel(3).then(function (result) {
-            console.log('Notification 3 Canceled');
-          });
-        };
-
-    })})
 */
+
 
 
 
