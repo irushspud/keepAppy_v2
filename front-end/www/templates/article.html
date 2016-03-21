@@ -3,12 +3,20 @@
   'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
--->
-<ion-view view-title="{{fed.name}}">
+
+<ion-view view-title="{{article.author}}">
   <ion-content class="padding">
-    <img ng-src="{{fed.face}}" style="width: 64px; height: 64px">
     <p>
-      {{fed.lastText}}
+      {{article.author}}
     </p>
   </ion-content>
 </ion-view>
+-->
+
+<ion-content>
+    <ion-list>
+      <ion-item ng-repeat="article in articles">
+      <p> {{article.author}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -6,8 +6,8 @@
 </ion-nav-buttons>
 <ion-content>
     <ion-list>
-      <ion-item ng-repeat="n in articles.articles" ng-click="editEntry(entry)">
-        <div style="float: left">{{ n.name }}</div>
+      <ion-item ng-repeat="n in publicFeeds" ng-click="editEntry(entry)">
+        <div style="float: left">{{ n.cite }}</div>
         <!-- <div style="float: right">{{ b.Date | date:"dd MMMM yyyy" }}</div> -->
         <div style="float: right"><span ng-class="{'badge badge-assertive': (entry.positivity < 25),
                                                     'badge badge-energized': (entry.positivity >= 25 && entry.positivity < 50),
@@ -17,7 +17,7 @@
                                                     </span></div>
     <ion-option-button class="button-assertive" ng-click="removeItem(entry)">Delete</ion-option-button>
       </ion-item>
-      <div ng-hide="entires.length" class="card">
+      <div ng-hide="n.length" class="card">
         <center>
           <div class="item item-text-wrap">
             <img width="40" src="/js/img/diary.svg">

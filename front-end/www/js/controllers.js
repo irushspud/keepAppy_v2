@@ -67,6 +67,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 .controller('publicFeedCtrl', function($scope, $stateParams, $ionicModal, PublicFeed) {
 
+  $scope.publicFeeds = PublicFeed.query();
+  console.log($scope.publicFeeds);
+
+
   $scope.updateEditor = function() {
     var element = document.getElementById("page_content");
     element.style.height = element.scrollHeight + "px";
@@ -77,8 +81,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     $scope.title = 'Create A Diary Entry';
     $scope.create = true;
     $scope.modal.show();
+    
   };
-
 
   $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
       $scope.modal = $ionicModal;
@@ -91,7 +95,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 })
 
 
-.controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, GetQustions) {
+.controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, $state, GetQustions) {
 
     var date = new Date();
     hours = date.getHours()
@@ -125,6 +129,14 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $ionicSlideBoxDelegate.previous();
     }
 
+    $scope.showArticle = function() {
+      $scope.article = GetQustions.article.get();
+
+      $state.go('tabs.article');
+      console.log($scope.article);
+    }
+
+
 })
 
 
@@ -135,6 +147,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $state.go('tabs.mood');
     };
 })
+
 
 
 .controller('NotificationController', function($scope, $cordovaLocalNotification) {

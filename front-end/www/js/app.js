@@ -55,6 +55,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
+  .state('tabs.article', {
+    url: '/mood/article',
+    views: {
+      'tab-mood': {
+        templateUrl: 'templates/article.html',
+        controller: 'moodCtrl'
+      }
+    }
+  })
+
 
 
   .state('tabs.diary', {
