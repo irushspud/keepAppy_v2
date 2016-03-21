@@ -1,12 +1,12 @@
-<ion-view view-title="Mood  ">
+<ion-view view-title="Mood">
   <ion-content>
     <div class="list card">
 
-<ion-slide-box ng-init="lockSlide()">
-  <ion-slide ng-repeat="n in quotes.quotes" ng-init="init()" name="slideBox">
+<ion-slide-box ng-init="lockSlide()" ng-hide="data==null">
+  <ion-slide ng-repeat="question in data.questions" ng-init="init()" name="slideBox">
 
     <div class="item item-text-wrap">
-      <p><strong>{{n.quote}}</strong></p>
+      <p><strong>{{question.question}}</strong></p>
     </div>
 
     <div class="item range" name="slideInput">
@@ -27,13 +27,22 @@
   </ion-slide>
 
   <ion-slide>
-      <h2> RESULTS:</h2> <br/>
-
-        <span ng-repeat="n in quotes.quotes">{{mood[$index]}} </span>
-
-        <br>
-
-      <button class="button icon-right ion-chevron-left button-calm" ng-click="previousSlide()">Previous slide</button>
+    <div class="item">
+      <center>
+        <strong> Results</strong>
+      </center>
+    </div>
+    <div class="item">
+        <center>
+          <span ng-repeat="n in quotes.quotes">{{mood[$index]}} </span>
+        </center>
+    </div>
+    <div class="item">
+      <center>
+        <button ng-if="!$first" class="button button-outline button-calm" ng-click="previousSlide()">Previous</button>
+        <button class="button button-outline button-balanced" ng-click="scheduleSingleNotification()">Finish</button>
+      </center>
+    </div>
   </ion-slide>
 
 

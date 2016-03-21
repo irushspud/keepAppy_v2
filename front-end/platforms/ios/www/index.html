@@ -27,7 +27,7 @@
     <script src="js/services.js"></script>
     <script src="lib/pouchdb/dist/pouchdb.min.js"></script>
   </head>
-  <body class="platform-ios platform-cordova platform-webview">
+  <body>
     <ion-side-menus>
 	       <ion-side-menu-content ng-controller="NavCtrl">
           <ion-nav-bar class="bar-dark">
@@ -58,6 +58,11 @@
                 <i class="icon ion-ios-gear"></i>
                   Settings
               </a>
+
+          </ion-content>
+          <ion-content ng-controller="NotificationController">
+            <button class="button" ng-click="add()">Add notification</button>
+            <button class="button" ng-click="isScheduled()">Is Scheduled</button>
           </ion-content>
         </ion-side-menu>
 		</ion-side-menus>

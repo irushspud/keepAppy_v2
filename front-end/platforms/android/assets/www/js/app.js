@@ -1,23 +1,16 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    database = new PouchDB('entries', {adapter : 'websql'});
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
     if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
   });
@@ -33,28 +26,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 	.state('settings', {
 		url: '/settings',
-		templateUrl: 'templates/settings.html'
+		templateUrl: 'templates/settings.html',
+    controller: 'settingsCtrl'
   })
 
-  // setup an abstract state for the tabs directive
-    .state('tabs', {
+
+  .state('tabs', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
 
-
-  // Each tab has its own nav history stack:
-
   .state('tabs.mood', {
     url: '/mood',
     views: {
       'tab-mood': {
-        templateUrl: 'templates/tab-chats.html',
+        templateUrl: 'templates/tab-mood.html',
         controller: 'moodCtrl'
       }
     }
   })
+  .state('tabs.login', {
+    url: '/login',
+    views: {
+      'tab-mood': {
+        templateUrl: 'templates/login-registration.html',
+        controller: 'loginCtrl'
+      }
+    }
+  })
+
 
   .state('tabs.diary', {
       url: '/diary',
@@ -86,6 +87,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/mood');
+  $urlRouterProvider.otherwise('/tab/login');
 
 });

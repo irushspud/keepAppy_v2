@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ionic'])
+angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 .controller('AppCtrl', function($scope) {})
 
@@ -109,8 +109,6 @@ angular.module('starter.controllers', ['ionic'])
       $ionicSlideBoxDelegate.previous();
     }
 
-    
-
 })
 
 .controller('loginCtrl', function($scope, $state) {
@@ -122,13 +120,54 @@ angular.module('starter.controllers', ['ionic'])
 })
 
 
+.controller('NotificationController', function($scope, $cordovaLocalNotification) {
+ 
+    $scope.add = function() {
+        var alarmTime = new Date();
+        alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+        $cordovaLocalNotification.add({
+            id: "1234",
+            date: alarmTime,
+            message: "This is a message",
+            title: "This is a title",
+            autoCancel: true,
+            sound: null
+        }).then(function () {
+            console.log("The notification has been set");
+        });
+    };
+ 
+    $scope.isScheduled = function() {
+        $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
+            alert("Notification 1234 Scheduled: " + isScheduled);
+        });
+    }
+
+    $scope.scheduleInstantNotification = function () {
+      $cordovaLocalNotification.schedule({
+      id: 1,
+      text: 'Instant Notification',
+      title: 'Instant'
+    }).then(function () {
+      alert("Instant Notification set");
+    });
+  };
+ 
+})
+/*
+      *** NEEDS PERMISSIONS FOR iOS ***
+      $ionicPlatform.ready(function() {
+    if(device.platform === "iOS") {
+        window.plugin.notification.local.promptForPermission();
+    }
+});
+/*
 
 
+/*
 .controller('NotificationController', function($scope, $cordovaLocalNotification, $ionicPlatform) {
 
     $ionicPlatform.ready(function () {
-
-
 
         $scope.scheduleDelayedNotification = function () {
           var now = new Date().getTime();
@@ -162,7 +201,7 @@ angular.module('starter.controllers', ['ionic'])
         };
 
     })})
-
+*/
 
 
 
