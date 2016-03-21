@@ -14,6 +14,18 @@ module ApiKeepAppy
         # If you want your assets lazily compiled in production, use this line
         Bundler.require(:default, :assets, Rails.env)
     end
+
+
+    # middleware for cross origin access
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options],
+                      :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                      :max_age => 0
+      end
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

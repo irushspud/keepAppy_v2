@@ -47,6 +47,10 @@ gem 'cancan'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Some middleware to allow requests from different origins
+gem 'rack-cors', :require => 'rack/cors'
+
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 

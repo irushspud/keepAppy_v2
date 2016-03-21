@@ -1,21 +1,36 @@
-<ion-view view-title="Public Feed" style="background-color: #61636b">
-  <ion-content>
-    <ion-refresher on-refresh="doRefresh()">
-    </ion-refresher>
-    <div ng-repeat="n in articles.articles">
-      <div class="card">
-      <div class="item">
-
-    <h2><b>{{n.name}}</b></h2>
-  </div>
-
-  <div class="item item-body">
-    <p>
-      {{n.article}}
-    </p>
-  </div>
 
 
-  </div>
-  </ion-content>
+<ion-view view-title="Public Feed">
+<ion-nav-buttons side="right">
+      <button class="button button-icon icon ion-android-add" ng-click="addEntry()"></button>
+</ion-nav-buttons>
+<ion-content>
+  # ngRepeat needed to show the public feed
+</ion-content>
+
+
+  <!-- ----------------------------- -->
+
+  <script id="modal.html" type="text/ng-template">
+    <div class="modal">
+        <ion-header-bar class="bar bar-header bar-positive">
+            <h1 class="title">Create Post</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content>
+            <div class="padding">
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Title" ng-model="n.name">
+                    </label>
+                    <label class="item item-input">
+                      <textarea placeholder="Add a post...." style="height: 40vh;" ng-keypress="updateEditor()" ng-model="entry.post" ng-model="bar"> </textarea>
+                    </label>
+                    <button ng-click="save()" class="button button-block button-positive activated">Post</button>
+                </div>
+            </div>
+        </ion-content>
+    </div>
+</script>
+
 </ion-view>
