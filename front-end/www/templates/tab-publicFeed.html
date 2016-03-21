@@ -5,32 +5,8 @@
       <button class="button button-icon icon ion-android-add" ng-click="addEntry()"></button>
 </ion-nav-buttons>
 <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="n in publicFeeds" ng-click="editEntry(entry)">
-        <div style="float: left">{{ n.cite }}</div>
-        <!-- <div style="float: right">{{ b.Date | date:"dd MMMM yyyy" }}</div> -->
-        <div style="float: right"><span ng-class="{'badge badge-assertive': (entry.positivity < 25),
-                                                    'badge badge-energized': (entry.positivity >= 25 && entry.positivity < 50),
-                                                    'badge badge-calm': (entry.positivity >= 50 && entry.positivity < 75),
-                                                    'badge badge-balanced': (entry.positivity > 75)}">
-                                                    <i class="icon ion-ios-pricetags"></i>
-                                                    </span></div>
-    <ion-option-button class="button-assertive" ng-click="removeItem(entry)">Delete</ion-option-button>
-      </ion-item>
-      <div ng-hide="n.length" class="card">
-        <center>
-          <div class="item item-text-wrap">
-            <img width="40" src="/js/img/diary.svg">
-            <br></br>
-            <button class="button button-block button-balanced" ng-click="addEntry()">Create A Post</button>
-          </div>
-        </center>
-      </div>
-    </ion-list>
-  </ion-content>
-
-    </ion-list>
-  </ion-content>
+  # ngRepeat needed to show the public feed
+</ion-content>
 
 
   <!-- ----------------------------- -->
@@ -38,7 +14,7 @@
   <script id="modal.html" type="text/ng-template">
     <div class="modal">
         <ion-header-bar class="bar bar-header bar-positive">
-            <h1 class="title">{{name}}</h1>
+            <h1 class="title">Create Post</h1>
             <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
         </ion-header-bar>
         <ion-content>
@@ -47,15 +23,10 @@
                     <label class="item item-input">
                         <input type="text" placeholder="Title" ng-model="n.name">
                     </label>
-                    <label class="item item-input range">
-                        <i style="color:#ff6666" class="icon ion-sad-outline"></i>
-                        <input type="range" min="0" max="100" ng-model="entry.positivity">
-                        <i style="color:#66b266" class="icon ion-happy-outline"></i>
-                    </label>
                     <label class="item item-input">
                       <textarea placeholder="Add a post...." style="height: 40vh;" ng-keypress="updateEditor()" ng-model="entry.post" ng-model="bar"> </textarea>
                     </label>
-                    <button ng-click="saveEntry()" class="button button-block button-positive activated">Save</button>
+                    <button ng-click="save()" class="button button-block button-positive activated">Post</button>
                 </div>
             </div>
         </ion-content>

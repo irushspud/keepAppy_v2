@@ -22,7 +22,7 @@ angular.module('starter.services', ['ngResource'])
 }])
 
 .factory('PublicFeed', ['$resource', function($resource){
-  return $resource('https://aqueous-hamlet-97427.herokuapp.com/api/v1/quotes', {}, {
+  return $resource('https://aqueous-hamlet-97427.herokuapp.com/publicfeeds.json', {}, {
     query: { method: 'GET', isArray: true },
     create: { method: 'POST' }
   });

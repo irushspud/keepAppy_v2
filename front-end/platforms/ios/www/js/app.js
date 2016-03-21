@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -34,7 +34,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('tabs', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller: 'AppCtrl'
   })
 
   .state('tabs.mood', {
@@ -55,7 +56,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-
+  .state('tabs.article', {
+    url: '/article',
+    views: {
+      'tab-mood': {
+        templateUrl: 'templates/article.html',
+        controller: 'moodCtrl'
+      }
+    }
+  })
 
   .state('tabs.diary', {
       url: '/diary',

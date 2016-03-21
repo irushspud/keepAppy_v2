@@ -1,6 +1,7 @@
 angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
-.controller('AppCtrl', function($scope) {})
+.controller('AppCtrl', function($scope) {
+})
 
 
 //This controller is responsible for looking after the diary tab within the application
@@ -58,10 +59,11 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 })
 
 .controller('settingsCtrl', function($scope, $stateParams, dataStore) {
-  $scope.removeData = function () {
-    alert("hello");
-    dataStore.dumpAll();
-  }
+	  $scope.removeData = function () {
+	    // dataStore.dumpAll();
+			console.log($scope.entries)
+			$scope.entries = {};
+	  }
 })
 
 
@@ -77,11 +79,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
   };
 
   $scope.addEntry = function () {
-    $scope.entry = {'positivity': "50"};
-    $scope.title = 'Create A Diary Entry';
-    $scope.create = true;
     $scope.modal.show();
-    
   };
 
   $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
@@ -150,40 +148,40 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 
 
-.controller('NotificationController', function($scope, $cordovaLocalNotification) {
- 
-    $scope.add = function() {
-        var alarmTime = new Date();
-        alarmTime.setMinutes(alarmTime.getMinutes() + 1);
-        $cordovaLocalNotification.add({
-            id: "1234",
-            date: alarmTime,
-            message: "This is a message",
-            title: "This is a title",
-            autoCancel: true,
-            sound: null
-        }).then(function () {
-            console.log("The notification has been set");
-        });
-    };
- 
-    $scope.isScheduled = function() {
-        $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
-            alert("Notification 1234 Scheduled: " + isScheduled);
-        });
-    }
-
-    $scope.scheduleInstantNotification = function () {
-      $cordovaLocalNotification.schedule({
-      id: 1,
-      text: 'Instant Notification',
-      title: 'Instant'
-    }).then(function () {
-      alert("Instant Notification set");
-    });
-  };
- 
-})
+// .controller('NotificationController', function($scope, $cordovaLocalNotification) {
+//
+//     $scope.add = function() {
+//         var alarmTime = new Date();
+//         alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+//         $cordovaLocalNotification.add({
+//             id: "1234",
+//             date: alarmTime,
+//             message: "This is a message",
+//             title: "This is a title",
+//             autoCancel: true,
+//             sound: null
+//         }).then(function () {
+//             console.log("The notification has been set");
+//         });
+//     };
+//
+//     $scope.isScheduled = function() {
+//         $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
+//             alert("Notification 1234 Scheduled: " + isScheduled);
+//         });
+//     }
+//
+//     $scope.scheduleInstantNotification = function () {
+//       $cordovaLocalNotification.schedule({
+//       id: 1,
+//       text: 'Instant Notification',
+//       title: 'Instant'
+//     }).then(function () {
+//       alert("Instant Notification set");
+//     });
+//   };
+//
+// })
 /*
       *** NEEDS PERMISSIONS FOR iOS ***
       $ionicPlatform.ready(function() {
@@ -199,7 +197,9 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 
 .controller('pubFeedDeetsCtrl', function($scope, $stateParams, Feed) {
-  $scope.fed = Feed.get($stateParams.fedId);
+	// Request data from the public feed factory
+  $scope.feed = Feed.get($stateParams.fedId);
+	console.log($scope.feed);
 })
 
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {

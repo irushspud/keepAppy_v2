@@ -1,8 +1,8 @@
 angular.module('starter.services', ['ngResource'])
 
 .factory('ArticlesService', ['$resource', function($resource){
-  return $resource('https://stormy-retreat-84839.herokuapp.com/api/v1/articles', {}, {
-    query: { method: 'GET', isArray: false },
+  return $resource('https://aqueous-hamlet-97427.herokuapp.com/api/v1/articles', {}, {
+    get: { method: 'GET', isArray: true },
     create: { method: 'POST' }
   });
 }])
@@ -22,8 +22,8 @@ angular.module('starter.services', ['ngResource'])
 }])
 
 .factory('PublicFeed', ['$resource', function($resource){
-  return $resource('https://stormy-retreat-84839.herokuapp.com/api/v1/articles', {}, {
-    query: { method: 'GET', isArray: false },
+  return $resource('https://aqueous-hamlet-97427.herokuapp.com/api/v1/quotes', {}, {
+    query: { method: 'GET', isArray: true },
     create: { method: 'POST' }
   });
 }])
@@ -32,7 +32,8 @@ angular.module('starter.services', ['ngResource'])
 .factory('GetQustions', ['$resource', function($resource){
   return {
     morning: $resource('data/morning.json', {}, { get: { method: 'GET', isArray: false }}),
-    evening: $resource('data/evening.json', {}, { get: { method: 'GET', isArray: false }})
+    evening: $resource('data/evening.json', {}, { get: { method: 'GET', isArray: false }}),
+    article: $resource('https://aqueous-hamlet-97427.herokuapp.com/api/v1/articles', {}, { get: { method: 'GET', isArray: true }})
   };
 }])
 

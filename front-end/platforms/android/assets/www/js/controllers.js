@@ -1,11 +1,8 @@
-angular.module('starter.controllers', ['ionic'])
+angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
-.controller('AppCtrl', function($scope) {})
+.controller('AppCtrl', function($scope) {
+})
 
-//.controller('moodCtrl', function($scope, ArticlesService) {
-  //$scope.articles = ArticlesService.query()
-  //console.log($scope.articles)
-//})
 
 //This controller is responsible for looking after the diary tab within the application
 .controller('diaryCtrl', function($scope, $stateParams, $ionicModal, dataStore) {
@@ -61,21 +58,42 @@ angular.module('starter.controllers', ['ionic'])
 	);
 })
 
-
-.controller('publicFeedCtrl', function($scope, PublicFeed) {
-	  $scope.articles = PublicFeed.query()
-})
-
 .controller('settingsCtrl', function($scope, $stateParams, dataStore) {
-  $scope.removeData = function () {
-		alert("hello");
-		dataStore.dumpAll();
-	}
+	  $scope.removeData = function () {
+	    // dataStore.dumpAll();
+			console.log($scope.entries)
+			$scope.entries = {};
+	  }
 })
 
 
+.controller('publicFeedCtrl', function($scope, $stateParams, $ionicModal, PublicFeed) {
 
-.controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, GetQustions) {
+  $scope.publicFeeds = PublicFeed.query();
+  console.log($scope.publicFeeds);
+
+
+  $scope.updateEditor = function() {
+    var element = document.getElementById("page_content");
+    element.style.height = element.scrollHeight + "px";
+  };
+
+  $scope.addEntry = function () {
+    $scope.modal.show();
+  };
+
+  $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
+      $scope.modal = $ionicModal;
+      },
+      {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }
+  );
+})
+
+
+.controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, $state, GetQustions) {
 
     var date = new Date();
     hours = date.getHours()
@@ -109,7 +127,16 @@ angular.module('starter.controllers', ['ionic'])
       $ionicSlideBoxDelegate.previous();
     }
 
+    $scope.showArticle = function() {
+      $scope.article = GetQustions.article.get();
+
+      $state.go('tabs.article');
+      console.log($scope.article);
+    }
+
+
 })
+
 
 .controller('loginCtrl', function($scope, $state) {
 
@@ -120,30 +147,41 @@ angular.module('starter.controllers', ['ionic'])
 })
 
 
-.controller('NotificationController', function($scope, $cordovaLocalNotification) {
- 
-    $scope.add = function() {
-        var alarmTime = new Date();
-        alarmTime.setMinutes(alarmTime.getMinutes() + 1);
-        $cordovaLocalNotification.add({
-            id: "1234",
-            date: alarmTime,
-            message: "This is a message",
-            title: "This is a title",
-            autoCancel: true,
-            sound: null
-        }).then(function () {
-            console.log("The notification has been set");
-        });
-    };
- 
-    $scope.isScheduled = function() {
-        $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
-            alert("Notification 1234 Scheduled: " + isScheduled);
-        });
-    }
- 
-})
+
+// .controller('NotificationController', function($scope, $cordovaLocalNotification) {
+//
+//     $scope.add = function() {
+//         var alarmTime = new Date();
+//         alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+//         $cordovaLocalNotification.add({
+//             id: "1234",
+//             date: alarmTime,
+//             message: "This is a message",
+//             title: "This is a title",
+//             autoCancel: true,
+//             sound: null
+//         }).then(function () {
+//             console.log("The notification has been set");
+//         });
+//     };
+//
+//     $scope.isScheduled = function() {
+//         $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
+//             alert("Notification 1234 Scheduled: " + isScheduled);
+//         });
+//     }
+//
+//     $scope.scheduleInstantNotification = function () {
+//       $cordovaLocalNotification.schedule({
+//       id: 1,
+//       text: 'Instant Notification',
+//       title: 'Instant'
+//     }).then(function () {
+//       alert("Instant Notification set");
+//     });
+//   };
+//
+// })
 /*
       *** NEEDS PERMISSIONS FOR iOS ***
       $ionicPlatform.ready(function() {
@@ -151,47 +189,8 @@ angular.module('starter.controllers', ['ionic'])
         window.plugin.notification.local.promptForPermission();
     }
 });
-/*
-
-
-/*
-.controller('NotificationController', function($scope, $cordovaLocalNotification, $ionicPlatform) {
-
-    $ionicPlatform.ready(function () {
-
-        $scope.scheduleDelayedNotification = function () {
-          var now = new Date().getTime();
-          var _10SecondsFromNow = new Date(now + 10 * 1000);
-
-          $cordovaLocalNotification.schedule({
-            id: 2,
-            title: 'Warning',
-            text: 'Im so late',
-            at: _10SecondsFromNow
-          }).then(function (result) {
-            console.log('Notification 2 triggered');
-          });
-        };
-
-
-        $scope.updateSingleNotification = function () {
-          $cordovaLocalNotification.update({
-            id: 2,
-            title: 'Warning Update',
-            text: 'This is updated text!'
-          }).then(function (result) {
-            console.log('Notification 1 Updated');
-          });
-        };
-
-        $scope.cancelSingleNotification = function () {
-          $cordovaLocalNotification.cancel(3).then(function (result) {
-            console.log('Notification 3 Canceled');
-          });
-        };
-
-    })})
 */
+
 
 
 
