@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ionic'])
 
 .controller('AppCtrl', function($scope) {})
 
@@ -82,10 +82,10 @@ angular.module('starter.controllers', [])
     $scope.data = null;
 
     //question popup times are fixed.
-    if( hours >= 9 && hours <15){
+    if( hours >= 0 && hours <12){
       $scope.data= GetQustions.morning.get();
     }
-    else if ( hours >= 21 && hours < 23){
+    else if ( hours >= 12 && hours <= 23){
       $scope.data = GetQustions.evening.get();
     }
 
@@ -109,6 +109,16 @@ angular.module('starter.controllers', [])
       $ionicSlideBoxDelegate.previous();
     }
 
+    
+
+})
+
+.controller('loginCtrl', function($scope, $state) {
+
+    $scope.login = function(user) {
+      console.log('Sign-In', user);
+      $state.go('tabs.mood');
+    };
 })
 
 
@@ -155,28 +165,7 @@ angular.module('starter.controllers', [])
 
 
 
-/*
-.directive('preventDrag', function($ionicGesture, $ionicSlideBoxDelegate) {
-  return {
-    restrict :  'A',
 
-    link : function(scope, elem, attrs, e) {
-
-      var reportEvent = function (e){
-
-        if  (e.target.tagName.toLowerCase() == 'input'){
-          $ionicSlideBoxDelegate.enableSlide(false);
-        }
-        else{
-          $ionicSlideBoxDelegate.enableSlide(true);
-        }
-      };
-
-
-      $ionicGesture.on('drag', reportEvent, elem);
-    }
-  }})
-*/
 
 
 .controller('pubFeedDeetsCtrl', function($scope, $stateParams, Feed) {
