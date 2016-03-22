@@ -2,7 +2,7 @@
    "questions":[  
       {  
          "id":1,
-         "question":"How'd today go?",
+         "question":"How was college today?",
          "tags":[  
             "a",
             "b",
@@ -34,7 +34,7 @@
       },
       {  
          "id":3,
-         "question":"How well did you eat/drink today?",
+         "question":"Did you try anything new?",
          "tags":[  
             "a",
             "b",
@@ -50,6 +50,102 @@
       },
       {  
          "id":4,
+         "question":"How well did you eat today?",
+         "tags":[  
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j"
+         ]
+      },
+      {  
+         "id":5,
+         "question":"How many glasses of water did you drink today?",
+         "tags":[  
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j"
+         ]
+      },
+      {  
+         "id":6,
+         "question":"How stressful was today?",
+         "tags":[  
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j"
+         ]
+      },
+      {  
+         "id":7,
+         "question":"Did you speak to few or many people today?",
+         "tags":[  
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j"
+         ]
+      },
+      {  
+         "id":8,
+         "question":"Did you speak to few or many people today?",
+         "tags":[  
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j"
+         ]
+      },
+      {  
+         "id":9,
+         "question":"What are your energy levels like today?",
+         "tags":[  
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j"
+         ]
+      },
+      {  
+         "id":10,
          "question":"Think of a moment that's going to get you excited and slide right!",
          "tags":[  
             "a",
