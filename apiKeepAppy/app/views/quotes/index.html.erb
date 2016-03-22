@@ -4,7 +4,7 @@
 <button class="button button1"><%= link_to "Back to Home", controller: "sessions", action: "home"  %></button>
 <a href="/home"></a></div>
 
-
+<h3>Click on a quote for more options</h3>
 
     <% @quotes.each do |quote| %>
       <blockquote class="quote-card yellow-card" data-toggle="collapse" data-target="#<%= quote.id%>">

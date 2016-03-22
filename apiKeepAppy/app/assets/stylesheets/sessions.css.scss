@@ -1,3 +1,23 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ul
+{
+  list-style-type: none;
+}
+
+.btn-home {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  top: -20px;
+  left: -170px;
+  margin: 50px 0;
+}
+
+.btn-home > i{
+  height: 100px;
+  width: 100px;
+}
+
+

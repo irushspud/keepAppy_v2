@@ -1,33 +1,24 @@
+<head xmlns="http://www.w3.org/1999/html"><link rel="stylesheet" type="text/scss" href="sessions.css.scss"></head>
 <% @page_title = "Moderator | Home" -%>
-<div class="jumbotron">
-	<center>
-		<h2>Management Console</h2>
-		<p>What would you like to manage?</p>
-	</center>
-</div>
-<div class="row">
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="/printingpress.png" alt="...">
-      <div class="caption">
-        <p><center><a class="btn btn-primary" href="/articles">Manage Articles</a></center></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="/trump.jpg" alt="...">
-      <div class="caption">
-        <p><center><a class="btn btn-primary" href="/quotes">Manage Quotes</a></center></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-   <div class="thumbnail">
-     <img src="/robespierre.jpg" alt="...">
-     <div class="caption">
-       <p><center><a class="btn btn-primary" href="/publicfeeds">Manage  Public Feed</a></center></p>
-     </div>
-   </div>
-  </div>
+<div class="column">
+<ul>
+  <li>
+    <a class="btn btn-home" href="/quotes">
+      <i class="fa fa-quote-right icon fa-5x"></i>
+      <p>Quotes</p>
+  </a>
+  </li>
+  <li>
+    <a class="btn btn-home" href="/articles">
+      <i class="fa fa-newspaper-o icon fa-5x"></i>
+      <p>Articles</p>
+    </a>
+  </li>
+  <li>
+    <a class="btn btn-home"  href="/publicfeeds">
+      <i class="fa fa-users icon fa-5x"></i>
+      <p>Public Feed</p>
+    </a>
+  </li>
+  </ul>
 </div>
