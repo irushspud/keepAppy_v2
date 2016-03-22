@@ -187,6 +187,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     }
 
     $scope.nextSlide = function() {
+      if($ionicSlideBoxDelegate.currentIndex() == 3) {
+        $scope.modal.hide();
+        console.log($scope.mood[0]);
+      }
       $ionicSlideBoxDelegate.next();
     }
     $scope.previousSlide = function() {
