@@ -28,13 +28,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
       <ul class="nav navbar-nav">
-        <li><a class="navbar-brand"   href="/"><img src="/appy_logo.jpg"></a></li>
+        <li><a class="hm_but"   href="/"><i class="fa fa-home icon fa-2x"></i></a></li>
         <li class="<%= 'active' if params[:controller] == 'quotes' %>"><a href="/quotes">Quotes<span class="sr-only">(current)</span></a></li>
         <li class="<%= 'active' if params[:controller] == 'articles' %>"><a href="/articles">Articles<span class="sr-only"></span></a></li>
         <li class="<%= 'active' if params[:controller] == 'publicfeeds' %>"><a href="/publicfeeds">Public Feed<span class="sr-only"></span></a></li>
       </ul>
-      <a href="/setting"><img src="/settings.png"></a>
-
+      <a href="/setting"><i class="fa fa-cogs icon fa-3x"></i></a>
     </div>
   </div>
 </nav>
