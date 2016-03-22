@@ -72,12 +72,59 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 	$scope.publicFeeds = PublicFeed.query();
   console.log($scope.publicFeeds);
 
+  // post object
+  $scope.post = {
+    title: '',
+    content: ''
+  }
+
+
+  // default reset
+   $scope.temp = {
+    title: '',
+    content: ''
+  }
+
+
+  // pushes new post onto the scope to show item
+  $scope.save = function(){
+
+    console.log($scope.postTitle)
+
+    $scope.publicFeeds.push({
+      title: $scope.post.title,
+      content: $scope.post.content
+    })
+
+    // make request to api
+    PublicFeed.create({
+      publicfeed: $scope.post
+    }, function(error){
+        console.log(error)
+    });
+
+    // clean scope for next post
+    $scope.post = $scope.temp
+
+    // hide posting view
+    $scope.modal.hide();
+
+  }
+
+  $scope.doRefresh = function() {
+    $scope.publicFeeds = PublicFeed.query();
+    $scope.$broadcast('scroll.refreshComplete');
+
+  };
+
+
+
   $scope.updateEditor = function() {
     var element = document.getElementById("page_content");
     element.style.height = element.scrollHeight + "px";
   };
 
-  $scope.addEntry = function () {
+  $scope.addEntry = function (index) {
     $scope.modal.show();
   };
 
@@ -127,10 +174,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     }
 
     $scope.showArticle = function() {
-      $scope.article = GetQustions.article.get();
-
+      $scope.articles = GetQustions.article.get();
+      console.log($scope.articles);
       $state.go('tabs.article');
-      console.log($scope.article);
+      
     }
 
 
@@ -139,67 +186,12 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 .controller('loginCtrl', function($scope, $state) {
 
-    $scope.login = function(user) {
-      console.log('Sign-In', user);
+    $scope.login = function() {
       $state.go('tabs.mood');
-    };
+      console.log('Sign-In', data.username);
+    }; 
 })
 
-
-
-// .controller('NotificationController', function($scope, $cordovaLocalNotification) {
-//
-//     $scope.add = function() {
-//         var alarmTime = new Date();
-//         alarmTime.setMinutes(alarmTime.getMinutes() + 1);
-//         $cordovaLocalNotification.add({
-//             id: "1234",
-//             date: alarmTime,
-//             message: "This is a message",
-//             title: "This is a title",
-//             autoCancel: true,
-//             sound: null
-//         }).then(function () {
-//             console.log("The notification has been set");
-//         });
-//     };
-//
-//     $scope.isScheduled = function() {
-//         $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
-//             alert("Notification 1234 Scheduled: " + isScheduled);
-//         });
-//     }
-//
-//     $scope.scheduleInstantNotification = function () {
-//       $cordovaLocalNotification.schedule({
-//       id: 1,
-//       text: 'Instant Notification',
-//       title: 'Instant'
-//     }).then(function () {
-//       alert("Instant Notification set");
-//     });
-//   };
-//
-// })
-/*
-      *** NEEDS PERMISSIONS FOR iOS ***
-      $ionicPlatform.ready(function() {
-    if(device.platform === "iOS") {
-        window.plugin.notification.local.promptForPermission();
-    }
-});
-*/
-
-
-
-
-
-// Use the one above this!!!!
-
-// .controller('pubFeedDeetsCtrl', function($scope, $stateParams, Feed) {
-// 	// Request data from the public feed factory
-//
-// })
 
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {
