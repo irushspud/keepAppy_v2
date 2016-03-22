@@ -90,6 +90,7 @@ body {
     background: $yellow;
     color: $yellowTextColor;
     box-shadow: 0 13px 12px rgba($black, 0.12), 0 2px 4px rgba($black, 0.24);
+    word-wrap: break-word;
 
     &:before, &:after {
       color: $yellowSecondaryTextColor;
