@@ -15,12 +15,12 @@ Rails.application.routes.draw do
   # /api/...  Api::
     namespace :v1 do
       resources :quotes do
-        collections do
+        collection do
           get :tag
         end
       end
       resources :articles do
-        collections do
+        collection do
           get :tag
         end
       end

@@ -33,7 +33,8 @@ Rails.application.routes.draw do
   
   #get 'articles/:tag', to: 'articles#index', as: :tag
   
-  
+  resources :publicfeeds
+
   resources :quotes do
     collection do
      get :tag
@@ -52,7 +53,7 @@ Rails.application.routes.draw do
   	get 'create', :on => :collection
   end
 
-  resources :publicfeeds
+  
   
 
   # The priority is based upon order of creation: first created -> highest priority.
