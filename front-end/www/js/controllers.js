@@ -139,11 +139,30 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 })
 
 
-.controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, $state, GetQustions) {
+.controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, $state, $ionicModal, GetQustions) {
 
     var date = new Date();
     hours = date.getHours()
     $scope.data = null;
+
+
+
+
+    $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
+      $scope.modal = $ionicModal;
+      },
+      {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }
+  );
+
+    
+
+
+
+
+
 
     //question popup times are fixed.
     if( hours >= 0 && hours <12){
@@ -161,6 +180,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
     $scope.init = function () {
       $ionicSlideBoxDelegate.update();
+      $scope.modal.show();
     }
     $scope.lockSlide = function () {
       $ionicSlideBoxDelegate.enableSlide( false );
