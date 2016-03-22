@@ -24,19 +24,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script id="modal.html" type="text/ng-template">
     <div class="modal">
         <ion-header-bar class="bar bar-header bar-positive">
@@ -45,7 +32,7 @@
         </ion-header-bar>
         <ion-content>
             <div class="padding">
-                
+
 
 
             <ion-slide-box ng-init="lockSlide()" ng-hide="data==null">
@@ -56,9 +43,9 @@
               </div>
 
               <div class="item range" name="slideInput">
-                <i style="color:#ff6666" class="icon ion-sad-outline"></i>
+                <i style="color:#ff6666" class="icon ion-thumbsdown"></i>
                 <input type="range" id="range{{$index}}" min="0" max="100" ng-model="mood[$index]" ng-model-options="{ getterSetter: true }">
-                <i style="color:#66b266" class="icon ion-happy-outline"></i>
+                <i style="color:#66b266" class="icon ion-thumbsup"></i>
               </div>
               <br>
               <div class="item">
@@ -68,7 +55,7 @@
                 </center>
               </div>
               <br>
- 
+
               </ion-slide>
 
             </ion-slide-box>
@@ -77,14 +64,6 @@
         </ion-content>
     </div>
   </script>
-
-
-
-
-
-
-
-
 
 </div>
   </ion-content>
