@@ -191,6 +191,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     $scope.nextSlide = function() {
       //console.log($scope.data.mood);
       $scope.values.push($scope.data.mood);
+      $scope.data.mood = 50;
       //console.log($scope.values);
 
 
