@@ -145,6 +145,9 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     hours = date.getHours()
     $scope.data = null;
 
+    $scope.articles = GetQustions.article.get();
+    $scope.quotes = GetQustions.quote.get();
+
     $scope.values = [];
     $scope.tags = [];
 

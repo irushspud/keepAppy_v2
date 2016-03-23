@@ -10,13 +10,21 @@
 
 
         <ion-list>
-          <ion-item >
+          <div class="item">
+           <h2>Articles</h2>
+          </div>
+          <ion-item ng-repeat="article in articles">
             <div class="item">
-               <h2>Article</h2>
+               <h2>{{article.title}}</h2>
             </div>
+          </ion-item>
 
             <div class="item item-body">
-              <h2>Quote</h2>
+              <h2>Quotes</h2>
+            </div>
+            <ion-item ng-repeat="quote in quotes">
+            <div class="item">
+               <h2>{{quote.cite}}</h2>
             </div>
           </ion-item>
         </ion-list>
