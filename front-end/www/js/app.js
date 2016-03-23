@@ -47,8 +47,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: '/login',
     views: {
       'tab-mood': {
-        templateUrl: 'templates/login-registration.html',
+        templateUrl: 'templates/login.html',
         controller: 'loginCtrl'
+      }
+    }
+  })
+  .state('tabs.register', {
+    url: '/register',
+    views: {
+      'tab-mood': {
+        templateUrl: 'templates/register.html',
+        controller: 'registerCtrl'
       }
     }
   })

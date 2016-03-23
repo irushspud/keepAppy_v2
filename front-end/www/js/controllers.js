@@ -152,16 +152,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     $scope.tags = [];
 
 
-    $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
-      $scope.modal = $ionicModal;
-      },
-      {
-        scope: $scope,
-        animation: 'slide-in-up'
-      }
-  );
 
-    
 
     //question popup times are fixed.
     if( hours >= 0 && hours <12){
@@ -258,6 +249,17 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       console.log($scope.tags);
     }
 
+
+    $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
+      $scope.modal = $ionicModal;
+      $scope.modal.show();
+      },
+      {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }
+  );
+
 })
 
 
@@ -266,9 +268,45 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     $scope.login = null;
     
     $scope.login = function() {
-      console.log("username", $scope.login.username);
-      console.log("password", $scope.login.password);
-      $state.go('tabs.mood');
+      console.log("username:", $scope.login.username);
+      console.log("password:", $scope.login.password);
+      if($scope.login.username === undefined) {
+        alert("Please enter a username");
+      }
+      else if($scope.login.password === undefined) {
+        alert("Please enter a password");
+      }
+      else {
+        $state.go('tabs.mood');
+      }
+    }; 
+    $scope.register = function() {
+      $state.go('tabs.register');
+    }
+})
+.controller('registerCtrl', function($scope, $state, $stateParams) {
+
+    $scope.login = null;
+    
+    $scope.register = function() {
+      console.log("username:", $scope.register.username);
+      console.log("password:", $scope.register.password1);
+      console.log("password:", $scope.register.password2);
+
+      if($scope.register.username === undefined) {
+        alert("Please enter a username");
+      }
+      else if($scope.register.password1 === undefined || $scope.register.password2 === undefined) {
+        alert("Please enter a password in both fields");
+      }
+      else if($scope.register.password1 != $scope.register.password2) {
+        alert("Password mismatch! Please re-enter your password")
+      }
+      else {
+        console.log("Registered!")
+        $state.go('tabs.mood');
+      }
+
     }; 
 })
 
