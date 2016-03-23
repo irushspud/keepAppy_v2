@@ -145,7 +145,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     hours = date.getHours()
     $scope.data = null;
 
-    //$scope.mood = '';
     $scope.values = [];
     $scope.tags = [];
 
@@ -161,11 +160,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
     
 
-
-
-
-
-
     //question popup times are fixed.
     if( hours >= 0 && hours <12){
       $scope.data= GetQustions.morning.get();
@@ -174,14 +168,12 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $scope.data = GetQustions.evening.get();
     }
 
-    //console.log($scope.data)
-
-
     $ionicSlideBoxDelegate.enableSlide(false);
 
 
     $scope.init = function () {
       $ionicSlideBoxDelegate.update();
+      console.log("$scope.init");
       $scope.modal.show();
     }
     $scope.lockSlide = function () {
@@ -189,10 +181,12 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     }
 
     $scope.nextSlide = function() {
-      //console.log($scope.data.mood);
+
+      //push the slider value into an array
       $scope.values.push($scope.data.mood);
+
+      //reset the next slider value
       $scope.data.mood = 50;
-      //console.log($scope.values);
 
 
       // *** Needs to be changed to show all questions dynamically ***
@@ -200,7 +194,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
         $scope.modal.hide();
         $scope.getTags();
       }
-
 
       $ionicSlideBoxDelegate.next();
     }
@@ -210,60 +203,51 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
     $scope.getTags = function() {
 
+      //iterate though the slider values and match them with tags
       for(var i = 0; i < $scope.values.length; i++) {
-        //console.log("Get Tags!");
         switch (Math.floor($scope.values[i] / 10)) {
           case 0:
-            //console.log("Tag a");
             $scope.tags.push('a');
             break;
 
           case 2:
-            //console.log("Tag b");
             $scope.tags.push('b');
             break;
 
           case 3:
-            //console.log("Tag c");
             $scope.tags.push('c');
             break;
 
           case 4:
-            //console.log("Tag d");
             $scope.tags.push('d');
             break;
 
           case 5:
-            //console.log("Tag e");
             $scope.tags.push('e');
             break;
 
           case 6:
-            //console.log("Tag f");
             $scope.tags.push('f');
             break;
 
           case 7:
-            //console.log("Tag g");
             $scope.tags.push('g');
             break;
 
           case 8:
-            //console.log("Tag h");
             $scope.tags.push('h');
             break;
 
           case 9:
-            //console.log("Tag i");
             $scope.tags.push('i');
             break;
 
           case 10:
-            //console.log("Tag j");
             $scope.tags.push('j');
             break;
 
           default:
+            //debuging code
             console.log("Default");
             console.log(Math.floor($scope.values[i] / 10));
         }
@@ -271,23 +255,17 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       console.log($scope.tags);
     }
 
-/*
-    $scope.showArticle = function() {
-      $scope.articles = GetQustions.article.get();
-      console.log($scope.articles);
-      $state.go('tabs.article');
-      
-    }
-*/
-
 })
 
 
-.controller('loginCtrl', function($scope, $state) {
+.controller('loginCtrl', function($scope, $state, $stateParams) {
 
+    $scope.login = null;
+    
     $scope.login = function() {
+      console.log("username", $scope.login.username);
+      console.log("password", $scope.login.password);
       $state.go('tabs.mood');
-      console.log('Sign-In', data.username);
     }; 
 })
 
