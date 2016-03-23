@@ -304,6 +304,9 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       }
       else {
         console.log("Registered!")
+        $scope.register.username = '';
+        $scope.register.password1 = '';
+        $scope.register.password2 = '';
         $state.go('tabs.mood');
       }
 
