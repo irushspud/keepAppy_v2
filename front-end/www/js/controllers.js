@@ -145,7 +145,9 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     hours = date.getHours()
     $scope.data = null;
 
-
+    //$scope.mood = '';
+    $scope.values = [];
+    $scope.tags = [];
 
 
     $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
@@ -172,7 +174,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $scope.data = GetQustions.evening.get();
     }
 
-    console.log($scope.data)
+    //console.log($scope.data)
 
 
     $ionicSlideBoxDelegate.enableSlide(false);
@@ -187,23 +189,95 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     }
 
     $scope.nextSlide = function() {
+      //console.log($scope.data.mood);
+      $scope.values.push($scope.data.mood);
+      //console.log($scope.values);
+
+
+      // *** Needs to be changed to show all questions dynamically ***
       if($ionicSlideBoxDelegate.currentIndex() == 3) {
         $scope.modal.hide();
-        console.log($scope.mood[0]);
+        $scope.getTags();
       }
+
+
       $ionicSlideBoxDelegate.next();
     }
     $scope.previousSlide = function() {
       $ionicSlideBoxDelegate.previous();
     }
 
+    $scope.getTags = function() {
+
+      for(var i = 0; i < $scope.values.length; i++) {
+        //console.log("Get Tags!");
+        switch (Math.floor($scope.values[i] / 10)) {
+          case 0:
+            //console.log("Tag a");
+            $scope.tags.push('a');
+            break;
+
+          case 2:
+            //console.log("Tag b");
+            $scope.tags.push('b');
+            break;
+
+          case 3:
+            //console.log("Tag c");
+            $scope.tags.push('c');
+            break;
+
+          case 4:
+            //console.log("Tag d");
+            $scope.tags.push('d');
+            break;
+
+          case 5:
+            //console.log("Tag e");
+            $scope.tags.push('e');
+            break;
+
+          case 6:
+            //console.log("Tag f");
+            $scope.tags.push('f');
+            break;
+
+          case 7:
+            //console.log("Tag g");
+            $scope.tags.push('g');
+            break;
+
+          case 8:
+            //console.log("Tag h");
+            $scope.tags.push('h');
+            break;
+
+          case 9:
+            //console.log("Tag i");
+            $scope.tags.push('i');
+            break;
+
+          case 10:
+            //console.log("Tag j");
+            $scope.tags.push('j');
+            break;
+
+          default:
+            console.log("Default");
+            console.log(Math.floor($scope.values[i] / 10));
+        }
+      }
+      console.log($scope.tags);
+    }
+
+/*
     $scope.showArticle = function() {
       $scope.articles = GetQustions.article.get();
       console.log($scope.articles);
       $state.go('tabs.article');
       
     }
-
+*/
 
 })
 
