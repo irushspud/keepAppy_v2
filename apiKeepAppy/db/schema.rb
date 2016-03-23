@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317205933) do
+ActiveRecord::Schema.define(version: 20160323160503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20160317205933) do
     t.string   "title"
     t.text     "content"
     t.string   "author"
-    t.integer  "clssificaton"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
@@ -29,9 +28,15 @@ ActiveRecord::Schema.define(version: 20160317205933) do
     t.datetime "image_updated_at"
   end
 
+  create_table "public_posts", force: true do |t|
+    t.text     "post"
+    t.integer  "rate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "publicfeeds", force: true do |t|
     t.string   "title"
-    t.integer  "rate"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "content"
@@ -41,6 +46,13 @@ ActiveRecord::Schema.define(version: 20160317205933) do
     t.text     "cite"
     t.string   "progenitor"
     t.integer  "classification"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

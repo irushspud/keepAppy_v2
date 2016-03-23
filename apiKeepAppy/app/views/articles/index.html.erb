@@ -19,9 +19,9 @@
           <div class="wrap">
             <article class="back">
               <div class="thumbnail" data-toggle="collapse" data-target="#<%= article.id%>">
-                  <a href="#/<%article%>"><img class="img-responsive" src="<%= article.image.url(:stretch)%>" ></a>
+                  <a href="#/<%article%>"><img class="img-responsive" src="<%= article.image.url(:thumb)%>" ></a>
                 <a href="#/<%article%>"><h3><%= article.title %></h3></a>
-                <p>by: <%= article.author %>></p>
+                <p>by: <%= article.author %></p>
                 <p><%= article.content %></p>
                 <p>Tags: <%= raw article.tag_list.map { |t| link_to t, :controller=>"articles", :action=>"tag", :tag => t }.join(', ') %></p>
               </div>
