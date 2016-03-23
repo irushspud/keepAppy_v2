@@ -16,10 +16,7 @@
 <p>
   <strong>Tags:</strong>
   <%= raw @article.tag_list.map { |t| link_to t, :controller=>"articles", :action=>"tag", :tag => t }.join(', ') %>
-<p>
-  <strong>Clssificaton:</strong>
-  <%= @article.clssificaton %>
-</p>
+
 
 <p>
   <strong>Content:</strong>

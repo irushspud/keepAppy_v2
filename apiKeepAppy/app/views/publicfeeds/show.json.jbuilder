@@ -1,1 +1,1 @@
-json.extract! @publicfeed, :id, :title,:content, :rate, :created_at, :updated_at
+json.extract! @publicfeed, :id, :title,:content, :created_at, :updated_at
