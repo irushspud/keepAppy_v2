@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :authenticate_user, :only => [:home, :setting, :quotes, :articles]
+  before_filter :authenticate_user!, :only => [:home, :setting, :quotes, :articles]
   before_filter :save_login_state, :only => [:login, :login_attempt]
   def login
     #render "login"

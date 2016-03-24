@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   
   
 
-  match "/signup", :to => "users#create" ,via: [:get,:post]
-  match "/login", :to => "sessions#login_attempt", via: [:get,:post]
-  match "/logout", :to => "sessions#logout", via: [:get,:post]
+  devise_for :users
+  resources :users
+  
+  #match "/login", :to => "sessions#login_attempt", via: [:get,:post]
+  #match "/logout", :to => "sessions#logout", via: [:get,:post]
   match "/", :to => "sessions#home", via: [:get,:post]
   match "/setting", :to => "sessions#setting", via: [:get,:post]
   
@@ -47,11 +49,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #map.connect '/users/new', :controller => 'users' , :action => 'create'
-  resources :users do
-  #route GET /user/new
-  	get 'create', :on => :collection
-  end
+ 
 
   
   

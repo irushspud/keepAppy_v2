@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
 			  #  :exception
   #protect_from_forgery with: :exception
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = exception.message
+    redirect_to "/users/sign_up"
+  end
 protected 
   def authenticate_user
     if session[:user_id]
