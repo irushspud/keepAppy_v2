@@ -4,5 +4,8 @@
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.2.4",
     "pouchdb": "^5.2.1"
+  },
+  "dependencies": {
+    "ng-token-auth": "^0.0.28"
   }
 }
