@@ -285,20 +285,21 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 //       $state.go('tabs.register');
 //     }
 
-.controller('loginCtrl', function($scope, $state, $stateParams, $auth) {
-
-    $scope.login = null;
-    console.log("LoginCtrl");
-    $scope.login = function(loginForm) {
-      $auth.submitLogin(loginForm)
-      .then(function(resp){
-        console.log("Success!")
-        $state.go('tabs.mood');
-      })
-      .catch(function(resp){
-        alert("Failure");
-      });
-    };
+.controller('loginCtrl', function($scope, $state, $stateParams, Login, $rootScope) {
+    $scope.credentials = {}
+    $scope.login = function(){
+      var session = new Login({user: $scope.credentials});
+      console.log($scope.credentials)
+      session.$save(
+        function(data){
+          console.log(data.id);
+          $state.go('tabs.mood');
+        },
+        function(err){
+          alert(err)
+          $state.go('tabs.login');
+        });
+    }
 })
 
 .controller('registerCtrl', function($scope, $state, $stateParams) {

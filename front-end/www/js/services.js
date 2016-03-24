@@ -26,6 +26,12 @@ angular.module('starter.services', ['ngResource'])
 }])
 
 
+.factory('Login', function($resource){
+  console.log("I ah")
+  return $resource("https://thawing-badlands-37385.herokuapp.com/users/sign_in");
+})
+
+
 .factory('dataStore', ['$q', function($q) {
 
     var database;

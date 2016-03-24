@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ng-token-auth'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -16,12 +16,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $authProvider) {
-
-  $authProvider.configure({
-    apiUrl : 'https://thawing-badlands-37385.herokuapp.com',
-    emailSignInPath : '/users/sign_in'
-  });
+.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
 
