@@ -2,7 +2,11 @@
 <body>
 
 <h1>Listing articles</h1>
-<h2 class="btn btn-primary"><%= link_to ' New Article', new_article_path %></h2>
+<h2 class="btn btn-primary">
+<% if can? :create, @article %>
+  <%= link_to ' New Article', new_article_path %>
+<% end %>
+</h2>
 <h2 class="btn btn-info"><%= link_to "  Home", controller: "sessions", action: "home"  %></h2>
 <h4>Click on an article for options</h4>
 <table>
@@ -19,9 +23,9 @@
           <div class="wrap">
             <article class="back">
               <div class="thumbnail" data-toggle="collapse" data-target="#<%= article.id%>">
-                  <a href="#/<%article%>"><img class="img-responsive" src="<%= article.image.url(:stretch)%>" ></a>
+                  <a href="#/<%article%>"><img class="img-responsive" src="<%= article.image.url(:thumb)%>" ></a>
                 <a href="#/<%article%>"><h3><%= article.title %></h3></a>
-                <p>by: <%= article.author %>></p>
+                <p>by: <%= article.author %></p>
                 <p><%= article.content %></p>
                 <p>Tags: <%= raw article.tag_list.map { |t| link_to t, :controller=>"articles", :action=>"tag", :tag => t }.join(', ') %></p>
               </div>
@@ -29,7 +33,11 @@
                 <div class="panel-body">
                   <div class="row">
                     <p class="btn btn-primary"><%= link_to 'Show', article %></p>
-                    <p class="btn btn-primary"> <%= link_to ' Edit', edit_article_path(article) %></p>
+                    <p class="btn btn-primary"> 
+                        <% if can? :update, @article %>
+			<%= link_to ' Edit', edit_article_path(article) %>
+                        <% end %>
+		    </p>
                     <p class="btn btn-primary">  <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></p>
                   </div>
                </div>

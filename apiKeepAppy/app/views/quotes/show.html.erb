@@ -15,6 +15,7 @@
   <strong>Tags:</strong>
   <%= raw @quote.tag_list.map{ |t| link_to t, :controller=>"quotes", :action=>"tag", :tag => t }.join(', ') %>
 </p>
-
-<%= link_to 'Edit', edit_quote_path(@quote) %> |
+<% if can? :update, @quote %>
+<%= link_to 'Edit', edit_quote_path(@quote) %>
+<% end %> |
 <%= link_to 'Back', quotes_path %>
