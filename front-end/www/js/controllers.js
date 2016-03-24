@@ -162,16 +162,21 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $scope.data = GetQustions.evening.get();
     }
 
-    $ionicSlideBoxDelegate.enableSlide(false);
+    
 
 
     $scope.init = function () {
-      $ionicSlideBoxDelegate.update();
+      $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').update();
       console.log("$scope.init");
       $scope.modal.show();
+      $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').enableSlide(false);
+    }
+    $scope.initArt = function () {
+      $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').update();
+      $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').enableSlide(true);
     }
     $scope.lockSlide = function () {
-      $ionicSlideBoxDelegate.enableSlide( false );
+      $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').enableSlide( false );
     }
 
     $scope.nextSlide = function() {
@@ -183,16 +188,17 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $scope.data.mood = 50;
 
 
-      // *** Needs to be changed to show all questions dynamically ***
-      if($ionicSlideBoxDelegate.currentIndex() == 3) {
+      //Close the questions dialog after the last slide
+      if($ionicSlideBoxDelegate.$getByHandle('questionSlideBox').currentIndex() == $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').slidesCount() - 1) {
         $scope.modal.hide();
         $scope.getTags();
       }
 
-      $ionicSlideBoxDelegate.next();
+
+      $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').next();
     }
     $scope.previousSlide = function() {
-      $ionicSlideBoxDelegate.previous();
+      $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').previous();
     }
 
     $scope.getTags = function() {
