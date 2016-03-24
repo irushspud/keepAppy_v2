@@ -1,14 +1,14 @@
 module Api
   module V1
     class ArticlesController < ApplicationController
-
+	
       class Article < ::Article
         # Note: this does not take into consideration the create/update actions for changing released_on
         def as_json(options = {})
-          super.merge(tags: tag_list)
+          super.merge(tags: tag_list, image_url: image.url.sub("api/v1/articles_controller/",""))
         end
       end
-
+      before_filter :authenticate_user!
       respond_to :json
       #articles.json should be returned, but is returning old json object
       def index

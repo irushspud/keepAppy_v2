@@ -11,10 +11,15 @@
         <p>
           <%= quote.cite %>
         </p>
-
         <cite>
           <%= quote.progenitor %>
         </cite>
+        <p>
+        <strong>Tags:</strong>
+        <%= raw quote.tag_list.map{ |t| link_to t, :controller=>"quotes", :action=>"tag", :tag => t }.join(', ') %>
+        </p>
+
+        
       </blockquote>
       <div id="<%= quote.id%>" class="panel-collapse collapse">
         <div class="panel-body">
