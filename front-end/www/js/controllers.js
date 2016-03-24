@@ -269,27 +269,38 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 })
 
 
-.controller('loginCtrl', function($scope, $state, $stateParams) {
+// console.log("username:", $scope.login.username);
+//       console.log("password:", $scope.login.password);
+//       if($scope.login.username === undefined) {
+//         alert("Please enter a username");
+//       }
+//       else if($scope.login.password === undefined) {
+//         alert("Please enter a password");
+//       }
+//       else {
+//         $state.go('tabs.mood');
+//       }
+//     }; 
+//     $scope.register = function() {
+//       $state.go('tabs.register');
+//     }
+
+.controller('loginCtrl', function($scope, $state, $stateParams, $auth) {
 
     $scope.login = null;
-    
-    $scope.login = function() {
-      console.log("username:", $scope.login.username);
-      console.log("password:", $scope.login.password);
-      if($scope.login.username === undefined) {
-        alert("Please enter a username");
-      }
-      else if($scope.login.password === undefined) {
-        alert("Please enter a password");
-      }
-      else {
+    console.log("LoginCtrl");
+    $scope.login = function(loginForm) {
+      $auth.submitLogin(loginForm)
+      .then(function(resp){
+        console.log("Success!")
         $state.go('tabs.mood');
-      }
-    }; 
-    $scope.register = function() {
-      $state.go('tabs.register');
-    }
+      })
+      .catch(function(resp){
+        alert("Failure");
+      });
+    };
 })
+
 .controller('registerCtrl', function($scope, $state, $stateParams) {
 
     $scope.login = null;
