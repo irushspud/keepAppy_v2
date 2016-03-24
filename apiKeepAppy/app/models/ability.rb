@@ -5,11 +5,11 @@ class Ability
     user ||= User.new #guest user
    
     if user.is? :admin
-       can :manage, :all
+       can :manage, :all  #administrator can do everything
     elsif user.is? :regular
-      can :read, :all
+      can :read, :all  #not admins or creators can only read articles and quotes
     elsif user.is? :creator
-      can :manage, [Article, Quote]
+      can :manage, [Article, Quote]  #can manage articles and quotes but not public feed
     end
   end
 

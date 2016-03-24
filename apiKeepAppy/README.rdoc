@@ -4,9 +4,13 @@ Deploying to Heroku (No Need For Everyone to do this!!):
 * git push heroku master
 * heroku run rake db:migrate
 * heroku open
+USER ROLES
+Admin: can do everything
+Regular: Can only read the site
+Creator: Can create, edit and destroy articles and quotes
 
-               Prefix Verb     URI Pattern                            Controller#Action
-                  Prefix Verb     URI Pattern                            Controller#Action
+
+              Prefix Verb     URI Pattern                            Controller#Action
         new_user_session GET      /users/sign_in(.:format)               devise/sessions#new
             user_session POST     /users/sign_in(.:format)               devise/sessions#create
     destroy_user_session DELETE   /users/sign_out(.:format)              devise/sessions#destroy
@@ -84,6 +88,7 @@ cancel_user_registration GET      /users/cancel(.:format)                devise/
                          PATCH    /articles/:id(.:format)                articles#update
                          PUT      /articles/:id(.:format)                articles#update
                          DELETE   /articles/:id(.:format)                articles#destroy
+
 
 
 
