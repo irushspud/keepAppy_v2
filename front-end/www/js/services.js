@@ -7,19 +7,6 @@ angular.module('starter.services', ['ngResource'])
   });
 }])
 
-.factory('Mood Evening', ['$resource', function($resource){
- return $resource('http://localhost:8100/data/evening.json', {}, {
-   query: { method: 'GET', isArray: false },
-   create: { method: 'POST' }
- });
-}])
-
-.factory('Mood Morning', ['$resource', function($resource){
- return $resource('http://localhost:8100/data/morning.json', {}, {
-   query: { method: 'GET', isArray: false },
-   create: { method: 'POST' }
- });
-}])
 
 .factory('PublicFeed', ['$resource', function($resource){
   return $resource('https://aqueous-hamlet-97427.herokuapp.com/publicfeeds.json', {}, {
@@ -33,7 +20,8 @@ angular.module('starter.services', ['ngResource'])
   return {
     morning: $resource('data/morning.json', {}, { get: { method: 'GET', isArray: false }}),
     evening: $resource('data/evening.json', {}, { get: { method: 'GET', isArray: false }}),
-    article: $resource('https://aqueous-hamlet-97427.herokuapp.com/api/v1/articles', {}, { get: { method: 'GET', isArray: true }})
+    article: $resource('https://aqueous-hamlet-97427.herokuapp.com/api/v1/articles', {}, { get: { method: 'GET', isArray: true }}),
+    quote: $resource('https://aqueous-hamlet-97427.herokuapp.com/api/v1/quotes', {}, { get: { method: 'GET', isArray: true }})
   };
 }])
 

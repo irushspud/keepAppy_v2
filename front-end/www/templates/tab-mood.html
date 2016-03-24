@@ -1,53 +1,79 @@
 <ion-view view-title="Mood">
   <ion-content>
+
+
+
+
     <div class="list card">
 
-<ion-slide-box ng-init="lockSlide()" ng-hide="data==null">
-  <ion-slide ng-repeat="question in data.questions" ng-init="init()" name="slideBox">
-
-    <div class="item item-text-wrap">
-      <p><strong>{{question.question}}</strong></p>
-    </div>
-
-    <div class="item range" name="slideInput">
-      <i style="color:#ff6666" class="icon ion-sad-outline"></i>
-      <input type="range" id="range{{$index}}" min="0" max="100" ng-model="mood[$index]" ng-model-options="{ getterSetter: true }">
-      <i style="color:#66b266" class="icon ion-happy-outline"></i>
-    </div>
-    <div class="item">
-      <center>
-        <button ng-if="!$first" class="button button-outline button-calm" ng-click="previousSlide()">Previous</button>
-        <button class="button button-outline button-positive" ng-click="nextSlide()">Next</button>
-      </center>
-    </div>
-    <div class="item">
-      <br>
-    </div>
-
-  </ion-slide>
-
-  <ion-slide>
-    <div class="item">
-      <center>
-        <strong> Results</strong>
-      </center>
-    </div>
-    <div class="item">
-        <center>
-          <span ng-repeat="n in quotes.quotes">{{mood[$index]}} </span>
-        </center>
-    </div>
-    <div class="item">
-      <center>
-        <button ng-if="!$first" class="button button-outline button-calm" ng-click="previousSlide()">Previous</button>
-        <button class="button button-outline button-balanced" ng-click="showArticle()">Finish</button>
-      </center>
-    </div>
-  </ion-slide>
 
 
 
-</ion-slide-box>
+        <ion-list>
+          <div class="item">
+           <h2>Articles</h2>
+          </div>
+          <ion-item ng-repeat="article in articles">
+            <div class="item">
+               <h2>{{article.title}}</h2>
+            </div>
+          </ion-item>
+
+            <div class="item item-body">
+              <h2>Quotes</h2>
+            </div>
+            <ion-item ng-repeat="quote in quotes">
+            <div class="item">
+               <h2>{{quote.cite}}</h2>
+            </div>
+          </ion-item>
+        </ion-list>
+
+
+
+
+<script id="modal.html" type="text/ng-template">
+    <div class="modal">
+        <ion-header-bar class="bar bar-header bar-positive">
+            <h1 class="title">{{title}}</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content>
+            <div class="padding">
+
+
+
+            <ion-slide-box ng-init="lockSlide()" ng-hide="data==null">
+              <ion-slide ng-repeat="question in data.questions" ng-init="init()" name="slideBox">
+
+              <div class="item item-text-wrap">
+                <p><strong>{{question.question}}</strong></p>
+              </div>
+
+              <div class="item range" name="slideInput">
+
+                <i style="color:#ff6666" class="icon ion-thumbsdown"></i>
+                <input type="range" id="range{{$index}}" min="0" max="100" ng-model="data.mood" ng-model-options="{ getterSetter: true }">
+                <i style="color:#66b266" class="icon ion-thumbsup"></i>
+
+              </div>
+              <br>
+              <div class="item">
+                <center>
+                <button ng-if="!$first" class="button button-outline button-calm" ng-click="previousSlide()">Previous</button>
+                <button class="button button-outline button-positive" ng-click="nextSlide()">Next</button>
+                </center>
+              </div>
+              <br>
+
+              </ion-slide>
+
+            </ion-slide-box>
+
+            </div>
+        </ion-content>
+    </div>
+  </script>
 
 </div>
   </ion-content>

@@ -4,14 +4,38 @@
 <ion-nav-buttons side="right">
       <button class="button button-icon icon ion-android-add" ng-click="addEntry()"></button>
 </ion-nav-buttons>
+
+
 <ion-content>
-  # ngRepeat needed to show the public feed
+
+  <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+
+    <ion-list>
+      <ion-item ng-repeat="publicFeed in publicFeeds | orderBy:'-id'" >
+      <div class="item">
+    <h2>{{publicFeed.title}}</h2>
+
+  </div>
+
+  <div class="item item-body">
+    <p>
+      {{publicFeed.content}}
+    </p>
+    <p>
+    </p>
+  </ion-item>
+  </ion-list>
 </ion-content>
+
 
 
   <!-- ----------------------------- -->
 
   <script id="modal.html" type="text/ng-template">
+  // <form name="posting" novalidate ng-submit="save()"
     <div class="modal">
         <ion-header-bar class="bar bar-header bar-positive">
             <h1 class="title">Create Post</h1>
@@ -21,12 +45,12 @@
             <div class="padding">
                 <div class="list">
                     <label class="item item-input">
-                        <input type="text" placeholder="Title" ng-model="n.name">
+                        <input type="text" placeholder="Title" ng-model="post.title">
                     </label>
                     <label class="item item-input">
-                      <textarea placeholder="Add a post...." style="height: 40vh;" ng-keypress="updateEditor()" ng-model="entry.post" ng-model="bar"> </textarea>
+                      <textarea placeholder="Add a post...." style="height: 40vh;" ng-keypress="updateEditor()" ng-model="post.content" ng-model="bar"> </textarea>
                     </label>
-                    <button ng-click="save()" class="button button-block button-positive activated">Post</button>
+                    <button ng-clicked="save()" class="button button-block button-positive activated">Post</button>
                 </div>
             </div>
         </ion-content>
