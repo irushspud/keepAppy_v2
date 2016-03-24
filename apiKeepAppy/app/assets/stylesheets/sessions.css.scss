@@ -7,7 +7,8 @@ $black: #222222;
 
 .row > ul {
   position: relative;
-  left: 300px;
+  top: -80px;
+  left: 230px;
   list-style-type: none;
 }
 
@@ -41,35 +42,12 @@ li > a > p{
 }
 
 .btn-home {
-  height: 77px;
-  width: 150px;
+  height: 90px;
+  width: 196px;
   position: relative;
   top: -20px;
   left: -170px;
   margin: 50px 0;
-
-  .art_hm {
-  position: relative;
-
-  color: black;
-  background-color: #00B3EE;
-  border: 2px solid black;
-  box-shadow: 0 20px 40px rgba($black, 0.7);
-  text-align: center;
-  border-radius: 20px;
-}
-
-.home_im {
-  position: relative;
-  height: 300px;
-  width: 590px;
-  top: 5px;
-  border-radius: 20px;
-
-}
-
-.thmb {;
-}
   border-radius: 10px;
   color: white;
   background-color: #343434;
@@ -102,6 +80,7 @@ li > a > p{
 
 .art_hm {
   position: relative;
+  top: -140px;
   margin: auto;
   height: 570px;
   width: 600px;
