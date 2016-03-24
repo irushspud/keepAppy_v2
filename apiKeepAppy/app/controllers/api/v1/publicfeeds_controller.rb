@@ -2,7 +2,8 @@ module Api
   module V1
     class PublicfeedsController < ApplicationController
       respond_to :json
-      before_filter :authenticate_user!
+      ##user auth
+      #before_filter :authenticate_user!
       def index
         respond_with Publicfeed.all
       end

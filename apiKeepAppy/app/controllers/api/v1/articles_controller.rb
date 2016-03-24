@@ -8,7 +8,8 @@ module Api
           super.merge(tags: tag_list, image_url: image.url.sub("api/v1/articles_controller/",""))
         end
       end
-      before_filter :authenticate_user!
+      ##user auth
+      #before_filter :authenticate_user!
       respond_to :json
       #articles.json should be returned, but is returning old json object
       def index
