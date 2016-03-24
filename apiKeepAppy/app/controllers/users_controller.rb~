@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	else
 		flash[:notice] = "Form is invalid"
 		flash[:color] = "invalid"
-		redirect_to(:controller => :sessions,:action => 'home')
+		redirect_to(signup_path)
 	end
 	#redirect_to(:controller => :sessions,:action => 'login')
         

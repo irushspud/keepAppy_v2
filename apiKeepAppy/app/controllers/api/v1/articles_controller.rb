@@ -13,7 +13,7 @@ module Api
       #articles.json should be returned, but is returning old json object
       def index
         if params[:tag]
-          respond_with Article.tagged_with(params[:tag])
+          respond_with Article.tagged_with(params[:tag], :any => true).limit(5).shuffle
         else
           respond_with Article.all
         end

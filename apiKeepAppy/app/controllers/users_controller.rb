@@ -4,9 +4,7 @@ class UsersController < ApplicationController
 	@user = User.new
   end
   
-  def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation)
-  end
+  
 
   def create
 	@user = User.new(params[user_params])
@@ -17,9 +15,13 @@ class UsersController < ApplicationController
 	else
 		flash[:notice] = "Form is invalid"
 		flash[:color] = "invalid"
-		redirect_to(:controller => :sessionss,:action => 'login_attempt')
+		redirect_to(signup_path)
 	end
 	#redirect_to(:controller => :sessions,:action => 'login')
-        
+   end
+ 
+   private
+   def user_params
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end
