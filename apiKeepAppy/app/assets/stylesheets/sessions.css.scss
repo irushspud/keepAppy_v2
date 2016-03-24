@@ -1,3 +1,102 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$black: #222222;
+
+.row > ul {
+  position: relative;
+  top: -80px;
+  left: 230px;
+  list-style-type: none;
+}
+
+ul > li {
+  display: inline;
+}
+
+li > a > .btn{
+  position: relative;
+  top: 4px;
+  left: 6px;
+  background-color: #343434;
+}
+
+li > a > p{
+  position: relative;
+  top: -22px;
+  background-color: #343434;
+  color: white;
+}
+
+
+
+.panel-body {
+  word-wrap: break-word;
+}
+
+.panel-body > p {
+  line-height: 25px;
+  font-size: 20px;
+}
+
+.btn-home {
+  height: 90px;
+  width: 196px;
+  position: relative;
+  top: -20px;
+  left: -170px;
+  margin: 50px 0;
+  border-radius: 10px;
+  color: white;
+  background-color: #343434;
+  border: 2px solid black;
+}
+
+.btn-home:hover {
+  background-color: #00B3EE;
+  box-shadow: 0 6px 10px rgba($black, 0.7);
+   i{
+     color: white;
+    background-color: #00B3EE;
+  }
+  p {
+    background-color: #00B3EE;
+  }
+}
+
+.btn-home > i{
+  position: relative;
+  top: -5px;
+  height: 70px;
+  width: 70px;
+  border-radius: 10px;
+  color: #FEA933;
+  background-color: #343434;
+}
+
+
+
+.art_hm {
+  position: relative;
+  top: -140px;
+  margin: auto;
+  height: 570px;
+  width: 600px;
+  color: black;
+  background-color: #00B3EE;
+  border: 2px solid black;
+  box-shadow: 0 20px 40px rgba($black, 0.7);
+  text-align: center;
+  border-radius: 20px;
+}
+
+.home_im {
+  position: relative;
+  height: 300px;
+  width: 590px;
+  top: 5px;
+  border-radius: 20px;
+
+}

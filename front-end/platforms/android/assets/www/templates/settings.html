@@ -3,9 +3,17 @@
     <ion-list>
 		<div class="card">
   			<div class="item item-text-wrap">
-    			<center><b><i class="icon ion-clock"></i> Notifications will occur at (?am) and (?pm)</b><center>
+    			<center><b><i class="icon ion-clock"></i> Notifications will occur at (?am) and {{test}}</b><center>
   			</div>
 		</div>
+    <center><button class="button button-outline button-assertive" ng-click="removeData()">
+        Delete All Data
+    </button>
+    <br></br>
+    <p>Data will be automatically deleted every two weeks</p>
+    </center>
     </ion-list>
+    <button class="button" ng-click="add()">Add notification</button>
+    <button class="button" ng-click="isScheduled()">Is Scheduled</button>
   </ion-content>
 </ion-view>

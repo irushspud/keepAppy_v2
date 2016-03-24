@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -18,10 +18,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
   $stateProvider
 
 	.state('settings', {
@@ -31,17 +27,45 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
 
-    .state('tabs', {
+  .state('tabs', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller: 'AppCtrl'
   })
 
   .state('tabs.mood', {
     url: '/mood',
     views: {
       'tab-mood': {
-        templateUrl: 'templates/tab-chats.html',
+        templateUrl: 'templates/tab-mood.html',
+        controller: 'moodCtrl'
+      }
+    }
+  })
+  .state('tabs.login', {
+    url: '/login',
+    views: {
+      'tab-mood': {
+        templateUrl: 'templates/login.html',
+        controller: 'loginCtrl'
+      }
+    }
+  })
+  .state('tabs.register', {
+    url: '/register',
+    views: {
+      'tab-mood': {
+        templateUrl: 'templates/register.html',
+        controller: 'registerCtrl'
+      }
+    }
+  })
+  .state('tabs.article', {
+    url: '/article',
+    views: {
+      'tab-mood': {
+        templateUrl: 'templates/article.html',
         controller: 'moodCtrl'
       }
     }
@@ -53,15 +77,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'tab-diary': {
           templateUrl: 'templates/tab-diary.html',
           controller: 'diaryCtrl'
-        }
-      }
-    })
-    .state('tabs.fed-detail', {
-      url: '/feed/:fedId',
-      views: {
-        'tab-publicFeed': {
-          templateUrl: 'templates/feed-detail.html',
-          controller: 'fedDetailCtrl'
         }
       }
     })
@@ -77,6 +92,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/mood');
+  $urlRouterProvider.otherwise('/tab/login');
 
 });

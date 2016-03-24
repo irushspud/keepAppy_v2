@@ -10,10 +10,7 @@
   <%= @quote.progenitor %>
 </p>
 
-<p>
-  <strong>Classification:</strong>
-  <%= @quote.classification %>
-</p>
+
 <p>
   <strong>Tags:</strong>
   <%= raw @quote.tag_list.map{ |t| link_to t, :controller=>"quotes", :action=>"tag", :tag => t }.join(', ') %>

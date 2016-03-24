@@ -1,3 +1,5 @@
+<head xmlns="http://www.w3.org/1999/html"><link rel="stylesheet" type="text/scss" href="articles/article_form.scss"></head>
+<div class="art_frm">
 <%= form_for(@article) do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
@@ -16,10 +18,6 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
     <%= f.label :author %><br>
     <%= f.text_field :author %>
   </div>
@@ -28,14 +26,18 @@
     <%= f.text_field :tag_list %>
   </div>
   <div class="field">
-    <%= f.label :clssificaton %><br>
-    <%= f.number_field :clssificaton %>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
   </div>
   <div class="field">
      <%= f.label :image %><br>
      <%= f.file_field :image %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions butn">
+      <%= f.submit %>
+    </div>
 <% end %>
+  </div>
+<div class="bck_btn">
+  <p class="btn-orange-arrow"><%= link_to 'Back', articles_path %></p>
+</div>

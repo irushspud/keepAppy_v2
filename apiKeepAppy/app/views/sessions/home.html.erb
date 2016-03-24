@@ -1,33 +1,37 @@
+<head xmlns="http://www.w3.org/1999/html"><link rel="stylesheet" type="text/scss" href="sessions.css.scss"></head>
 <% @page_title = "Moderator | Home" -%>
-<div class="jumbotron">
-	<center>
-		<h2>Management Console</h2>
-		<p>What would you like to manage?</p>
-	</center>
+<div class="row">
+<ul>
+  <li>
+    <a class="btn btn-home" href="/quotes">
+      <i class="fa fa-quote-right icon fa-4x"></i>
+      <p>Quotes</p>
+  </a>
+  </li>
+  <li>
+    <a class="btn btn-home" href="/articles">
+      <i class="fa fa-newspaper-o icon fa-4x"></i>
+      <p>Articles</p>
+    </a>
+  </li>
+  <li>
+    <a class="btn btn-home"  href="/publicfeeds">
+      <i class="fa fa-users icon fa-4x"></i>
+      <p>Feed</p>
+    </a>
+  </li>
+  </ul>
 </div>
 <div class="row">
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="/printingpress.png" alt="...">
-      <div class="caption">
-        <p><center><a class="btn btn-primary" href="/articles">Manage Articles</a></center></p>
-      </div>
+  <article class="art_hm">
+  <div class="thmb" >
+    <img class="home_im" src="/appy_logo.jpg">
+  </div>
+    <div class="panel-body">
+    <h1><b>Hello </b><i class="fa fa-smile-o icon"></i></h1>
+      <p>Welcome to the Keep Appy managment console, from here you can add, edit and delete
+        quotes, articles or posts from the public feed
+      </p>
     </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-    <div class="thumbnail">
-      <img src="/trump.jpg" alt="...">
-      <div class="caption">
-        <p><center><a class="btn btn-primary" href="/quotes">Manage Quotes</a></center></p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-3">
-   <div class="thumbnail">
-     <img src="/robespierre.jpg" alt="...">
-     <div class="caption">
-       <p><center><a class="btn btn-primary" href="/publicfeeds">Manage  Public Feed</a></center></p>
-     </div>
-   </div>
-  </div>
+</article>
 </div>

@@ -1,29 +1,16 @@
 angular.module('starter.services', ['ngResource'])
 
 .factory('ArticlesService', ['$resource', function($resource){
-  return $resource('https://stormy-retreat-84839.herokuapp.com/api/v1/articles', {}, {
-    query: { method: 'GET', isArray: false },
+  return $resource('https://thawing-badlands-37385.herokuapp.com/api/v1/articles', {}, {
+    get: { method: 'GET', isArray: true },
     create: { method: 'POST' }
   });
 }])
 
-.factory('Mood Evening', ['$resource', function($resource){
- return $resource('http://localhost:8100/data/evening.json', {}, {
-   query: { method: 'GET', isArray: false },
-   create: { method: 'POST' }
- });
-}])
-
-.factory('Mood Morning', ['$resource', function($resource){
- return $resource('http://localhost:8100/data/morning.json', {}, {
-   query: { method: 'GET', isArray: false },
-   create: { method: 'POST' }
- });
-}])
 
 .factory('PublicFeed', ['$resource', function($resource){
-  return $resource('https://stormy-retreat-84839.herokuapp.com/api/v1/articles', {}, {
-    query: { method: 'GET', isArray: false },
+  return $resource('https://thawing-badlands-37385.herokuapp.com/publicfeeds.json', {}, {
+    query: { method: 'GET', isArray: true },
     create: { method: 'POST' }
   });
 }])
@@ -32,9 +19,17 @@ angular.module('starter.services', ['ngResource'])
 .factory('GetQustions', ['$resource', function($resource){
   return {
     morning: $resource('data/morning.json', {}, { get: { method: 'GET', isArray: false }}),
-    evening: $resource('data/evening.json', {}, { get: { method: 'GET', isArray: false }})
+    evening: $resource('data/evening.json', {}, { get: { method: 'GET', isArray: false }}),
+    article: $resource('https://thawing-badlands-37385.herokuapp.com/api/v1/articles', {}, { get: { method: 'GET', isArray: true }}),
+    quote: $resource('https://thawing-badlands-37385.herokuapp.com/api/v1/quotes', {}, { get: { method: 'GET', isArray: true }})
   };
 }])
+
+
+.factory('Login', function($resource){
+  console.log("I ah")
+  return $resource("https://thawing-badlands-37385.herokuapp.com/users/sign_in");
+})
 
 
 .factory('dataStore', ['$q', function($q) {

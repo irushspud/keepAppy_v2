@@ -1,37 +1,104 @@
-<<<<<<< HEAD
-<body>
-  <ion-view view-title="Mood">
-    <ion-content class="padding">
-      <h2>Welcome to Keep Appy</h2>
-  		<h3>Pay no attention to whats below dis</h3>
-      <p>
-      Hello me! <a href="http://www.youtube.com" target="_blank">Ionic Market</a>.
-      </p>
-      <p>
-        To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-      </p>
-      <p>
-      If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-      </p>
-      <p>
-        For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
-      </p>
-    </ion-content>
-  </ion-view>
-</body>
-=======
 <ion-view view-title="Mood">
-  <ion-content class="padding">
-    <p>How are you feeling today?</p>
+  <ion-content>
 
-    <div class="item range">
-      <i class="icon ion-sad-outline"></i>
-      <input type="range" name="volume">
-      <i class="icon ion-happy-outline"></i>
+
+
+
+    <div class="list card" ng-show="user.signedIn">
+
+
+
+
+
+        <ion-slide-box delegate-handle="articleSlideBox" ng-init="lockSlide()" ng-hide="data==null">
+              <ion-slide ng-repeat="article in articles" ng-init="initArt()" name="slideBox">
+
+              <div class="item item-text-wrap">
+                <p><strong>{{article.title}}</strong></p>
+              </div>
+
+              <img class="article-image" src="http://ionicframework.com/img/docs/delorean.jpg"/>
+              </ion-slide>
+        </ion-slide-box>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <ion-list>
+          <div class="item">
+           <h2>Articles</h2>
+          </div>
+          <ion-item ng-repeat="article in articles">
+            <div class="item">
+               <h2>{{article.title}}</h2>
+            </div>
+          </ion-item>
+
+            <div class="item item-body">
+              <h2>Quotes</h2>
+            </div>
+            <ion-item ng-repeat="quote in quotes">
+            <div class="item">
+               <h2>{{quote.cite}}</h2>
+            </div>
+          </ion-item>
+        </ion-list>
+
+
+
+
+<script id="modal.html" type="text/ng-template">
+    <div class="modal">
+        <ion-header-bar class="bar bar-header bar-positive">
+            <h1 class="title">{{title}}</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content>
+            <div class="padding">
+
+
+
+            <ion-slide-box delegate-handle="questionSlideBox" ng-init="lockSlide()" ng-hide="data==null">
+              <ion-slide ng-repeat="question in data.questions" ng-init="init()" name="slideBox">
+
+              <div class="item item-text-wrap">
+                <p><strong>{{question.question}}</strong></p>
+              </div>
+
+              <div class="item range" name="slideInput">
+
+                <i style="color:#ff6666" class="icon ion-thumbsdown"></i>
+                <input type="range" id="range{{$index}}" min="0" max="100" ng-model="data.mood" ng-model-options="{ getterSetter: true }">
+                <i style="color:#66b266" class="icon ion-thumbsup"></i>
+
+              </div>
+              <br>
+              <div class="item">
+                <center>
+                <button ng-if="!$first" class="button button-outline button-calm" ng-click="previousSlide()">Previous</button>
+                <button class="button button-outline button-positive" ng-click="nextSlide()">Next</button>
+                </center>
+              </div>
+              <br>
+
+              </ion-slide>
+
+            </ion-slide-box>
+
+            </div>
+        </ion-content>
     </div>
+  </script>
 
-    <a class="button icon-right ion-chevron-right button-calm">Next</a>
-
+</div>
   </ion-content>
 </ion-view>
->>>>>>> cbfec56a655b89500515dc8599348cfc5da3d91f

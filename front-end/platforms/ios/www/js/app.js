@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -31,17 +31,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
 
-    .state('tabs', {
+  .state('tabs', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller: 'AppCtrl'
   })
 
   .state('tabs.mood', {
     url: '/mood',
     views: {
       'tab-mood': {
-        templateUrl: 'templates/tab-chats.html',
+        templateUrl: 'templates/tab-mood.html',
+        controller: 'moodCtrl'
+      }
+    }
+  })
+  .state('tabs.login', {
+    url: '/login',
+    views: {
+      'tab-mood': {
+        templateUrl: 'templates/login-registration.html',
+        controller: 'loginCtrl'
+      }
+    }
+  })
+  .state('tabs.article', {
+    url: '/article',
+    views: {
+      'tab-mood': {
+        templateUrl: 'templates/article.html',
         controller: 'moodCtrl'
       }
     }
@@ -77,6 +96,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/mood');
+  $urlRouterProvider.otherwise('/tab/login');
 
 });

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -17,6 +18,7 @@
     <script src="lib/ionic/js/angular/angular-resource.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
@@ -25,7 +27,7 @@
     <script src="js/services.js"></script>
     <script src="lib/pouchdb/dist/pouchdb.min.js"></script>
   </head>
-  <body class="platform-android platform-cordova platform-webview">
+  <body>
     <ion-side-menus>
 	       <ion-side-menu-content ng-controller="NavCtrl">
           <ion-nav-bar class="bar-dark">
@@ -56,6 +58,7 @@
                 <i class="icon ion-ios-gear"></i>
                   Settings
               </a>
+
           </ion-content>
         </ion-side-menu>
 		</ion-side-menus>

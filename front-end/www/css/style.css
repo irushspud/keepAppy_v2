@@ -1,5 +1,5 @@
 /* Empty. Add your own CSS if you like */
-@import "compass/css3";
+/*@import "compass/css3";*/
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -35,6 +35,12 @@ input, button {
   outline: none;
   border: none;
 }
+
+
+.article-image {
+  width: 80%; 
+}
+
 .cont {
   position: relative;
   height: 100%;
