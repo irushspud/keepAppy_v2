@@ -91,23 +91,33 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
     console.log($scope.postTitle)
 
-    $scope.publicFeeds.push({
-      title: $scope.post.title,
-      content: $scope.post.content
-    })
+    if($scope.post.title == '') {
+      alert("Please enter a valid title");
+    }
+    else if($scope.post.content == '') {
+      alert("Please enter valid content");
+    }
+    else {
+
+      $scope.publicFeeds.push({
+        title: $scope.post.title,
+        content: $scope.post.content
+      })
 
     // make request to api
-    PublicFeed.create({
-      publicfeed: $scope.post
-    }, function(error){
-        console.log(error)
-    });
+      PublicFeed.create({
+        publicfeed: $scope.post
+      }, function(error){
+          console.log(error)
+      });
+
 
     // clean scope for next post
-    $scope.post = $scope.temp
+      $scope.post = $scope.temp
 
     // hide posting view
-    $scope.modal.hide();
+      $scope.modal.hide();
+    }
 
   }
 
@@ -139,14 +149,23 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 })
 
 
-.controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, $state, $ionicModal, GetQustions) {
+.controller('moodCtrl', function($scope, $ionicSlideBoxDelegate, $state, $ionicModal, $http, GetQustions) {
 
     var date = new Date();
     hours = date.getHours()
     $scope.data = null;
 
-    $scope.articles = GetQustions.article.get();
+
+    $scope.tagsTemp = ['cool'];
+
+    // *** Get all articles with the 'cool' tag
+    $scope.articles = GetQustions.article.get({tags: $scope.tagsTemp});
+
+
     $scope.quotes = GetQustions.quote.get();
+
+    //console.log($scope.articles);
+    console.log($scope.quotes);
 
     $scope.values = [];
     $scope.tags = [];
@@ -156,18 +175,26 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
     //question popup times are fixed.
     if( hours >= 0 && hours <12){
-      $scope.data= GetQustions.morning.get();
+      //$scope.data= GetQustions.morning.get();
+      $http.get('data/morning.json').success(function(data) {
+        $scope.data = data;
+        //console.log($scope.data.questions[0].tags[0])
+      });
     }
     else if ( hours >= 12 && hours <= 23){
-      $scope.data = GetQustions.evening.get();
+      //$scope.data = GetQustions.evening.get();
+      $http.get('data/evening.json').success(function(data) {
+        $scope.data = data;
+        //console.log($scope.data.questions[0].tags[0])
+      });
     }
-
-
+    
+    console.log($scope.data);
 
 
     $scope.init = function () {
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').update();
-      console.log("$scope.init");
+      //console.log("$scope.init");
       $scope.modal.show();
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').enableSlide(false);
     }
@@ -175,14 +202,22 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').update();
       $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').enableSlide(true);
     }
+    $scope.initQuo = function () {
+      $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').update();
+      $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').enableSlide(true);
+    }
+    
     $scope.lockSlide = function () {
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').enableSlide( false );
     }
 
     $scope.nextSlide = function() {
 
-      //push the slider value into an array
-      $scope.values.push($scope.data.mood);
+      var currentQuestion = $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').currentIndex();
+      var sliderValueIndex = Math.floor($scope.data.mood / 10);
+
+      //push the corresponding tag into the array
+      $scope.tags.push($scope.data.questions[currentQuestion].tags[sliderValueIndex]);
 
       //reset the next slider value
       $scope.data.mood = 50;
@@ -191,7 +226,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       //Close the questions dialog after the last slide
       if($ionicSlideBoxDelegate.$getByHandle('questionSlideBox').currentIndex() == $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').slidesCount() - 1) {
         $scope.modal.hide();
-        $scope.getTags();
+        console.log($scope.tags);
       }
 
 
@@ -200,7 +235,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     $scope.previousSlide = function() {
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').previous();
     }
-
+/*
     $scope.getTags = function() {
 
       //iterate though the slider values and match them with tags
@@ -254,7 +289,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       }
       console.log($scope.tags);
     }
-
+*/
 
     $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
       $scope.modal = $ionicModal;

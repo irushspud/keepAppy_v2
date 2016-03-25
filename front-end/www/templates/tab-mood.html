@@ -4,42 +4,55 @@
 
 
 
-    <div class="list card" ng-show="user.signedIn">
+      <div class="list card">
 
-
-
-
-
-        <ion-slide-box delegate-handle="articleSlideBox" ng-init="lockSlide()" ng-hide="data==null">
-              <ion-slide ng-repeat="article in articles" ng-init="initArt()" name="slideBox">
+        <center><h2>Articles</h2></center>
+        <ion-slide-box delegate-handle="articleSlideBox" ng-hide="data==null">
+              <ion-slide ng-repeat="article in articles" ng-init="initArt()">
 
               <div class="item item-text-wrap">
                 <p><strong>{{article.title}}</strong></p>
               </div>
-
+              <center>
               <img class="article-image" src="http://ionicframework.com/img/docs/delorean.jpg"/>
+              </center>
+              <br><br>
               </ion-slide>
         </ion-slide-box>
 
+      </div>
+
+
+      <div class="list card">
+
+        <center><h2>Quotes</h2></center>
+        <ion-slide-box delegate-handle="articleSlideBox" ng-hide="data==null">
+              <ion-slide ng-repeat="quote in quotes" ng-init="initQuo()">
+
+              <div class="item item-text-wrap">
+                <p><strong>"{{quote.cite}}"</strong></p>
+                <br>
+              </div>
+
+              </ion-slide>
+        </ion-slide-box>
+
+      </div>
 
 
 
 
 
 
-
-
-
-
-
+<!--
 
         <ion-list>
           <div class="item">
            <h2>Articles</h2>
           </div>
-          <ion-item ng-repeat="article in articles">
+          <ion-item ng-repeat="n in articles">
             <div class="item">
-               <h2>{{article.title}}</h2>
+               <h2>{{n.title}}</h2>
             </div>
           </ion-item>
 
@@ -52,7 +65,7 @@
             </div>
           </ion-item>
         </ion-list>
-
+-->
 
 
 
@@ -99,6 +112,5 @@
     </div>
   </script>
 
-</div>
   </ion-content>
 </ion-view>
