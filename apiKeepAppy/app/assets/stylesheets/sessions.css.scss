@@ -54,27 +54,31 @@ li > a > p{
   border: 2px solid black;
 }
 
-// Highlights button
+// Highlights button when cursor is over button
 .btn-home:hover {
-  background-color: #00B3EE;
+  background-color: white;
   box-shadow: 0 6px 10px rgba($black, 0.7);
    i{
-     color: white;
-    background-color: #00B3EE;
+    background-color: white;
   }
   p {
-    background-color: #00B3EE;
+    background-color: white;
+    color: black;
   }
 }
-
+// icon style
 .btn-home > i{
   position: relative;
-  top: -5px;
   height: 70px;
   width: 70px;
   border-radius: 10px;
   color: #FEA933;
   background-color: #343434;
+}
+// text position change
+.btn-home > p{
+  position: relative;
+  top: -10px;
 }
 
 
@@ -83,22 +87,22 @@ li > a > p{
   position: relative;
   top: -140px;
   margin: auto;
-  height: 570px;
-  width: 600px;
+  height: 530px;
+  width: 570px;
   color: black;
-  background-color: #00B3EE;
+  background-color: white;
   border: 2px solid black;
   box-shadow: 0 20px 40px rgba($black, 0.7);
   text-align: center;
   border-radius: 20px;
 }
 
-
+// Image sty;e
 .home_im {
   position: relative;
-  height: 300px;
-  width: 590px;
-  top: 5px;
+  height: 270px;
+  width: 530px;
+  top: 15px;
   border-radius: 20px;
 
 }

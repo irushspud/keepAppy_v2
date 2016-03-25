@@ -39,10 +39,12 @@
 }
 
 
-.lg_but {
+.navbar-nav > li > .lg-but{
     position: relative;
     top:  -17px;
 }
+
+
 
 .navbar-collapse > .hm_but {
     color: white;
