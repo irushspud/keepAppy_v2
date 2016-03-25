@@ -268,45 +268,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 })
 
-
-// console.log("username:", $scope.login.username);
-//       console.log("password:", $scope.login.password);
-//       if($scope.login.username === undefined) {
-//         alert("Please enter a username");
-//       }
-//       else if($scope.login.password === undefined) {
-//         alert("Please enter a password");
-//       }
-//       else {
-//         $state.go('tabs.mood');
-//       }
-//     };
-//     $scope.register = function() {
-//       $state.go('tabs.register');
-//     }
-
 .controller('loginCtrl', function($scope, $state, $stateParams,Auth) {
-	$scope.login =function(){
-	var credentials = {
-            email: 'test@test.com',
-            password: '12345678'
-        };
-        var config = {
-            headers: {
-                'X-HTTP-Method-Override': 'POST'
-            }
-        };
-
-        Auth.login(credentials, config).then(function(user) {
-            console.log(user); // => {id: 1, ect: '...'}
-        }, function(error) {
-            console.log("oh no failure!!")
-        });
-	}
-	$scope.$on('devise:login', function(event, currentUser) {
-			// after a login, a hard refresh, a new tab
-	});
-
+		//       $state.go('tabs.register');
 })
 
 .controller('registerCtrl', function($scope, $state, $stateParams) {

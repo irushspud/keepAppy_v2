@@ -25,13 +25,6 @@ angular.module('starter.services', ['ngResource'])
   };
 }])
 
-
-.factory('Login', function($resource){
-  console.log("I ah")
-  return $resource("http://localhost:3000/users/sign_in",{}, { get: { method: 'POST'}});
-})
-
-
 .factory('dataStore', ['$q', function($q) {
 
     var database;
