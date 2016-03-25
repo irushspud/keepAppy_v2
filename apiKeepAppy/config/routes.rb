@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   
 
   devise_for :users
-  resources :users
-  
+
   #match "/login", :to => "sessions#login_attempt", via: [:get,:post]
   #match "/logout", :to => "sessions#logout", via: [:get,:post]
   match "/", :to => "sessions#home", via: [:get,:post]
