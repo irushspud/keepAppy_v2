@@ -162,7 +162,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $scope.data = GetQustions.evening.get();
     }
 
-    
+
 
 
     $scope.init = function () {
@@ -280,32 +280,39 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 //       else {
 //         $state.go('tabs.mood');
 //       }
-//     }; 
+//     };
 //     $scope.register = function() {
 //       $state.go('tabs.register');
 //     }
 
-.controller('loginCtrl', function($scope, $state, $stateParams, Login, $rootScope) {
-    $scope.credentials = {}
-    $scope.login = function(){
-      var session = new Login({user: $scope.credentials});
-      console.log($scope.credentials)
-      session.$save(
-        function(data){
-          console.log(data.id);
-          $state.go('tabs.mood');
-        },
-        function(err){
-          alert(err)
-          $state.go('tabs.login');
+.controller('loginCtrl', function($scope, $state, $stateParams,Auth) {
+	$scope.login =function(){
+	var credentials = {
+            email: 'test@test.com',
+            password: '12345678'
+        };
+        var config = {
+            headers: {
+                'X-HTTP-Method-Override': 'POST'
+            }
+        };
+
+        Auth.login(credentials, config).then(function(user) {
+            console.log(user); // => {id: 1, ect: '...'}
+        }, function(error) {
+            console.log("oh no failure!!")
         });
-    }
+	}
+	$scope.$on('devise:login', function(event, currentUser) {
+			// after a login, a hard refresh, a new tab
+	});
+
 })
 
 .controller('registerCtrl', function($scope, $state, $stateParams) {
 
     $scope.login = null;
-    
+
     $scope.register = function() {
       console.log("username:", $scope.register.username);
       console.log("password:", $scope.register.password1);
@@ -328,7 +335,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
         $state.go('tabs.mood');
       }
 
-    }; 
+    };
 })
 
 
