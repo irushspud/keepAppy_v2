@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format:'json'} do
   # /api/...  Api::
     namespace :v1 do
+      devise_for :users
+      resources :base
+      resources :registrations
       resources :quotes do
         collection do
           get :tag

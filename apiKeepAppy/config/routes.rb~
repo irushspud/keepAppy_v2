@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   
   
 
-  devise_for :users, :controllers=> {:registrations => "users/registrations"}
+  devise_for :users
+  resources :users
   
   #match "/login", :to => "sessions#login_attempt", via: [:get,:post]
   #match "/logout", :to => "sessions#logout", via: [:get,:post]
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format:'json'} do
   # /api/...  Api::
     namespace :v1 do
+      devise_for :users
+      resources :base
+      resources :registration
       resources :quotes do
         collection do
           get :tag
