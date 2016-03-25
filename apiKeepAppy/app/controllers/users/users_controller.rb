@@ -1,4 +1,0 @@
-
-class UsersController
-
-end
