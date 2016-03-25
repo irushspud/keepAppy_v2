@@ -44,7 +44,9 @@
     top:  -17px;
 }
 
-
+.navbar-nav > li > .lg-but > a {
+    color: white;
+}
 
 .navbar-collapse > .hm_but {
     color: white;
