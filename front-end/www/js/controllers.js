@@ -162,7 +162,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $scope.data = GetQustions.evening.get();
     }
 
-    
+
 
 
     $scope.init = function () {
@@ -268,44 +268,14 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 })
 
-
-// console.log("username:", $scope.login.username);
-//       console.log("password:", $scope.login.password);
-//       if($scope.login.username === undefined) {
-//         alert("Please enter a username");
-//       }
-//       else if($scope.login.password === undefined) {
-//         alert("Please enter a password");
-//       }
-//       else {
-//         $state.go('tabs.mood');
-//       }
-//     }; 
-//     $scope.register = function() {
-//       $state.go('tabs.register');
-//     }
-
-.controller('loginCtrl', function($scope, $state, $stateParams, Login, $rootScope) {
-    $scope.credentials = {}
-    $scope.login = function(){
-      var session = new Login({user: $scope.credentials});
-      console.log($scope.credentials)
-      session.$save(
-        function(data){
-          console.log(data.id);
-          $state.go('tabs.mood');
-        },
-        function(err){
-          alert(err)
-          $state.go('tabs.login');
-        });
-    }
+.controller('loginCtrl', function($scope, $state, $stateParams,Auth) {
+		//       $state.go('tabs.register');
 })
 
 .controller('registerCtrl', function($scope, $state, $stateParams) {
 
     $scope.login = null;
-    
+
     $scope.register = function() {
       console.log("username:", $scope.register.username);
       console.log("password:", $scope.register.password1);
@@ -328,7 +298,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
         $state.go('tabs.mood');
       }
 
-    }; 
+    };
 })
 
 

@@ -1,33 +1,32 @@
 module Api
   module V1
     class SessionsController < DeviseController
-      prepend_before_filter :require_no_authentication, :only => [:create ]
-      #include Devise::Controllers::InternalHelpers
-  
+      before_filter :authenticate_user!, :except => [:create, :destroy]
       before_filter :ensure_params_exist
 
       respond_to :json
-  
-      def new
-        build_resource
-        resource = User.find_for_database_authentication(:login=>params[:user_login][:login])
+
+      def create
+        self.resource = User.find_for_database_authentication(:email=>params[:user][:email])
         return invalid_login_attempt unless resource
 
-        if resource.valid_password?(params[:user_login][:password])
+        if resource.valid_password?(params[:user][:password])
           sign_in("user", resource)
-          render :json=> {:success=>true, :auth_token=>resource.authentication_token, :login=>resource.login, :email=>resource.email}
+          resource.ensure_authentication_token!
+          render :json=> {:success=>true, :auth_token=>resource.authentication_token, :email=>resource.email}
          return
        end
        invalid_login_attempt
       end
-   
+
      def destroy
-       sign_out(resource_name)
+       current_user.reset_authentication_token
+       render :json=> {:success=>true}
      end
 
      protected
      def ensure_params_exist
-       return unless params[:user_login].blank?
+       return unless params[:user].blank?
        render :json=>{:success=>false, :message=>"missing user_login parameter"}, :status=>422
      end
 
