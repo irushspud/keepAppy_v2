@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
  
   def is? (role)
-    return !!self.roles.find_by_name(role.to_s.camelize)
+    roles.include?(role.to_s)
   end
 end

@@ -4,13 +4,13 @@ class Ability
   def initialize(user)
     user ||= User.new #guest user
    
-    if user.is? :admin
-       can :manage, :all  #administrator can do everything
-    elsif user.is? :regular
-      can :read, :all  #not admins or creators can only read articles and quotes
-    elsif user.is? :creator
-      can :manage, [Article, Quote]  #can manage articles and quotes but not public feed
-    end
+    
+    can :manage, :all if user.role == "admin"  #administrator can do everything
+     
+    can :read, :all if user.role == "regular" #not admins or creators can only read articles and quotes
+     
+    can :manage, [Article, Quote] if user.role == "creator" #can manage articles and quotes but not public feed
+    
   end
 
   
