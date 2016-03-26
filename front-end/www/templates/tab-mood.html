@@ -13,10 +13,12 @@
               <div class="item item-text-wrap">
                 <p><strong>{{article.title}}</strong></p>
               </div>
-              <center>
-              <img class="article-image" src="{{article.image_url}}"/>
-              </center>
-              <br><br>
+              <div class="item item-body">
+              <img class="full-image" src="https://thawing-badlands-37385.herokuapp.com{{article.image_url}}">
+              <p>
+                <a href="#" class="subdued">{{article.tags}}</a>
+              </p>
+            </div>
               </ion-slide>
         </ion-slide-box>
 

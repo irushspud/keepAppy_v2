@@ -20,7 +20,7 @@ angular.module('starter.services', ['ngResource'])
   return {
     morning: $resource('data/morning.json', {}, { get: { method: 'GET', isArray: false }}),
     evening: $resource('data/evening.json', {}, { get: { method: 'GET', isArray: false }}),
-    article: $resource('https://thawing-badlands-37385.herokuapp.com/api/v1/articles', {}, { get: { method: 'GET', params: {tags: '@tags'}, isArray: true }}),
+    article: $resource('https://thawing-badlands-37385.herokuapp.com/api/v1/articles', {}, { get: { method: 'GET', params: {tag: '@tag'}, isArray: true }}),
     quote: $resource('https://thawing-badlands-37385.herokuapp.com/api/v1/quotes', {}, { get: { method: 'GET', isArray: true }})
   };
 }])

@@ -156,10 +156,13 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     $scope.data = null;
 
 
-    $scope.tagsTemp = ['cool'];
+		//example of getting array and running a query against it
+		$scope.result = ["strange","cool","art"];
+    $scope.tagsTemp = $scope.result.toString();
+
 
     // *** Get all articles with the 'cool' tag
-    $scope.articles = GetQustions.article.get({tags: $scope.tagsTemp});
+    $scope.articles = GetQustions.article.get({tag: $scope.tagsTemp});
 
 
     $scope.quotes = GetQustions.quote.get();
@@ -169,8 +172,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
     $scope.values = [];
     $scope.tags = [];
-
-
 
 
     //question popup times are fixed.
@@ -188,7 +189,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
         //console.log($scope.data.questions[0].tags[0])
       });
     }
-    
+
     console.log($scope.data);
 
 
@@ -206,7 +207,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').update();
       $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').enableSlide(true);
     }
-    
+
     $scope.lockSlide = function () {
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').enableSlide( false );
     }
