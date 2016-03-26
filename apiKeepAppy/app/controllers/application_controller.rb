@@ -7,7 +7,11 @@ class ApplicationController < ActionController::Base
     flash[:error] = exception.message
     redirect_to "/users/sign_up"
   end
+  before_action :configure_permitted_parameters, if: :devise_controller?
 protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :role
+  end
   def authenticate_user
     if session[:user_id]
       # set current user object to @current_user object variable
