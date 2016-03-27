@@ -1,4 +1,8 @@
-<head xmlns="http://www.w3.org/1999/html"><link rel="stylesheet" type="text/scss" href="articles/article_form.scss"></head>
+<%= javascript_include_tag "articles.js" %>
+
+<head xmlns="http://www.w3.org/1999/html"><link rel="stylesheet" type="text/scss" href="articles/article_form.scss">
+ </head>
+
 <div class="art_frm">
 <%= form_for(@article) do |f| %>
   <% if @article.errors.any? %>
