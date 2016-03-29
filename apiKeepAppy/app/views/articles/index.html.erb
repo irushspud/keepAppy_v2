@@ -31,9 +31,10 @@
                 <div class="panel-body">
                   <div class="row">
                     <p class="btn btn-primary"><%= link_to 'Show', article %></p>
-                    <p class="btn btn-primary">
-			<%= link_to ' Edit', edit_article_path(article) %>
-		    </p>
+                    <p class="btn btn-primary"><% if can? :update, @quote %>
+                          <%= link_to ' Edit', edit_article_path(article) %>
+                      <% end %>
+                    </p>
                     <p class="btn btn-primary">
 			<%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
 		    </p>
