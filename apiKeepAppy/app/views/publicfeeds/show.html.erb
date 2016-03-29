@@ -1,13 +1,16 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @publicfeed.title %>
-</p>
-<p>
-  <strong>Content:</strong>
-  <%= @publicfeed.content%>
-</p>
 
-<%= link_to 'Edit', edit_publicfeed_path(@publicfeed) %> |
+<div class="post" data-toggle="collapse" data-target="#<%= @publicfeed.id%>" ><i class="fa fa-user icon fa-5x"></i>
+  <p class="titl"><b><%= @publicfeed.title %></b></p>
+  <p><%= @publicfeed.content %> </p>
+</div>
+<div id="<%= @publicfeed.id%>" class="panel-collapse collapse">
+  <div class="panel-body">
+    <div class="row">
+      <p class="btn btn-primary"> <%= link_to ' Edit', edit_publicfeed_path(@publicfeed) %></p>
+      <p class="btn btn-primary">  <%= link_to 'Destroy', @publicfeed, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
+  </div>
+</div>
+
 <%= link_to 'Back', publicfeeds_path %>
