@@ -43,6 +43,7 @@ gem 'puma'
 # gem 'unicorn'
 #User authentication
 gem 'devise'
+gem 'devise-token_authenticatable'
 gem 'cancan'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -304,8 +304,25 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 })
 
-.controller('loginCtrl', function($scope, $state, $stateParams,Auth) {
-		//       $state.go('tabs.register');
+.controller('loginCtrl', function($scope, $state, $stateParams, Auth) {
+		  $scope.login = function(){
+				var credentials = {
+            email: 'a@a.com',
+            password: 'password1'
+        };
+        var config = {
+            headers: {
+                'X-HTTP-Method-Override': 'POST'
+            }
+        };
+
+				Auth.login(credentials, config).then(function(user) {
+	            console.log(user); // => {id: 1, ect: '...'}
+	        }, function(error) {
+	            console.log("you failed to login")
+	        });
+
+			}
 })
 
 .controller('registerCtrl', function($scope, $state, $stateParams) {
