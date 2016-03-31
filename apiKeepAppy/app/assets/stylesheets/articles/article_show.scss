@@ -1,0 +1,51 @@
+
+$black: #222222;
+/* Style for article cards */
+
+
+.thmbnail{
+  color: black;
+background-color: white;
+  box-shadow: 0 2px 4px rgba($black, 0.12);
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid black;
+  min-height: 400px;
+}
+
+
+.thmb-img {
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.thmbnail > p {
+  padding-left: 40px;
+}
+
+.thmbnail > .title-blk {
+  min-height: 60px;
+  border: 1px solid black;
+  background-color: #343434;
+  color: white;
+  border-radius: 7px;
+}
+
+.thmbnail > .title-blk > h3 {
+  font-size: 30px;
+  position: relative;
+  top: -20px;
+  alignment: left;
+}
+
+.thmbnail > .title-blk > p {
+  font-size: 18px;
+  position: relative;
+  top: -20px;
+  left: 20px;
+  alignment: right;
+}
+
+

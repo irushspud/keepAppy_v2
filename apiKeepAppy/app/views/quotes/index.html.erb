@@ -1,9 +1,7 @@
 <head><link rel="stylesheet" type="text/scss" href="quotes/quote_index.scss"></head>
 <h1>Listing quotes</h1>
 <div class="row"><button class="button button1">
-  <% if can? :create, @quote %>
   <%= link_to 'New Quote', new_quote_path %>
-  <% end %>
 </button>
 <button class="button button1"><%= link_to "Back to Home", controller: "sessions", action: "home"  %></button>
 <a href="/home"></a></div>

@@ -19,6 +19,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .config(function($stateProvider, $urlRouterProvider, AuthProvider) {
 
   AuthProvider.loginPath('http://localhost:3000/api/v1/users/sign_in.json');
+  AuthProvider.registerPath('http://localhost:3000/api/v1/users/sign_up.json');
 
   $stateProvider
 

@@ -3,9 +3,7 @@
 
 <h1>Listing articles</h1>
 <h2 class="btn btn-primary">
-<% if can? :create, @article %>
   <%= link_to ' New Article', new_article_path %>
-<% end %>
 </h2>
 <h2 class="btn btn-info"><%= link_to "  Home", controller: "sessions", action: "home"  %></h2>
 <h4>Click on an article for options</h4>
@@ -33,15 +31,12 @@
                 <div class="panel-body">
                   <div class="row">
                     <p class="btn btn-primary"><%= link_to 'Show', article %></p>
-                    <p class="btn btn-primary"> 
-                        <% if can? :update, @article %>
-			<%= link_to ' Edit', edit_article_path(article) %>
-                        <% end %>
-		    </p>
-                    <p class="btn btn-primary"> 
-			<% if can? :delete, @article %> 
+                    <p class="btn btn-primary"><% if can? :update, @quote %>
+                          <%= link_to ' Edit', edit_article_path(article) %>
+                      <% end %>
+                    </p>
+                    <p class="btn btn-primary">
 			<%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
-			<% end %>
 		    </p>
                   </div>
                </div>

@@ -1,21 +1,35 @@
-<p id="notice"><%= notice %></p>
+<blockquote class="quote-card" data-toggle="collapse" data-target="#<%= @quote.id%>">
+  <p>
+    <%= @quote.cite %>
+  </p>
+  <cite>
+    <%= @quote.progenitor %>
+  </cite>
+  <p>
+    <strong>Tags:</strong>
+    <%= raw @quote.tag_list.map{ |t| link_to t, :controller=>"quotes", :action=>"tag", :tag => t }.join(', ') %>
+  </p>
 
-<p>
-  <strong>Cite:</strong>
-  <%= @quote.cite %>
-</p>
 
-<p>
-  <strong>Progenitor:</strong>
-  <%= @quote.progenitor %>
-</p>
+</blockquote>
+<div id="<%= @quote.id%>" class="panel-collapse collapse">
+  <div class="panel-body">
+    <div class="row">
+      <p class="btn btn-primary">
+        <% if can? :update, @quote %>
+            <%= link_to ' Edit', edit_quote_path(@quote) %>
+        <% end %>
+      </p>
+      <p class="btn btn-primary">
+        <%if can? :delete, @quote %>
+            <%= link_to 'Destroy', @quote, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
 
-
-<p>
-  <strong>Tags:</strong>
-  <%= raw @quote.tag_list.map{ |t| link_to t, :controller=>"quotes", :action=>"tag", :tag => t }.join(', ') %>
-</p>
 <% if can? :update, @quote %>
-<%= link_to 'Edit', edit_quote_path(@quote) %>
+    <%= link_to 'Edit', edit_quote_path(@quote) %>
 <% end %> |
 <%= link_to 'Back', quotes_path %>

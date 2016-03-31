@@ -13,8 +13,13 @@
         <div class="panel-body">
           <div class="row">
             <p class="btn btn-primary"><%= link_to 'Show', publicfeed %></p>
-            <p class="btn btn-primary"> <%= link_to ' Edit', edit_publicfeed_path(publicfeed) %></p>
-            <p class="btn btn-primary">  <%= link_to 'Destroy', publicfeed, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+            <p class="btn btn-primary"><% if can? :update, @quote %>
+                  <%= link_to ' Edit', edit_publicfeed_path(publicfeed) %>
+              <% end %> </p>
+            <p class="btn btn-primary"> <% if can? :delete, @quote %>
+                  <%= link_to 'Destroy', publicfeed, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %></p>
           </div>
         </div>
       </div>

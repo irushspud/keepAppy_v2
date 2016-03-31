@@ -12,7 +12,7 @@ module Api
 
         if resource.valid_password?(params[:user][:password])
           sign_in("user", resource)
-          resource.ensure_authentication_token!
+          #resource.ensure_authentication_token!
           render :json=> {:success=>true, :auth_token=>resource.authentication_token, :email=>resource.email}
          return
        end
