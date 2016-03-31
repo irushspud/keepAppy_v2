@@ -1,12 +1,12 @@
 module Api
   module V1
     class SessionsController < DeviseController
-      before_filter :authenticate_user!, :except => [:create, :destroy]
+      before_filter :authenticate_user!, :except => [:new, :destroy]
       before_filter :ensure_params_exist
 
       respond_to :json
 
-      def create
+      def new
         self.resource = User.find_for_database_authentication(:email=>params[:user][:email])
         return invalid_login_attempt unless resource
 
