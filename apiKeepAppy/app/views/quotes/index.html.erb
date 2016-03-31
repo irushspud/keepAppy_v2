@@ -1,7 +1,9 @@
 <head><link rel="stylesheet" type="text/scss" href="quotes/quote_index.scss"></head>
 <h1>Listing quotes</h1>
 <div class="row"><button class="button button1">
-  <%= link_to 'New Quote', new_quote_path %>
+  <% if can? :create, @quote %>
+     <%= link_to 'New Quote', new_quote_path %>
+  <% end %>
 </button>
 <button class="button button1"><%= link_to "Back to Home", controller: "sessions", action: "home"  %></button>
 <a href="/home"></a></div>
@@ -31,9 +33,9 @@
               <% if can? :update, @quote %>
                 <%= link_to ' Edit', edit_quote_path(quote) %>
               <% end %>
-	    </p>
+	         </p>
             <p class="btn btn-primary">  
-              <%if can? :delete, @quote %>
+              <% if can? :delete, @quote %>
                 <%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
           </p>
