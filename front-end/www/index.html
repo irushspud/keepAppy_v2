@@ -34,7 +34,7 @@
 	       <ion-side-menu-content ng-controller="NavCtrl">
           <ion-nav-bar class="bar-dark">
             <ion-nav-buttons side="left">
-              <button class="button button-icon button-clear ion-navicon" ng-click="showMenu()">
+              <button class="button button-icon button-clear ion-navicon" ng-click="toggleMenu();logout()">
               </button>
             </ion-nav-buttons>
           </ion-nav-bar>
@@ -57,7 +57,7 @@
                 <i class="icon ion-ios-gear"></i>
                   Settings
               </a>
-              <a class="item item-icon-left" href="#/logout">
+              <a class="item item-icon-left" ng-click="logout()">
                 <i class="icon ion-android-arrow-dropleft-circle"></i>
                   Logout
               </a>

@@ -361,8 +361,23 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 })
 
 
-.controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
-  $scope.showMenu = function () {
+.controller('NavCtrl', function($scope, $ionicSideMenuDelegate, Auth) {
+		$scope.logout = function() {
+			 var config = {
+            headers: {
+                'X-HTTP-Method-Override': 'GET'
+            }
+        };
+        // Log in user...
+        // ...
+        Auth.logout(config).then(function(oldUser) {
+             alert(oldUser.name + "you're signed out now.");
+        }, function(error) {
+            // An error occurred logging out.
+        });
+		}  
+
+		$scope.toggleMenu = function () {
     $ionicSideMenuDelegate.toggleLeft();
   };
 });
