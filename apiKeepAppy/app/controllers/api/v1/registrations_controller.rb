@@ -1,7 +1,7 @@
 module Api
   module V1
     class RegistrationsController < BaseController
-  
+
       respond_to :json
       #handles registration of users from mobile
       def create
@@ -14,11 +14,10 @@ module Api
           render :json=> user.errors, :status=>422
         end
       end
-      protected
+      private
         def user_params
           params.require(:user).permit(:email,:password,:password_confirmation)
         end
       end
     end
-  end 
 end
