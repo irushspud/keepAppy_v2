@@ -13,11 +13,12 @@ module Api
           warden.custom_failure!
           render :json=> user.errors, :status=>422
         end
-
-        protected
+      end
+      protected
         def user_params
           params.require(:user).permit(:email,:password,:password_confirmation)
+        end
       end
-    end 
-  end
+    end
+  end 
 end
