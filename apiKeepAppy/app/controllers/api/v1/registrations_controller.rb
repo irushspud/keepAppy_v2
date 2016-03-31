@@ -1,6 +1,6 @@
 module Api
   module V1
-    class RegistrationsController < BaseController
+    class RegistrationsController < Devise::RegistrationsController
   
       respond_to :json
       #handles registration of users from mobile
