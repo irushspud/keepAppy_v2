@@ -1,10 +1,13 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!
-  #load_and_authorize_resource
+  before_filter :authenticate_user! #authenticates the user is fails redirects to login screen, also checks role premissions
+  
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
+=begin
+  index shows list of articles either all articles created or only those which contain a tag being searched for
+=end
   def index
     if params[:tag]
       @articles = Article.tagged_with(params[:tag])
@@ -17,6 +20,9 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
   end
+=begin
+  Tag is responsible for passing tags to the index method
+=end
   def tag
     @articles = Article.tagged_with(params[:tag])
     render :action => 'index'
@@ -77,6 +83,7 @@ class ArticlesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # These are all the accessible parameters of article
     def article_params
       params.require(:article).permit(:title, :content, :author, :clssificaton,:image, :tag_list)
     end

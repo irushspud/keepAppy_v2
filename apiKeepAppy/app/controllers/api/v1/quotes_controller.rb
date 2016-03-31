@@ -5,7 +5,7 @@ module Api
       class Quote < ::Quote
         # Note: this does not take into consideration the create/update actions for changing released_on
         def as_json(options = {})
-          super.merge(tags: tag_list)
+          super.merge(tags: tag_list)  #appends tag_list to the api json object
         end
       end
       ##user auth

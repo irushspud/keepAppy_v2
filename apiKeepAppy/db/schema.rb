@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20160330135334) do
     t.datetime "image_updated_at"
   end
 
+  create_table "public_posts", force: true do |t|
+    t.text     "post"
+    t.integer  "rate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "publicfeeds", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
