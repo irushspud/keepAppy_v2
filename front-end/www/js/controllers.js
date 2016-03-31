@@ -305,51 +305,57 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 })
 
 .controller('loginCtrl', function($scope, $state, $stateParams, Auth) {
-		  $scope.login = function(){
-				var credentials = {
-            email: 'a@a.com',
-            password: 'password1'
-        };
+				$scope.credentials = {
+            email: '',
+            password: ''
+        };		 
+		 $scope.login = function(){
+
         var config = {
             headers: {
                 'X-HTTP-Method-Override': 'POST'
             }
         };
 
-				Auth.login(credentials, config).then(function(user) {
-	            console.log(user); // => {id: 1, ect: '...'}
+				Auth.login($scope.credentials, config).then(function(user) {
+	          $state.go('tabs.mood');
 	        }, function(error) {
 	            console.log("you failed to login")
 	        });
 
 			}
+
+ 			$scope.register = function(){
+					$state.go('tabs.register');
+			}
 })
 
-.controller('registerCtrl', function($scope, $state, $stateParams) {
+.controller('registerCtrl', function($scope, $state, $stateParams, Auth) {
 
-    $scope.login = null;
+  // register
+
+				
+		$scope.credentials = {
+	      email: '',
+	      password: '',
+	      password_confirmation: ''
+	  };
+
 
     $scope.register = function() {
-      console.log("username:", $scope.register.username);
-      console.log("password:", $scope.register.password1);
-      console.log("password:", $scope.register.password2);
 
-      if($scope.register.username === undefined) {
-        alert("Please enter a username");
-      }
-      else if($scope.register.password1 === undefined || $scope.register.password2 === undefined) {
-        alert("Please enter a password in both fields");
-      }
-      else if($scope.register.password1 != $scope.register.password2) {
-        alert("Password mismatch! Please re-enter your password")
-      }
-      else {
-        console.log("Registered!")
-        $scope.register.username = '';
-        $scope.register.password1 = '';
-        $scope.register.password2 = '';
-        $state.go('tabs.mood');
-      }
+
+        var config = {
+            headers: {
+                'X-HTTP-Method-Override': 'POST'
+            }
+        };
+
+        Auth.register($scope.credentials, config).then(function(registeredUser) {
+            $state.go('tabs.mood');
+        }, function(error) {
+             alert(error);
+        });
 
     };
 })
