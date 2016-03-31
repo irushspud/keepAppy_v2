@@ -5,7 +5,7 @@ module Api
       before_filter :ensure_params_exist
 
       respond_to :json
-
+      #creates a new user session as they login if they have valid information
       def create
         self.resource = User.find_for_database_authentication(:email=>params[:user][:email])
         return invalid_login_attempt unless resource
@@ -18,7 +18,7 @@ module Api
        end
        invalid_login_attempt
       end
-
+     #destroys current users session and logs the user out
      def destroy
        current_user.reset_authentication_token
        render :json=> {:success=>true}

@@ -1,6 +1,9 @@
 <h1>Listing publicfeeds</h1>
-<div class="row"><button class="button button1"><%= link_to 'New Post', new_publicfeed_path %></button>
-  <button class="button button1"><%= link_to "Back to Home", controller: "sessions", action: "home"  %></button>
+<div class="row"><button class="button button1">
+	<% if can? :create, @publicfeed %>
+		<%= link_to 'New Post', new_publicfeed_path %></button>
+  	<% end %>
+<button class="button button1"><%= link_to "Back to Home", controller: "sessions", action: "home"  %></button>
   <a href="/home"></a></div>
 <h3>Click on a post for more options</h3>
 <ul class="activity-stream">
@@ -14,12 +17,16 @@
           <div class="row">
             <p class="btn btn-primary"><%= link_to 'Show', publicfeed %></p>
 
-            <p class="btn btn-primary"><% if can? :update, @quote %>
+            <p class="btn btn-primary">
+            <% if can? :update, @publicfeed %>
                   <%= link_to ' Edit', edit_publicfeed_path(publicfeed) %>
-              <% end %> </p>
-            <p class="btn btn-primary"> <% if can? :delete, @quote %>
+              <% end %> 
+            </p>
+            <p class="btn btn-primary"> 
+            <% if can? :delete, @publicfeed %>
                   <%= link_to 'Destroy', publicfeed, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <% end %></p>
+              <% end %><
+            </p>
           </div>
         </div>
       </div>

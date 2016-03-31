@@ -3,7 +3,8 @@ module Api
     class RegistrationsController < BaseController
   
       respond_to :json
-      def new
+      #handles registration of users from mobile
+      def create
         user = User.new(params[:user])
         if user.save
           render :json=> user.as_json(:auth_token=>user.authentication_token, :email=>user.email), :status=>201

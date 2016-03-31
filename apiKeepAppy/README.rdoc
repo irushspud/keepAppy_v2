@@ -9,11 +9,10 @@ Admin: can do everything
 Regular: Can only read the site
 Creator: Can create, edit and destroy articles and quotes
 
-
-                  Prefix Verb     URI Pattern                              Controller#Action
+                         Prefix Verb     URI Pattern                              Controller#Action
                new_user_session GET      /users/sign_in(.:format)                 devise/sessions#new
                    user_session POST     /users/sign_in(.:format)                 devise/sessions#create
-           destroy_user_session DELETE   /users/sign_out(.:format)                devise/sessions#destroy
+           destroy_user_session GET      /users/sign_out(.:format)                devise/sessions#destroy
                   user_password POST     /users/password(.:format)                devise/passwords#create
               new_user_password GET      /users/password/new(.:format)            devise/passwords#new
              edit_user_password GET      /users/password/edit(.:format)           devise/passwords#edit
@@ -26,19 +25,11 @@ Creator: Can create, edit and destroy articles and quotes
                                 PATCH    /users(.:format)                         devise/registrations#update
                                 PUT      /users(.:format)                         devise/registrations#update
                                 DELETE   /users(.:format)                         devise/registrations#destroy
-                          users GET      /users(.:format)                         users#index
-                                POST     /users(.:format)                         users#create
-                       new_user GET      /users/new(.:format)                     users#new
-                      edit_user GET      /users/:id/edit(.:format)                users#edit
-                           user GET      /users/:id(.:format)                     users#show
-                                PATCH    /users/:id(.:format)                     users#update
-                                PUT      /users/:id(.:format)                     users#update
-                                DELETE   /users/:id(.:format)                     users#destroy
                                 GET|POST /                                        sessions#home
                         setting GET|POST /setting(.:format)                       sessions#setting
         new_api_v1_user_session GET      /api/v1/users/sign_in(.:format)          api/v1/sessions#new {:format=>"json"}
             api_v1_user_session POST     /api/v1/users/sign_in(.:format)          api/v1/sessions#create {:format=>"json"}
-    destroy_api_v1_user_session DELETE   /api/v1/users/sign_out(.:format)         api/v1/sessions#destroy {:format=>"json"}
+    destroy_api_v1_user_session GET      /api/v1/users/sign_out(.:format)         api/v1/sessions#destroy {:format=>"json"}
            api_v1_user_password POST     /api/v1/users/password(.:format)         api/v1/passwords#create {:format=>"json"}
        new_api_v1_user_password GET      /api/v1/users/password/new(.:format)     api/v1/passwords#new {:format=>"json"}
       edit_api_v1_user_password GET      /api/v1/users/password/edit(.:format)    api/v1/passwords#edit {:format=>"json"}
