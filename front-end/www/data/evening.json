@@ -4,16 +4,16 @@
          "id":1,
          "question":"How was college today?",
          "tags":[  
-            "Motivation",
-            "Motivation",
-            "Motivation",
-            "Motivation",
-            "Motivation",
-            "N/A",
-            "N/A",
-            "N/A",
-            "N/A",
-            "N/A"
+            "depression",
+            "depression",
+            "sad",
+            "down",
+            "down",
+            "fun",
+            "fun",
+            "walks",
+            "happiness",
+            "happiness"
          ]
       },
       {  
@@ -137,10 +137,10 @@
             "Motivation",
             "Motivation",
             "Motivation",
-            "Motivation",
-            "Motivation",
-            "Motivation",
-            "Motivation",
+            "N/A",
+            "N/A",
+            "N/A",
+            "N/A",
             "N/A"
          ]
       }

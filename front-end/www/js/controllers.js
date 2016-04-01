@@ -161,8 +161,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     $scope.tagsTemp = $scope.result.toString();
 
 
-    // *** Get all articles with the 'cool' tag
-    $scope.articles = GetQustions.article.get({tag: $scope.tagsTemp});
+    
 
 
     $scope.quotes = GetQustions.quote.get();
@@ -228,6 +227,23 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       if($ionicSlideBoxDelegate.$getByHandle('questionSlideBox').currentIndex() == $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').slidesCount() - 1) {
         $scope.modal.hide();
         console.log($scope.tags);
+
+        // *** Get all articles with the 'cool' tag
+        //$scope.articles = GetQustions.article.get({tag: $scope.tagsTemp});
+
+
+
+
+        //$scope.result = ["fun"];
+        $scope.tagsTemp = $scope.tags.toString();
+
+
+        // *** Get all articles with the 'cool' tag
+        $scope.articles = GetQustions.article.get({tag: $scope.tagsTemp});
+
+
+
+
       }
 
 
@@ -236,61 +252,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     $scope.previousSlide = function() {
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').previous();
     }
-/*
-    $scope.getTags = function() {
 
-      //iterate though the slider values and match them with tags
-      for(var i = 0; i < $scope.values.length; i++) {
-        switch (Math.floor($scope.values[i] / 10)) {
-          case 0:
-            $scope.tags.push('a');
-            break;
-
-          case 2:
-            $scope.tags.push('b');
-            break;
-
-          case 3:
-            $scope.tags.push('c');
-            break;
-
-          case 4:
-            $scope.tags.push('d');
-            break;
-
-          case 5:
-            $scope.tags.push('e');
-            break;
-
-          case 6:
-            $scope.tags.push('f');
-            break;
-
-          case 7:
-            $scope.tags.push('g');
-            break;
-
-          case 8:
-            $scope.tags.push('h');
-            break;
-
-          case 9:
-            $scope.tags.push('i');
-            break;
-
-          case 10:
-            $scope.tags.push('j');
-            break;
-
-          default:
-            //debuging code
-            console.log("Default");
-            console.log(Math.floor($scope.values[i] / 10));
-        }
-      }
-      console.log($scope.tags);
-    }
-*/
 
     $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
       $scope.modal = $ionicModal;
