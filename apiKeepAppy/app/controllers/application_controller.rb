@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     redirect_to "/users/sign_up"
   end
   before_action :configure_permitted_parameters, if: :devise_controller?
-protected
+  protected
 =begin
   Configure_permitted_parameters, ensures that the user role is added to the user table on sign up 
   allowing for permisions to be used.
