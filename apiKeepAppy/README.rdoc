@@ -112,5 +112,29 @@ cancel_api_v1_user_registration  GET       /api/v1/users/cancel(.:format)       
                                  PUT       /articles/:id(.:format)                  articles#update
                                  DELETE    /articles/:id(.:format)                  articles#destroy
   
+#####Expanation of Tags
+  When a users completes the mood checker his results are matched to tags.
+  These are queried in the api url using the route /articles/?tags="tag1,tag2,tag3".
+  This will return any article/quote which contains any of these tags up to a limit of 5 (from each Articles and Quotes)
 
+  ##List of Tags
+  depression
+  sad
+  fun
+  walks
+  happiness
+  Acheiving goals
+  Trying new things
+  Eating well
+  Hydration
+  Stress Management
+  Socialising
+  Energy
+  Motivation
+  Feeling Sad
+  Improving sleep
+  Time management
+  Healthy breakfast
+  Making time to exercise
+## can be found at morning.json and evening.json 
 
