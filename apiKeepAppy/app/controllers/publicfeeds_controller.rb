@@ -1,7 +1,7 @@
 class PublicfeedsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user! 
   before_action :set_publicfeed, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  load_and_authorize_resource #checks roll permissions of User
   # GET /publicfeeds
   # GET /publicfeeds.json
   def index
