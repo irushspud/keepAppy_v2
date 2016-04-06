@@ -10,7 +10,7 @@
         <ion-slide-box delegate-handle="articleSlideBox" ng-hide="data==null">
               <ion-slide ng-repeat="article in articles" ng-init="initArt()">
 
-              <div class="item item-text-wrap" ng-click="readArticle()">
+              <div class="item item-text-wrap" ng-click="readArticle(article)">
                 <p><strong>{{article.title}}</strong></p>
               </div>
               <div class="item item-body">

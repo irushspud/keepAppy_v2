@@ -297,8 +297,9 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 */
 
 
-  $scope.readArticle = function() {
-    $scope.oModal2.show()
+  $scope.readArticle = function(article) {
+		$scope.article = article;
+    $scope.oModal2.show();
   }
 
       $scope.closeModal = function(index) {
