@@ -193,6 +193,9 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     console.log($scope.data);
 
 
+	
+
+
     $scope.init = function () {
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').update();
       //console.log("$scope.init");
@@ -207,7 +210,8 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
       $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').update();
       $ionicSlideBoxDelegate.$getByHandle('articleSlideBox').enableSlide(true);
     }
-
+		
+		// Pop  up Questions
     $scope.lockSlide = function () {
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').enableSlide( false );
     }
@@ -226,7 +230,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
       //Close the questions dialog after the last slide
       if($ionicSlideBoxDelegate.$getByHandle('questionSlideBox').currentIndex() == $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').slidesCount() - 1) {
-        $scope.modal.hide();
+        $scope.closeModal(1);
         console.log($scope.tags);
       }
 
@@ -292,12 +296,34 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     }
 */
 
+
+  $scope.readArticle = function() {
+    $scope.oModal2.show()
+  }
+
+      $scope.closeModal = function(index) {
+      if(index == 1) $scope.oModal1.hide();
+      else $scope.oModal2.hide();
+    };
+
+
+
+    $ionicModal.fromTemplateUrl('artDetail.html', {
+      id: '2', // We need to use and ID to identify the modal that is firing the event!
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.oModal2 = modal;
+    });
+
+
     $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
-      $scope.modal = $ionicModal;
-      $scope.modal.show();
+      $scope.oModal1 = $ionicModal;
+      $scope.oModal1.show();
       },
       {
         scope: $scope,
+				id: '1',
         animation: 'slide-in-up'
       }
   );
