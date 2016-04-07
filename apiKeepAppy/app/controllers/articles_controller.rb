@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_user! #authenticates the user is fails redirects to login screen, also checks role premissions
-  load_and_authorize_resource
+  #load_and_authorize_resource
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
