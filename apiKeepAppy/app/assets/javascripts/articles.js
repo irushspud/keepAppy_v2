@@ -8,7 +8,7 @@ $('.actions').click(function() {
         var notification= new Notification('Keep Appy',{
             body:'Article successfully created'
         });
-        /* Timeout */
+        /* timer for timeout */
         setTimeout(function(){
             notification.close();
         },400);
