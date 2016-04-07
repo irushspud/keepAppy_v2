@@ -192,13 +192,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     console.log($scope.data);
 
 
-	
-
-
     $scope.init = function () {
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').update();
       //console.log("$scope.init");
-      $scope.modal.show();
+				$scope.oModal1.show();
       $ionicSlideBoxDelegate.$getByHandle('questionSlideBox').enableSlide(false);
     }
     $scope.initArt = function () {
@@ -282,7 +279,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
     $ionicModal.fromTemplateUrl('modal.html', function($ionicModal) {
       $scope.oModal1 = $ionicModal;
-      $scope.oModal1.show();
       },
       {
         scope: $scope,

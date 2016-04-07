@@ -19,9 +19,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .config(function($stateProvider, $urlRouterProvider, AuthProvider) {
 
 // new path
-  AuthProvider.loginPath('https://thawing-badlands-37385.herokuapp.com/api/v1/users/sign_in.json');
-  AuthProvider.registerPath('https://thawing-badlands-37385.herokuapp.com/api/v1/registrations');
-	AuthProvider.logoutPath('https://thawing-badlands-37385.herokuapp.com/api/v1/users/sign_out.json');
+  AuthProvider.loginPath('http://localhost:3000/api/v1/users/sign_in.json');
+  AuthProvider.registerPath('http://localhost:3000/api/v1/registrations');
+	AuthProvider.logoutPath('http://localhost:3000/api/v1/users/sign_out.json');
 
   $stateProvider
 
