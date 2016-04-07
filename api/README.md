@@ -1,8 +1,14 @@
-###Dummy API
+###Dummy API 
+
+####(Used as a support in the initial api development)
+
 #####For Frontent Dvevlopment
+* `cd api`
+* `node app.js`
 
-`GET Articles` ~> https://stormy-retreat-84839.herokuapp.com/api/v1/articles
+By ruuning the above commands the dummy api will be spun up on a local server. This app also include the deployment configuration for the heroku service.
 
-`GET Quotes` ~> https://stormy-retreat-84839.herokuapp.com/api/v1/quotes
 
-#####Setup this little api to serve the front-end
+`GET Articles` ~> https://my~app.herokuapp.com/api/v1/articles
+
+`GET Quotes` ~>https://my~app.herokuapp.com/api/v1/quotes
