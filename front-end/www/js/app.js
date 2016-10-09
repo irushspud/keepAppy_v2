@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova','Devise'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova','Devise', 'chart.js'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -18,7 +18,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 .config(function($stateProvider, $urlRouterProvider, AuthProvider) {
 
-// new path
+// login paths for authenication
   AuthProvider.loginPath('http://localhost:3000/api/v1/users/sign_in.json');
   AuthProvider.registerPath('http://localhost:3000/api/v1/registrations');
 	AuthProvider.logoutPath('http://localhost:3000/api/v1/users/sign_out.json');
@@ -29,6 +29,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 		url: '/settings',
 		templateUrl: 'templates/settings.html',
     controller: 'settingsCtrl'
+  })
+
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
   })
 
 
@@ -48,23 +54,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-  .state('tabs.login', {
-    url: '/login',
-    views: {
-      'tab-mood': {
-        templateUrl: 'templates/login.html',
-        controller: 'loginCtrl'
-      }
-    }
-  })
-  .state('tabs.register', {
+  .state('register', {
     url: '/register',
-    views: {
-      'tab-mood': {
-        templateUrl: 'templates/register.html',
-        controller: 'registerCtrl'
-      }
-    }
+    templateUrl: 'templates/register.html',
+    controller: 'registerCtrl'
   })
   .state('tabs.article', {
     url: '/article',
@@ -86,17 +79,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     })
 
-  .state('tabs.publicFeed', {
-    url: '/publicFeed',
+  .state('tabs.prog', {
+    url: '/progress',
     views: {
-      'tab-publicFeed': {
-        templateUrl: 'templates/tab-publicFeed.html',
+      'tab-prog': {
+        templateUrl: 'templates/tab-prog.html',
         controller: 'publicFeedCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/login');
+  $urlRouterProvider.otherwise('/login');
 
 });

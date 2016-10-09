@@ -35,7 +35,7 @@
               <% end %>
 	         </p>
             <p class="btn btn-primary">  
-              <% if can? :delete, @quote %>
+              <% if can? :delete, quote %>
                 <%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
           </p>

@@ -289,6 +289,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
 })
 
+//   fix login
 .controller('loginCtrl', function($scope, $state, $stateParams, Auth) {
 				$scope.credentials = {
             email: '',
@@ -311,7 +312,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 			}
 
  			$scope.register = function(){
-					$state.go('tabs.register');
+					$state.go('register');
 			}
 })
 
@@ -343,6 +344,22 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
         });
 
     };
+		 			$scope.login = function(){
+					$state.go('login');
+			}
+})
+
+
+
+.controller("grphCtrl", function($scope) {
+ 
+    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+        [65, 59, 80, 81, 56, 55, 40],
+        [28, 48, 40, 19, 86, 27, 90]
+    ];
+ 
 })
 
 
